@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
-import Footer from '../components/Footer';
+import { screen } from '@testing-library/react';
+import { fireEvent } from '@testing-library/dom';
 import renderWithRouter from './helper/renderWithRouter';
 import App from '../App';
 
@@ -10,20 +10,23 @@ const DRINKS_BTN = 'drinks-bottom-btn';
 const EXPLORE_BTN = 'explore-bottom-btn';
 const FOOD_BTN = 'food-bottom-btn';
 
-describe('Componente Footer - Comportamento', () => {
-  beforeEach(() => render(<Footer />));
+describe('Componente Footer - Aparência', () => {
+  beforeEach(() => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/perfil');
+  });
 
-  test('Tem um link para a página de drinks', () => {
+  test('Tem o ícone da página de drinks', () => {
     const drinksBtn = screen.getByTestId(DRINKS_BTN);
     expect(drinksBtn.src).toContain('drinkIcon.svg');
   });
 
-  test('Tem um link para a página de explorar', () => {
+  test('Tem o ícone da página de explorar', () => {
     const exploreBtn = screen.getByTestId(EXPLORE_BTN);
     expect(exploreBtn.src).toContain('exploreIcon.svg');
   });
 
-  test('Tem um link para a página de comidas', () => {
+  test('Tem o ícone da página de comidas', () => {
     const foodBtn = screen.getByTestId(FOOD_BTN);
     expect(foodBtn.src).toContain('mealIcon.svg');
   });
@@ -139,5 +142,31 @@ describe('Componente Footer - Integração no app', () => {
     history.push('/receitas-favoritas');
     const footerElement = screen.queryByTestId(FOOTER);
     expect(footerElement).not.toBeInTheDocument();
+  });
+});
+
+describe('Componente Footer - Comportamento', () => {
+  test('Redireciona para a lista de bebidas ao clicar no ícone de bebidas', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/perfil');
+    const drinksBtn = screen.getByTestId(DRINKS_BTN);
+    fireEvent.click(drinksBtn);
+    expect(history.location.pathname).toBe('/bebidas');
+  });
+
+  test('Redireciona para a tela de explorar ao clicar no ícone de exploração', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/perfil');
+    const exploreBtn = screen.getByTestId(EXPLORE_BTN);
+    fireEvent.click(exploreBtn);
+    expect(history.location.pathname).toBe('/explorar');
+  });
+
+  test('Redireciona para a lista de comidas ao clicar no ícone de comidas', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/perfil');
+    const foodBtn = screen.getByTestId(FOOD_BTN);
+    fireEvent.click(foodBtn);
+    expect(history.location.pathname).toBe('/comidas');
   });
 });
