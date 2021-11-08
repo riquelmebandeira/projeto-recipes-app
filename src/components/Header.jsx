@@ -4,7 +4,7 @@ import searchIcon from '../images/searchIcon.svg';
 import profileIcon from '../images/profileIcon.svg';
 
 function Header(props) {
-  const { title } = props;
+  const { title, showSearchBtn } = props;
   return (
     <header>
       <input
@@ -14,18 +14,25 @@ function Header(props) {
         alt="Foto de perfil"
       />
       <h1 data-testid="page-title">{title}</h1>
-      <input
-        type="image"
-        src={ searchIcon }
-        alt="Ícone de lupa"
-        data-testid="search-top-btn"
-      />
+      {!showSearchBtn ? null
+        : (
+          <input
+            type="image"
+            src={ searchIcon }
+            alt="Ícone de lupa"
+            data-testid="search-top-btn"
+          />)}
     </header>
   );
 }
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  showSearchBtn: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  showSearchBtn: true,
 };
 
 export default Header;
