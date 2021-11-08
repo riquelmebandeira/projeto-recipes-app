@@ -2,37 +2,36 @@ import React, { useState } from 'react';
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
-  const [ingredientsInput, setIngredientsInput] = useState('');
-  const [nameInput, setNameInput] = useState('');
-  const [first, setFirst] = useState('');
+  const [filters, setFilters] = useState({
+    name: false,
+    ingredients: false,
+    first: false,
+  });
 
-  const fetchIngredients = async () => {
-    if (ingredientsInput.length > 0) {
+  const filtered = async () => {
+    const { name, ingredients, first } = filters;
+    if (name === true) {
       const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`);
       const response = await fetchApi.json();
-      console.log('ingredientes', response);
-    } else if (nameInput.length > 0) {
+      setSearchInput('');
+      console.log(response);
+      return response;
+    } if (ingredients === true) {
       const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`);
       const response = await fetchApi.json();
-      console.log('nome', response);
-    } else if (first.length === 1) {
+      setSearchInput('');
+      console.log(response);
+      return response;
+    } if (first === true) {
       const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchInput}`);
       const response = await fetchApi.json();
-      console.log('letra', response);
-    } else if (first.length >= 1) {
-      global.alert('erro');
+      setSearchInput('');
+      console.log(response);
+      return response;
+    } if (searchInput.length > 1 && first === true) {
+      return global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
-
-    setSearchInput('');
-    setIngredientsInput('');
-    setNameInput('');
-    setFirst('');
   };
-
-  console.log(searchInput);
-  console.log(ingredientsInput);
-  console.log(nameInput);
-  console.log(first);
 
   return (
     <form>
@@ -44,33 +43,45 @@ function SearchBar() {
       />
       <label htmlFor="inputs-radio">
         <input
-          id="inputs-radio-ingre"
+          name="inputs-radio"
           type="radio"
           value="ingredients"
-          onChange={ (e) => setIngredientsInput(e.target.value) }
+          onChange={ () => setFilters({
+            ingredients: true,
+            name: false,
+            first: false,
+          }) }
           data-testid="ingredient-search-radio"
         />
         ingrediente
         <input
-          id="inputs-radio-name"
+          name="inputs-radio"
           type="radio"
           value="name"
-          onChange={ (e) => setNameInput(e.target.value) }
+          onChange={ () => setFilters({
+            ingredients: false,
+            name: true,
+            first: false,
+          }) }
           data-testid="name-search-radio"
         />
         nome
         <input
-          id="inputs-radio-first"
+          name="inputs-radio"
           type="radio"
-          value="f"
-          onChange={ (e) => setFirst(e.target.value) }
+          value="first"
+          onChange={ () => setFilters({
+            ingredients: false,
+            name: false,
+            first: true,
+          }) }
           data-testid="first-letter-search-radio"
         />
       </label>
       primeira letra
       <button
         type="button"
-        onClick={ () => fetchIngredients() }
+        onClick={ () => filtered() }
         data-testid="exec-search-btn"
       >
         buscar
