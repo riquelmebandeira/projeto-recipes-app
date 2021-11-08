@@ -11,13 +11,13 @@ function SearchBar() {
   const filtered = async () => {
     const { name, ingredients, first } = filters;
     if (name === true) {
-      const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`);
+      const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`);
       const response = await fetchApi.json();
       setSearchInput('');
       console.log(response);
       return response;
     } if (ingredients === true) {
-      const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`);
+      const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`);
       const response = await fetchApi.json();
       setSearchInput('');
       console.log(response);
