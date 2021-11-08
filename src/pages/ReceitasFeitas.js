@@ -1,7 +1,8 @@
 import React from 'react';
+import Header from '../components/Header';
 
 export default function ReceitasFeitas() {
   return (
-    <h1>Receitas Feitas</h1>
+    <Header title="Receitas Feitas" showSearchBtn={ false } />
   );
 }

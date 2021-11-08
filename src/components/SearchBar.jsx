@@ -22,27 +22,28 @@ function SearchBar() {
       setSearchInput('');
       console.log(response);
       return response;
+    } if (searchInput.length > 1 && first === true) {
+      return global.alert('Sua busca deve conter somente 1 (um) caracter');
     } if (first === true) {
       const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchInput}`);
       const response = await fetchApi.json();
       setSearchInput('');
       console.log(response);
       return response;
-    } if (searchInput.length > 1 && first === true) {
-      return global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
   };
 
   return (
     <form>
       <input
+        data-testid="search-input"
         type="text"
         value={ searchInput }
         onChange={ (e) => setSearchInput(e.target.value) }
-        data-testid="search-input"
       />
       <label htmlFor="inputs-radio">
         <input
+          data-testid="ingredient-search-radio"
           name="inputs-radio"
           type="radio"
           value="ingredients"
@@ -51,10 +52,10 @@ function SearchBar() {
             name: false,
             first: false,
           }) }
-          data-testid="ingredient-search-radio"
         />
         ingrediente
         <input
+          data-testid="name-search-radio"
           name="inputs-radio"
           type="radio"
           value="name"
@@ -63,10 +64,10 @@ function SearchBar() {
             name: true,
             first: false,
           }) }
-          data-testid="name-search-radio"
         />
         nome
         <input
+          data-testid="first-letter-search-radio"
           name="inputs-radio"
           type="radio"
           value="first"
@@ -75,14 +76,13 @@ function SearchBar() {
             name: false,
             first: true,
           }) }
-          data-testid="first-letter-search-radio"
         />
       </label>
       primeira letra
       <button
+        data-testid="exec-search-btn"
         type="button"
         onClick={ () => filtered() }
-        data-testid="exec-search-btn"
       >
         buscar
       </button>
