@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { fetchIngredients, fetchName, fetchFirstLetter } from '../utils/FoodApi';
+import {
+  fetchIngredientsDrink, fetchNameDrink, fetchFirstLetterDrink } from '../utils/DrinkApi';
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -8,48 +11,34 @@ function SearchBar() {
     first: false,
   });
 
-  const filteredFood = async () => {
-    const { name, ingredients, first } = filters;
-    if (name === true) {
-      const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`);
-      const response = await fetchApi.json();
-      setSearchInput('');
-      return response;
-    } if (ingredients === true) {
-      const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`);
-      const response = await fetchApi.json();
-      setSearchInput('');
-      return response;
-    } if (searchInput.length > 1 && first === true) {
-      return global.alert('Sua busca deve conter somente 1 (um) caracter');
-    } if (first === true) {
-      const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchInput}`);
-      const response = await fetchApi.json();
-      setSearchInput('');
-      return response;
+  const filteredFood = () => {
+    const { ingredients, name, first } = filters;
+    let result;
+    if (ingredients) {
+      result = fetchIngredients(searchInput);
+    } else if (name) {
+      result = fetchName(searchInput);
+    } else if (searchInput.length > 1 && first === true) {
+      result = global.alert('Sua busca deve conter somente 1 (um) caracter');
+    } else if (first) {
+      result = fetchFirstLetter(searchInput);
     }
+    return result;
   };
 
-  const filterDrink = async () => {
-    const { name, ingredients, first } = filters;
-    if (name === true) {
-      const fetchApi = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchInput}`);
-      const response = await fetchApi.json();
-      setSearchInput('');
-      return response;
-    } if (ingredients === true) {
-      const fetchApi = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchInput}`);
-      const response = await fetchApi.json();
-      setSearchInput('');
-      return response;
-    } if (searchInput.length > 1 && first === true) {
-      return global.alert('Sua busca deve conter somente 1 (um) caracter');
-    } if (first === true) {
-      const fetchApi = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searchInput}`);
-      const response = await fetchApi.json();
-      setSearchInput('');
-      return response;
+  const filterDrink = () => {
+    const { ingredients, name, first } = filters;
+    let result;
+    if (ingredients) {
+      result = fetchIngredientsDrink(searchInput);
+    } else if (name) {
+      result = fetchNameDrink(searchInput);
+    } else if (searchInput.length > 1 && first === true) {
+      result = global.alert('Sua busca deve conter somente 1 (um) caracter');
+    } else if (first) {
+      result = fetchFirstLetterDrink(searchInput);
     }
+    return result;
   };
 
   return (
