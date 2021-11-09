@@ -1,35 +1,20 @@
+// import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import fetchApi from '../utils/FetchApi';
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
-  const [filters, setFilters] = useState({
-    name: false,
-    ingredients: false,
-    first: false,
-  });
+  const [filterType, setFilterType] = useState('name');
 
-  const filtered = async () => {
-    const { name, ingredients, first } = filters;
-    if (name === true) {
-      const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`);
-      const response = await fetchApi.json();
-      setSearchInput('');
-      console.log(response);
-      return response;
-    } if (ingredients === true) {
-      const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`);
-      const response = await fetchApi.json();
-      setSearchInput('');
-      console.log(response);
-      return response;
-    } if (searchInput.length > 1 && first === true) {
-      return global.alert('Sua busca deve conter somente 1 (um) caracter');
-    } if (first === true) {
-      const fetchApi = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchInput}`);
-      const response = await fetchApi.json();
-      setSearchInput('');
-      console.log(response);
-      return response;
+  const handleClick = () => {
+    const resultApi = fetchApi({
+      filterType,
+      searchInput,
+      recipeType: window.location.pathname.slice(1),
+    });
+    if (resultApi.length === 1) {
+      // logica de redirect
+      // history.push(`/comidas/${resultApi[0].idMeal}`);
     }
   };
 
@@ -47,11 +32,8 @@ function SearchBar() {
           name="inputs-radio"
           type="radio"
           value="ingredients"
-          onChange={ () => setFilters({
-            ingredients: true,
-            name: false,
-            first: false,
-          }) }
+          checked={ filterType === 'ingredients' }
+          onChange={ () => setFilterType('ingredients') }
         />
         ingrediente
         <input
@@ -59,11 +41,8 @@ function SearchBar() {
           name="inputs-radio"
           type="radio"
           value="name"
-          onChange={ () => setFilters({
-            ingredients: false,
-            name: true,
-            first: false,
-          }) }
+          checked={ filterType === 'name' }
+          onChange={ () => setFilterType('name') }
         />
         nome
         <input
@@ -71,23 +50,26 @@ function SearchBar() {
           name="inputs-radio"
           type="radio"
           value="first"
-          onChange={ () => setFilters({
-            ingredients: false,
-            name: false,
-            first: true,
-          }) }
+          checked={ filterType === 'first' }
+          onChange={ () => setFilterType('first') }
         />
       </label>
       primeira letra
       <button
         data-testid="exec-search-btn"
         type="button"
-        onClick={ () => filtered() }
+        onClick={ handleClick }
       >
         buscar
       </button>
     </form>
   );
 }
+
+// SearchBar.propTypes = {
+//   history: PropTypes.shape({
+//     push: PropTypes.func,
+//   }).isRequired,
+// };
 
 export default SearchBar;
