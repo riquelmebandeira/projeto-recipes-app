@@ -18,14 +18,14 @@ export const getRecipesLsData = () => ({
   data: getLsData(recipesLsKeys),
 });
 
-const saveLsData = (keys, data) => {
-  keys.forEach((key) => {
+const saveLsData = (data) => {
+  Object.keys(data).forEach((key) => {
     localStorage.setItem(key, JSON.stringify(data[key]));
   });
 };
 
 export const saveUserLsData = (data) => {
-  saveLsData(userLsKeys, data);
+  saveLsData(data);
   return {
     type: SAVE_USER_LS_DATA,
     data,
@@ -33,7 +33,7 @@ export const saveUserLsData = (data) => {
 };
 
 export const saveRecipesLsData = (data) => {
-  saveLsData(recipesLsKeys, data);
+  saveLsData(data);
   return {
     type: SAVE_RECIPES_LS_DATA,
     data,
