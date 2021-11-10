@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+const getIdFromUrl = () => (
+  window.location.href.substring(window.location.href.lastIndexOf('/') + 1));
 
 export default function ComidasDetalhes() {
+  const [recipeInfo, setRecipeInfo] = useState([]);
+
+  const fetchRecipeById = async () => {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${getIdFromUrl()}`);
+    const data = await response.json();
+    setRecipeInfo(data.meals[0]);
+  };
+
+  useEffect(() => {
+    fetchRecipeById();
+  }, []);
+
   return (
     <div>
       <img src="" alt="" data-testid="recipe-photo" />
