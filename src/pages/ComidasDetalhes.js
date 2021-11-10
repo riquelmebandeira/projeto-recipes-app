@@ -1,48 +1,51 @@
 import React, { useState, useEffect } from 'react';
-
-const getIdFromUrl = () => (
-  window.location.href.substring(window.location.href.lastIndexOf('/') + 1));
+import { fetchMealById, getIngredientsOrMeasures, treatVideoUrl }
+  from '../utils/DetailsPage';
 
 export default function ComidasDetalhes() {
-  const [recipeInfo, setRecipeInfo] = useState([]);
-
-  const fetchRecipeById = async () => {
-    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${getIdFromUrl()}`);
-    const data = await response.json();
-    setRecipeInfo(data.meals[0]);
-  };
+  const [recipeInfo, setRecipeInfo] = useState(false);
+  const [ingredients, setIngredients] = useState();
+  const [measures, setMeasures] = useState();
 
   useEffect(() => {
-    fetchRecipeById();
+    (async () => {
+      const data = await fetchMealById();
+      setIngredients(getIngredientsOrMeasures('Ingredient', data));
+      setMeasures(getIngredientsOrMeasures('Measure', data));
+      setRecipeInfo(data);
+    })();
   }, []);
 
-  return (
+  const { strMealThumb, strMeal, strCategory, strInstructions, strYoutube } = recipeInfo;
+
+  return !recipeInfo ? <p>Carregando...</p> : (
     <div>
-      <img src="" alt="" data-testid="recipe-photo" />
-      <h1 data-testid="recipe-title">Título da Receita</h1>
-      <p data-testid="recipe-category" />
+      <img src={ strMealThumb } alt="Foto da receita" data-testid="recipe-photo" />
+      <h1 data-testid="recipe-title">{strMeal}</h1>
+      <p data-testid="recipe-category">{strCategory}</p>
       <input type="image" src="" alt="" data-testid="share-btn" />
       <input type="image" src="" alt="" data-testid="favorite-btn" />
       <h2>Ingredientes</h2>
       <ul>
-        {/* {
+        {
           ingredients.map((ingredient, index) => (
             <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-              {`${ingredient} - ${measure[index]}`}
+              {`${ingredient} - ${measures[index]}`}
             </li>
           ))
-        } */}
-        <li data-testid="0-ingredient-name-and-measure" />
+        }
       </ul>
       <h2>Instruções</h2>
-      <p data-testid="instructions" />
+      <p data-testid="instructions">
+        {strInstructions}
+      </p>
       <h2>Video</h2>
       <iframe
         width="420"
         height="315"
         title="Video da receita"
         data-testid="video"
-        src=""
+        src={ treatVideoUrl(strYoutube) }
       />
       <h2>Recomendadas</h2>
       <div>
