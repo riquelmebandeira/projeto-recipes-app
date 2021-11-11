@@ -6,7 +6,7 @@ import Header from '../components/Header';
 export default function Explorar() {
   const history = useHistory();
 
-  const clickFood = () => {
+  const clickFoods = () => {
     history.push('/explorar/comidas');
   };
 
@@ -20,7 +20,7 @@ export default function Explorar() {
       <button
         type="button"
         name="comidas"
-        onClick={ clickFood }
+        onClick={ clickFoods }
         data-testid="explore-food"
       >
         Explorar Comidas
