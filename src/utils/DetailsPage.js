@@ -1,3 +1,5 @@
+export const MAX_LENGTH = 6;
+
 export const fetchRecipeById = async () => {
   const RECIPE_TYPE = window.location.pathname.includes('comidas') ? 'meals' : 'drinks';
   const RECIPE_ID = window.location.pathname.split('/').pop();

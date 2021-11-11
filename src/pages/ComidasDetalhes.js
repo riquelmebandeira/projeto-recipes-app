@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import RecommendationCard from '../components/RecommendationCard';
 import { fetchRecipeById, fetchRecommendedRecipes,
-  getIngredientsOrMeasures, treatVideoUrl } from '../utils/DetailsPage';
+  getIngredientsOrMeasures, treatVideoUrl, MAX_LENGTH } from '../utils/DetailsPage';
 
 export default function ComidasDetalhes() {
   const [recipeInfo, setRecipeInfo] = useState(false);
@@ -49,12 +50,21 @@ export default function ComidasDetalhes() {
         data-testid="video"
         src={ treatVideoUrl(strYoutube) }
       />
-      <h2>Recomendadas</h2>
-      <div>
-        <img src="" alt="" data-testid="0-recomendation-card" />
-        <p>Não alcólico</p>
-        <h4>Receita recomendada</h4>
-      </div>
+      <section>
+        <h2>Recomendadas</h2>
+        {
+          recommendations.map(({ strDrinkThumb, strAlcoholic, strDrink }, index) => (
+            index < MAX_LENGTH ? (
+              <RecommendationCard
+                src={ strDrinkThumb }
+                index={ index }
+                category={ strAlcoholic }
+                title={ strDrink }
+              />
+            ) : undefined
+          ))
+        }
+      </section>
       <button type="button" data-testid="start-recipe-btn">Iniciar receita</button>
     </div>
   );
