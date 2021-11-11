@@ -17,3 +17,13 @@
   margin: 0 10px;
   overflow-x: scroll;
 }
+
+[ data-testid = 'start-recipe-btn' ] {
+  position: fixed;
+  bottom: 0px;
+  margin-left: 126px;
+}
+
+.start-btn-container {
+  margin: 60px 0;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../css/TelasDeDetalhes.css';
+import '../styles/TelasDeDetalhes.css';
 
 function RecommendationCard({ src, category, title, index }) {
   return (

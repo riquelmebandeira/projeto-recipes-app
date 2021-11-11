@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import RecommendationCard from '../components/RecommendationCard';
 import { fetchRecipeById, fetchRecommendedRecipes,
   getIngredientsOrMeasures, treatVideoUrl, MAX_LENGTH } from '../utils/DetailsPage';
-import '../css/TelasDeDetalhes.css';
+import '../styles/TelasDeDetalhes.css';
 
 export default function ComidasDetalhes() {
   const [recipeInfo, setRecipeInfo] = useState(false);
@@ -68,7 +68,9 @@ export default function ComidasDetalhes() {
           }
         </div>
       </section>
-      <button type="button" data-testid="start-recipe-btn">Iniciar receita</button>
+      <div className="start-btn-container">
+        <button type="button" data-testid="start-recipe-btn">Iniciar receita</button>
+      </div>
     </div>
   );
 }
