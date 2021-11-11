@@ -1,47 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import '../styles/mealsAndDrink.css';
-import getFoodOrDrink from '../services/data';
 
-function CategoryButton() {
-  const [loading, setLoading] = useState(true);
-  const [url] = useState(window.location.href);
-  const [category, setCategory] = useState([]);
-  console.log(url);
+function CategoryButton({ recipes, handleClick }) {
   const FIVE_CATEGORIES = 5;
 
-  // useEffect(() => {
-  //   (async () => {
-  //     if (url.includes('comidas')) {
-  //       const response = await fetchApi({
-  //         recipeType: 'comidas',
-  //         filterType: 'list',
-  //         searchInput: 'list',
-  //       });
-  //       setCategory(response.meals);
-  //       setLoading(false);
-  //     } else if (url.includes('bebidas')) {
-  //       const response = await getFoodOrDrink(
-  //         'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list',
-  //       );
-  //       setCategory(response.drinks);
-  //       setLoading(false);
-  //     }
-  //   })();
-  // }, []);
-
-  const handleClick = async ({ target }) => {
-    const valueBtn = target.value;
-    const response = await
-    getFoodOrDrink(`www.themealdb.com/api/json/v1/1/search.php?s=${valueBtn}`);
-    console.log(response);
-  };
-
-  return loading ? (
-    <p>Carregando...</p>
-  ) : (
+  return (
     <section>
       <div>
-        {category.slice(0, FIVE_CATEGORIES).map((get, index) => (
+        <button
+          type="button"
+          key="all"
+          data-testid="all-category-filter"
+          value="list"
+          onClick={ handleClick }
+        >
+          All
+        </button>
+        {recipes.slice(0, FIVE_CATEGORIES).map((get, index) => (
           <button
             type="button"
             key={ index }
@@ -49,12 +25,17 @@ function CategoryButton() {
             value={ get.strCategory }
             onClick={ handleClick }
           >
-            {url.includes('comidas') ? get.strCategory : get.strCategory }
+            { get.strCategory }
           </button>
         ))}
       </div>
     </section>
   );
 }
+
+CategoryButton.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default CategoryButton;

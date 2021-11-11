@@ -20,9 +20,7 @@ function RecipesList({ recipes, recipeType }) {
 
 RecipesList.propTypes = {
   recipeType: PropTypes.string.isRequired,
-  recipes: PropTypes.shape({
-    map: PropTypes.func,
-  }).isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default RecipesList;

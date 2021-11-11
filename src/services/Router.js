@@ -28,7 +28,7 @@ function Router() {
 
       <Route path="/bebidas/:id/in-progress" component={ BebidasProgresso } />
       <Route path="/bebidas/:id" component={ BebidasDetalhes } />
-      <Route path="/bebidas" component={ Bebidas } />
+      {/* <Route path="/bebidas" component={ Bebidas } /> */}
 
       <Route
         path="/explorar/comidas/ingredientes"
