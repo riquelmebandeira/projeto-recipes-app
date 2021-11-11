@@ -15,8 +15,11 @@ function SearchBar() {
       searchInput,
       recipeType,
     });
+
     const recipes = recipeType === 'comidas' ? resultApi.meals : resultApi.drinks;
-    if (recipes.length === 1) {
+    if (recipes === null) {
+      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    } else if (recipes.length === 1) {
       const idKey = recipeType === 'comidas' ? 'idMeal' : 'idDrink';
       history.push(`/${recipeType}/${recipes[0][idKey]}`);
     }
