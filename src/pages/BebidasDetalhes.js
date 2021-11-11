@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import RecommendationCard from '../components/RecommendationCard';
 import { fetchRecipeById, fetchRecommendedRecipes,
   getIngredientsOrMeasures, MAX_LENGTH } from '../utils/DetailsPage';
+import '../css/TelasDeDetalhes.css';
 
 export default function ComidasDetalhes() {
   const [recipeInfo, setRecipeInfo] = useState(false);
@@ -44,18 +45,20 @@ export default function ComidasDetalhes() {
       </p>
       <section>
         <h2>Recomendadas</h2>
-        {
-          recommendations.map(({ strMealThumb, strCategory, strMeal }, index) => (
-            index < MAX_LENGTH ? (
-              <RecommendationCard
-                src={ strMealThumb }
-                index={ index }
-                category={ strCategory }
-                title={ strMeal }
-              />
-            ) : undefined
-          ))
-        }
+        <div className="card-container">
+          {
+            recommendations.map(({ strMealThumb, strCategory, strMeal }, index) => (
+              index < MAX_LENGTH ? (
+                <RecommendationCard
+                  src={ strMealThumb }
+                  index={ index }
+                  category={ strCategory }
+                  title={ strMeal }
+                />
+              ) : undefined
+            ))
+          }
+        </div>
       </section>
       <button type="button" data-testid="start-recipe-btn">Iniciar receita</button>
     </div>

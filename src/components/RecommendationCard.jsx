@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/TelasDeDetalhes.css';
 
 function RecommendationCard({ src, category, title, index }) {
   return (
@@ -8,6 +9,7 @@ function RecommendationCard({ src, category, title, index }) {
         src={ src }
         alt="Foto da receita"
         data-testid={ `${index}-recomendation-card` }
+        className="card-photo"
       />
       <p>{category}</p>
       <h3 data-testid={ `${index}-recomendation-title` }>{title}</h3>

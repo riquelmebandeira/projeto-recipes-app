@@ -1,0 +1,19 @@
+[ data-testid = 'recipe-photo' ] {
+  height: 200px;
+  object-fit: cover;
+  width: 450px;
+}
+
+.card-photo {
+  border-radius: 5px;
+  height: 120px;
+  object-fit: cover;
+  width: 160px;
+}
+
+.card-container {
+  display: flex;
+  gap: 10px;
+  margin: 0 10px;
+  overflow-x: scroll;
+}
