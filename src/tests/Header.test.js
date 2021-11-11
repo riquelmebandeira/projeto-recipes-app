@@ -1,6 +1,7 @@
 import React from 'react';
-
+import { screen } from '@testing-library/dom';
 import renderWithRouter from './helper/renderWithRouter';
+
 import App from '../App';
 
 const PROFILE_TOP_BTN = 'profile-top-btn';
@@ -28,7 +29,8 @@ describe('Componente Header - Integração no app', () => {
   test('Não tem header na tela de login', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/');
-    expect(getByTestId(PROFILE_TOP_BTN)).toBeNull();
+    const header = screen.queryByTestId(PROFILE_TOP_BTN);
+    expect(header).toBeNull();
   });
   test('O header tem os ícones corretos '
   + 'na tela de principal de receitas de comidas', () => {});
