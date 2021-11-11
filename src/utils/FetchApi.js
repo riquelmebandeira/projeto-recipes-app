@@ -17,10 +17,8 @@ const fetchApi = async ({ filterType, searchInput, recipeType }) => {
   } else {
     const response = await fetch(`${URLS[recipeType][filterType]}${searchInput}`);
     const json = await response.json();
-    console.log(json);
     return json;
   }
-  console.log(filterType, searchInput, recipeType);
 };
 
 export default fetchApi;
