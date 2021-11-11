@@ -6,11 +6,12 @@ import Header from '../components/Header';
 export default function Explorar() {
   const history = useHistory();
 
-  const handleClick = () => {
-    const click = ({ target: { name } }) => {
-      history.push(`/explorar/${name}`);
-    };
-    return click();
+  const clickFood = () => {
+    history.push('/explorar/comidas');
+  };
+
+  const clickDrinks = () => {
+    history.push('/explorar/bebidas');
   };
 
   return (
@@ -19,7 +20,7 @@ export default function Explorar() {
       <button
         type="button"
         name="comidas"
-        onClick={ handleClick }
+        onClick={ clickFood }
         data-testid="explore-food"
       >
         Explorar Comidas
@@ -27,10 +28,10 @@ export default function Explorar() {
       <button
         type="button"
         name="bebidas"
-        onClick={ handleClick }
+        onClick={ clickDrinks }
         data-testid="explore-drinks"
       >
-        Explorar bebidas
+        Explorar Bebidas
       </button>
       <Footer />
     </section>
