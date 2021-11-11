@@ -6,26 +6,28 @@ function CategoryButton() {
   const [loading, setLoading] = useState(true);
   const [url] = useState(window.location.href);
   const [category, setCategory] = useState([]);
-
+  console.log(url);
   const FIVE_CATEGORIES = 5;
 
-  useEffect(() => {
-    (async () => {
-      if (url.includes('comidas')) {
-        const response = await getFoodOrDrink(
-          'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
-        );
-        setCategory(response.meals);
-        setLoading(false);
-      } else if (url.includes('bebidas')) {
-        const response = await getFoodOrDrink(
-          'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list',
-        );
-        setCategory(response.drinks);
-        setLoading(false);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     if (url.includes('comidas')) {
+  //       const response = await fetchApi({
+  //         recipeType: 'comidas',
+  //         filterType: 'list',
+  //         searchInput: 'list',
+  //       });
+  //       setCategory(response.meals);
+  //       setLoading(false);
+  //     } else if (url.includes('bebidas')) {
+  //       const response = await getFoodOrDrink(
+  //         'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list',
+  //       );
+  //       setCategory(response.drinks);
+  //       setLoading(false);
+  //     }
+  //   })();
+  // }, []);
 
   const handleClick = async ({ target }) => {
     const valueBtn = target.value;
