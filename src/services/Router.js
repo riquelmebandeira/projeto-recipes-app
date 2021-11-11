@@ -3,10 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import Bebidas from '../pages/Bebidas';
 import BebidasDetalhes from '../pages/BebidasDetalhes';
-import BebidasProgresso from '../pages/BebidasProgresso';
 import Comidas from '../pages/Comidas';
 import ComidasDetalhes from '../pages/ComidasDetalhes';
-import ComidasProgresso from '../pages/ComidasProgresso';
 import Explorar from '../pages/Explorar';
 import ExplorarBebidas from '../pages/ExplorarBebidas';
 import ExplorarBebidasIngredientes from '../pages/ExplorarBebidasIngredientes';
@@ -15,6 +13,7 @@ import ExplorarComidasArea from '../pages/ExplorarComidasArea';
 import ExplorarComidasIngredientes from '../pages/ExplorarComidasIngredientes';
 import Login from '../pages/Login';
 import Perfil from '../pages/Perfil';
+import Progresso from '../pages/Progresso';
 import ReceitasFavoritas from '../pages/ReceitasFavoritas';
 import ReceitasFeitas from '../pages/ReceitasFeitas';
 
@@ -22,11 +21,14 @@ function Router() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
-      <Route path="/comidas/:id/in-progress" component={ ComidasProgresso } />
+      <Route
+        path="/comidas/:id/in-progress"
+        render={ (props) => <Progresso { ...props } isInProgress /> }
+      />
       <Route path="/comidas/:id" component={ ComidasDetalhes } />
       <Route path="/comidas" component={ Comidas } />
 
-      <Route path="/bebidas/:id/in-progress" component={ BebidasProgresso } />
+      <Route path="/bebidas/:id/in-progress" component={ Progresso } />
       <Route path="/bebidas/:id" component={ BebidasDetalhes } />
       <Route path="/bebidas" component={ Bebidas } />
 
