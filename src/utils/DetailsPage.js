@@ -1,16 +1,20 @@
-export const getIdFromUrl = () => (
-  window.location.pathname.split('/').pop());
-
-export const fetchDrinkById = async () => {
-  const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${getIdFromUrl()}`);
+export const fetchRecipeById = async () => {
+  const RECIPE_TYPE = window.location.pathname.includes('comidas') ? 'meals' : 'drinks';
+  const RECIPE_ID = window.location.pathname.split('/').pop();
+  const url = RECIPE_TYPE === 'meals' ? `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${RECIPE_ID}`
+    : `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${RECIPE_ID}`;
+  const response = await fetch(url);
   const data = await response.json();
-  return data.drinks[0];
+  return data[RECIPE_TYPE][0];
 };
 
-export const fetchMealById = async () => {
-  const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${getIdFromUrl()}`);
+export const fetchRecommendedRecipes = async () => {
+  const INVERSED_TYPE = window.location.pathname.includes('comidas') ? 'drinks' : 'meals';
+  const url = INVERSED_TYPE === 'meals' ? 'https://www.themealdb.com/api/json/v1/1/search.php?s='
+    : 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  const response = await fetch(url);
   const data = await response.json();
-  return data.meals[0];
+  return data[INVERSED_TYPE];
 };
 
 export const getIngredientsOrMeasures = (request, recipe) => {

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { fetchDrinkById, getIngredientsOrMeasures }
-  from '../utils/DetailsPage';
+import { fetchRecipeById, fetchRecommendedRecipes,
+  getIngredientsOrMeasures } from '../utils/DetailsPage';
 
 export default function ComidasDetalhes() {
   const [recipeInfo, setRecipeInfo] = useState(false);
   const [ingredients, setIngredients] = useState();
   const [measures, setMeasures] = useState();
+  const [recommendations, setRecommendations] = useState();
 
   useEffect(() => {
     (async () => {
-      const data = await fetchDrinkById();
+      const data = await fetchRecipeById();
       setIngredients(getIngredientsOrMeasures('Ingredient', data));
       setMeasures(getIngredientsOrMeasures('Measure', data));
+      setRecommendations(await fetchRecommendedRecipes());
       setRecipeInfo(data);
     })();
   }, []);
