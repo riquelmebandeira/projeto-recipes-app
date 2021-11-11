@@ -117,23 +117,23 @@ describe('Tela de Loging - Avalia o localStorage após a submição', () => {
     expect(cocktailsToken).toBe('1');
   });
 
-  // test('Avalia se após a submissão achave user esta salva no localStorage', () => {
-  //   const inputEmail = screen.getByTestId(EMAIL_INPUT);
-  //   const inputSenha = screen.getByTestId(PASSWORD_INPUT);
-  //   const submitBtn = screen.getByTestId(LOGIN_SUBMIT_BTN);
+  test('Avalia se após a submissão achave user esta salva no localStorage', () => {
+    const inputEmail = screen.getByTestId(EMAIL_INPUT);
+    const inputSenha = screen.getByTestId(PASSWORD_INPUT);
+    const submitBtn = screen.getByTestId(LOGIN_SUBMIT_BTN);
 
-  //   expect(submitBtn).toBeDisabled();
+    expect(submitBtn).toBeDisabled();
 
-  //   let user = localStorage.getItem('user');
-  //   expect(user).toBe(null);
+    let user = localStorage.getItem('user');
+    expect(user).toBe(null);
 
-  //   userEvent.type(inputEmail, '{ email: contato@gmail.com }');
-  //   userEvent.type(inputSenha, '1234567');
-  //   userEvent.click(submitBtn);
+    userEvent.type(inputEmail, 'contato@gmail.com');
+    userEvent.type(inputSenha, '1234567');
+    userEvent.click(submitBtn);
 
-  //   user = localStorage.getItem('user');
-  //   expect(user).toBe();
-  // });
+    user = JSON.parse(localStorage.getItem('user'));
+    expect(user.email).toBe('contato@gmail.com');
+  });
 });
 
 describe(`Avalia se o usuario é redirecionada para

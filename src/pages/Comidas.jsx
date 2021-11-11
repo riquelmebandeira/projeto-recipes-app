@@ -1,14 +1,16 @@
 import React from 'react';
+import CardsFood from '../components/CardsFood';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import CategoryButton from '../components/CategoryButton';
 
-function Comida() {
+export default function Comida() {
   return (
     <section>
       <Header title="Comidas" />
+      <CategoryButton />
+      <CardsFood />
       <Footer />
     </section>
   );
 }
-
-export default Comida;
