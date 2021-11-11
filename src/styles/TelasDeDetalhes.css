@@ -19,9 +19,9 @@
 }
 
 [ data-testid = 'start-recipe-btn' ] {
-  position: fixed;
-  bottom: 0px;
+  bottom: 0;
   margin-left: 126px;
+  position: fixed;
 }
 
 .start-btn-container {
