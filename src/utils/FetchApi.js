@@ -22,7 +22,6 @@ const fetchApi = async ({ filterType, searchInput, recipeType }) => {
     console.log(json);
     return json;
   }
-  console.log(filterType, searchInput, recipeType);
 };
 
 export default fetchApi;

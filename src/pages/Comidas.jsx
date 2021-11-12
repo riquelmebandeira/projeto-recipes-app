@@ -1,14 +1,14 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import CategoryButton from '../components/CategoryButton';
 
-export default function Bebidas() {
+function Comidas() {
   return (
     <section>
-      <Header title="Bebidas" />
-      <CategoryButton />
+      <Header title="Comidas" />
       <Footer />
     </section>
   );
 }
+
+export default Comidas;
