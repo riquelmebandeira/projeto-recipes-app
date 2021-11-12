@@ -33,7 +33,7 @@ function Router() {
         render={ (props) => <Progresso { ...props } recipeType="bebida" /> }
       />
       <Route path="/bebidas/:id" component={ BebidasDetalhes } />
-      <Route path="/bebidas" component={ Bebidas } />
+      {/* <Route path="/bebidas" component={ Bebidas } /> */}
 
       <Route
         path="/explorar/comidas/ingredientes"
