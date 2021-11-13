@@ -23,17 +23,16 @@ function Router() {
       <Route exact path="/" component={ Login } />
       <Route
         path="/comidas/:id/in-progress"
-        render={ (props) => <Progresso { ...props } recipeType="comida" /> }
+        render={ (props) => <Progresso { ...props } recipeType="comidas" /> }
       />
       <Route path="/comidas/:id" component={ ComidasDetalhes } />
       <Route path="/comidas" component={ Comidas } />
-
       <Route
         path="/bebidas/:id/in-progress"
-        render={ (props) => <Progresso { ...props } recipeType="bebida" /> }
+        render={ (props) => <Progresso { ...props } recipeType="bebidas" /> }
       />
       <Route path="/bebidas/:id" component={ BebidasDetalhes } />
-      {/* <Route path="/bebidas" component={ Bebidas } /> */}
+      <Route path="/bebidas" component={ Bebidas } />
 
       <Route
         path="/explorar/comidas/ingredientes"

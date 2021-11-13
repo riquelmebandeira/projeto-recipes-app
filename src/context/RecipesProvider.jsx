@@ -1,11 +1,23 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import fetchApi from '../utils/FetchApi';
 import RecipesContext from './RecipesContext';
 
 const RecipesProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [recipeType, setRecipeType] = useState('');
+  const [recipeType, setRecipeType] = useState('comidas');
   const [recipes, setRecipes] = useState([]);
+
+  const getRecipes = async (options = {}) => {
+    setLoading(true);
+    const json = await fetchApi(options);
+    setRecipes(Object.values(json)[0]);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getRecipes();
+  }, []);
 
   return (
     <RecipesContext.Provider
