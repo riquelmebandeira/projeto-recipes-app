@@ -41,7 +41,44 @@ export const saveRecipesLsData = (data) => {
   };
 };
 
+export const initLsData = () => (dispatch, getState) => {
+  userLsKeys.forEach((key) => {
+    if (localStorage.getItem(key) === null) {
+      saveLsData({ [key]: getState().user[key] });
+    } else {
+      dispatch(getUserLsData());
+    }
+  });
+  recipesLsKeys.forEach((key) => {
+    if (localStorage.getItem(key) === null) {
+      saveLsData({ [key]: getState().recipes[key] });
+    } else {
+      dispatch(getRecipesLsData());
+    }
+  });
+};
+
 export const loginUser = (user) => {
   saveUserLsData({ user });
   return saveUserLsData({ user });
 };
+
+export const updateRecipeInProgress = ({ recipeType, recipeId, steps }) => (
+  (dispatch, getState) => {
+    const previousData = getState().recipes.inProgressRecipes;
+    const updatingKey = recipeType === 'bebidas' ? 'cocktails' : 'meals';
+
+    // reconstructing data from previous state
+    const newData = {
+      inProgressRecipes: {
+        ...previousData,
+        [updatingKey]: {
+          ...previousData[updatingKey],
+          [recipeId]: { steps },
+        },
+      },
+    };
+
+    dispatch(saveRecipesLsData(newData));
+  }
+);
