@@ -1,13 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { getFormattedIngredients } from '../utils/DetailsPage';
 
 export default function IngredientsList({ recipe }) {
+  const ingredients = getIngredientsOrMeasures('Ingredient', recipe);
+  const measures = getIngredientsOrMeasures('Measure', recipe);
   return (
     <>
       <h2>Ingredientes</h2>
       <ul>
-        { getFormattedIngredients(recipe) }
+        { ingredients.map((ingredient, index) => (
+          <li
+            key={ ingredient }
+            data-testid={ `${index}-ingredient-name-and-measure` }
+          >
+            {`${ingredient} - ${measures[index]}`}
+          </li>
+        )) }
       </ul>
     </>
   );

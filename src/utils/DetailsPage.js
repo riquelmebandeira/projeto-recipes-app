@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const MAX_LENGTH = 6;
 
 export const fetchRecipeById = async () => {
@@ -27,16 +25,6 @@ export const getIngredientsOrMeasures = (request, recipe) => {
     info[0].includes(request) && info[1]
   ));
   return requestedInfo.map((array) => array[1]);
-};
-
-export const getFormattedIngredients = (recipe) => {
-  const ingredients = getIngredientsOrMeasures('Ingredient', recipe);
-  const measures = getIngredientsOrMeasures('Measure', recipe);
-  return ingredients.map((ingredient, index) => (
-    <li key={ ingredient } data-testid={ `${index}-ingredient-name-and-measure` }>
-      {`${ingredient} - ${measures[index]}`}
-    </li>
-  ));
 };
 
 export const treatVideoUrl = (url) => {

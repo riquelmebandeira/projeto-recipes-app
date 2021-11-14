@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import fetchApi, { API_KEYS } from '../utils/FetchApi';
 import Button from '../components/Button';
-import IngredientsList from '../components/IngredientsList';
 import RecipeHeader from '../components/RecipeHeader';
 import RecipesContext from '../context/RecipesContext';
 import Loading from '../components/Loading';
+import IngredientSteps from '../components/IngredientSteps';
 
 export default function Progresso({ recipeType, match: { params: { id } } }) {
   const [recipe, setRecipe] = useState(null);
@@ -24,7 +24,11 @@ export default function Progresso({ recipeType, match: { params: { id } } }) {
         title={ recipe[API_KEYS[recipeType].title] }
         category={ recipe[API_KEYS[recipeType].category] }
       />
-      <IngredientsList recipe={ recipe } />
+      <IngredientSteps
+        recipe={ recipe }
+        recipeType={ recipeType }
+        recipeId={ id }
+      />
       <p data-testid="instructions">{recipe.strInstructions}</p>
       <Button text="Finalizar Receita" testid="finish-recipe-btn" />
     </section>
