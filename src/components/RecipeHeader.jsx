@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from './Button';
+import IconButton from './IconButton';
+import shareIcon from '../images/shareIcon.svg';
+import favoriteIcon from '../images/whiteHeartIcon.svg';
 
 export default function RecipeHeader({ thumb, title, category }) {
   return (
@@ -12,8 +14,8 @@ export default function RecipeHeader({ thumb, title, category }) {
       />
       <h1 data-testid="recipe-title">{title }</h1>
       <h2 data-testid="recipe-category">{ category }</h2>
-      <Button name="Compartilhar" testid="share-btn" />
-      <Button name="Favoritar" testid="favorite-btn" />
+      <IconButton name="Compartilhar" src={ shareIcon } testid="share-btn" />
+      <IconButton name="Favoritar" src={ favoriteIcon } testid="favorite-btn" />
     </div>
   );
 }
