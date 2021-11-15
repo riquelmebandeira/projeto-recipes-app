@@ -1,34 +1,37 @@
 import { getIngredientsOrMeasures } from './DetailsPage';
 
 export const API_KEYS = {
-  bebidas: {
+  bebida: {
     id: 'idDrink',
     thumb: 'strDrinkThumb',
     title: 'strDrink',
     category: 'strCategory',
     area: 'strArea',
     alcoholic: 'strAlcoholic',
+    inProgress: 'drinks',
   },
-  comidas: {
+  comida: {
     id: 'idMeal',
     thumb: 'strMealThumb',
     title: 'strMeal',
     category: 'strCategory',
     area: 'strArea',
+    inProgress: 'meals',
   },
 };
 
-export const getRecipeType = () => window.location.href.split('/')[3];
+const LAST = -1;
+
+// pega 'comida' ou 'bebida' (no singular!) com base na URL
+export const getRecipeType = () => window.location.href.split('/')[3].slice(0, LAST);
 
 export const getRecipeURL = (id) => (
   `${window.location.origin}/${getRecipeType()}/${id}`
 );
 
-const LAST = -1;
-
 export const convertRecipe = (apiRecipe, recipeType) => ({
   id: apiRecipe[API_KEYS[recipeType].id],
-  type: recipeType.slice(0, LAST), // singular!
+  type: recipeType,
   area: apiRecipe[API_KEYS[recipeType].area],
   category: apiRecipe[API_KEYS[recipeType].category],
   alcoholicOrNot: recipeType === 'comidas'

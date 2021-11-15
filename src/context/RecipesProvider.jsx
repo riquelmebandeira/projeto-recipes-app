@@ -5,7 +5,7 @@ import RecipesContext from './RecipesContext';
 
 const RecipesProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [recipeType, setRecipeType] = useState('comidas');
+  const [recipeType, setRecipeType] = useState('comida');
   const [recipes, setRecipes] = useState([]);
 
   const getRecipes = async (options = {}) => {

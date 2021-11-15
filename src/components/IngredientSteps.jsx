@@ -2,12 +2,13 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateRecipeInProgress } from '../redux/actions';
+import { API_KEYS } from '../utils/recipeInfo';
 
 const IngredientSteps = ({ recipe }) => {
   const { type: recipeType, id: recipeId, ingredients, measures } = recipe;
-  const key = recipeType === 'bebidas' ? 'cocktails' : 'meals';
+  const inProgressKey = API_KEYS[recipeType].inProgress;
   const inProgress = useSelector(
-    (state) => state.recipes.inProgressRecipes[key],
+    (state) => state.recipes.inProgressRecipes[inProgressKey],
   );
   const [steps, setSteps] = useState(
     inProgress[recipeId] ? inProgress[recipeId].steps : {},

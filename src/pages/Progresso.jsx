@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import fetchApi from '../utils/FetchApi';
+import { convertRecipe, getRecipeType } from '../utils/recipeInfo';
+
 import Button from '../components/Button';
 import RecipeHeader from '../components/RecipeHeader';
 import RecipesContext from '../context/RecipesContext';
 import Loading from '../components/Loading';
 import IngredientSteps from '../components/IngredientSteps';
-import { convertRecipe, getRecipeType } from '../utils/recipeInfo';
 
 export default function Progresso({ match: { params: { id } } }) {
   const recipeType = getRecipeType();
