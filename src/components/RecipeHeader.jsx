@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import copy from 'clipboard-copy';
 
 import { useDispatch, useSelector } from 'react-redux';
 import IconButton from './IconButton';
@@ -9,6 +8,8 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { getRecipeURL } from '../utils/recipeInfo';
 import { toggleFavoriteRecipe } from '../redux/actions';
+
+const copy = require('clipboard-copy');
 
 export default function RecipeHeader({ recipe }) {
   const { image, name, category, id: recipeId } = recipe;
