@@ -10,9 +10,11 @@ const IngredientSteps = ({ recipe }) => {
   const inProgress = useSelector(
     (state) => state.recipes.inProgressRecipes[inProgressKey],
   );
-  const [steps, setSteps] = useState(
-    inProgress[recipeId] ? inProgress[recipeId].steps : {},
-  );
+  const [steps, setSteps] = useState(inProgress[recipeId]
+    ? inProgress[recipeId].steps
+    : ingredients.reduce((initialSteps, ingredient) => (
+      { ...initialSteps, [ingredient]: false }
+    ), {}));
 
   const dispatch = useDispatch();
   const updateStep = (ingredient) => {
@@ -25,6 +27,7 @@ const IngredientSteps = ({ recipe }) => {
       { recipeType, recipeId, steps: updatedSteps },
     ));
   };
+
   return (
     <>
       <h2>Ingredientes</h2>

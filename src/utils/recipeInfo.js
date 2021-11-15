@@ -8,7 +8,7 @@ export const API_KEYS = {
     category: 'strCategory',
     area: 'strArea',
     alcoholic: 'strAlcoholic',
-    inProgress: 'drinks',
+    inProgress: 'cocktails',
   },
   comida: {
     id: 'idMeal',
@@ -26,16 +26,15 @@ const LAST = -1;
 export const getRecipeType = () => window.location.href.split('/')[3].slice(0, LAST);
 
 export const getRecipeURL = (id) => (
-  `${window.location.origin}/${getRecipeType()}/${id}`
+  `${window.location.origin}/${getRecipeType()}s/${id}`
 );
 
 export const convertRecipe = (apiRecipe, recipeType) => ({
   id: apiRecipe[API_KEYS[recipeType].id],
   type: recipeType,
-  area: apiRecipe[API_KEYS[recipeType].area],
+  area: apiRecipe[API_KEYS[recipeType].area] || '',
   category: apiRecipe[API_KEYS[recipeType].category],
-  alcoholicOrNot: recipeType === 'comidas'
-    ? '' : apiRecipe[API_KEYS[recipeType].alcoholic],
+  alcoholicOrNot: apiRecipe[API_KEYS[recipeType].alcoholic] || '',
   name: apiRecipe[API_KEYS[recipeType].title],
   image: apiRecipe[API_KEYS[recipeType].thumb],
   ingredients: getIngredientsOrMeasures('Ingredient', apiRecipe),

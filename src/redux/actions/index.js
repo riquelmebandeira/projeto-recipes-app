@@ -1,3 +1,5 @@
+import { API_KEYS } from '../../utils/recipeInfo';
+
 // export const GET_USER_LS_DATA = 'GET_LS_DATA';
 export const SAVE_USER_LS_DATA = 'SAVE_USER_LS_DATA';
 export const SAVE_RECIPES_LS_DATA = 'SAVE_RECIPES_LS_DATA';
@@ -69,7 +71,7 @@ export const loginUser = (user) => saveUserLsData({ user });
 export const updateRecipeInProgress = ({ recipeType, recipeId, steps }) => (
   (dispatch, getState) => {
     const previousData = getState().recipes.inProgressRecipes;
-    const updatingKey = recipeType === 'bebidas' ? 'cocktails' : 'meals';
+    const updatingKey = API_KEYS[recipeType].inProgress;
 
     // reconstructing data from previous state
     const newData = {
@@ -100,7 +102,7 @@ export const toggleFavoriteRecipe = (recipe) => (
       dispatch(saveRecipesLsData({
         favoriteRecipes: [
           ...favoriteRecipes,
-          { id, area: area || '', category, alcoholicOrNot, name, image, type },
+          { id, area, category, alcoholicOrNot, name, image, type },
         ],
       }));
     }
