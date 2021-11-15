@@ -46,22 +46,25 @@ export const initLsData = () => (dispatch, getState) => {
     if (localStorage.getItem(key) === null) {
       saveLsData({ [key]: getState().user[key] });
     } else {
-      dispatch(getUserLsData());
+      dispatch({
+        type: SAVE_USER_LS_DATA,
+        data: getLsData([key]),
+      });
     }
   });
   recipesLsKeys.forEach((key) => {
     if (localStorage.getItem(key) === null) {
       saveLsData({ [key]: getState().recipes[key] });
     } else {
-      dispatch(getRecipesLsData());
+      dispatch({
+        type: SAVE_RECIPES_LS_DATA,
+        data: getLsData([key]),
+      });
     }
   });
 };
 
-export const loginUser = (user) => {
-  saveUserLsData({ user });
-  return saveUserLsData({ user });
-};
+export const loginUser = (user) => saveUserLsData({ user });
 
 export const updateRecipeInProgress = ({ recipeType, recipeId, steps }) => (
   (dispatch, getState) => {
@@ -93,11 +96,11 @@ export const toggleFavoriteRecipe = (recipe) => (
         ],
       }));
     } else {
-      const { id, area, category, alcoholicOrNot, name, image } = recipe;
+      const { id, area, category, alcoholicOrNot, name, image, type } = recipe;
       dispatch(saveRecipesLsData({
         favoriteRecipes: [
           ...favoriteRecipes,
-          { id, area, category, alcoholicOrNot, name, image },
+          { id, area: area || '', category, alcoholicOrNot, name, image, type },
         ],
       }));
     }
