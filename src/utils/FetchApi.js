@@ -1,18 +1,3 @@
-export const API_KEYS = {
-  bebidas: {
-    id: 'idDrink',
-    thumb: 'strDrinkThumb',
-    title: 'strDrink',
-    category: 'strCategory',
-  },
-  comidas: {
-    id: 'idMeal',
-    thumb: 'strMealThumb',
-    title: 'strMeal',
-    category: 'strCategory',
-  },
-};
-
 const URLS = {
   bebidas: {
     ingredients: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=',

@@ -2,11 +2,9 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateRecipeInProgress } from '../redux/actions';
-import { getIngredientsOrMeasures } from '../utils/DetailsPage';
 
-const IngredientSteps = ({ recipe, recipeType, recipeId }) => {
-  const ingredients = getIngredientsOrMeasures('Ingredient', recipe);
-  const measures = getIngredientsOrMeasures('Measure', recipe);
+const IngredientSteps = ({ recipe }) => {
+  const { type: recipeType, id: recipeId, ingredients, measures } = recipe;
   const key = recipeType === 'bebidas' ? 'cocktails' : 'meals';
   const inProgress = useSelector(
     (state) => state.recipes.inProgressRecipes[key],
@@ -56,9 +54,9 @@ IngredientSteps.propTypes = {
   recipe: PropTypes.shape({
     ingredients: PropTypes.arrayOf(PropTypes.string),
     measures: PropTypes.arrayOf(PropTypes.string),
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
   }).isRequired,
-  recipeId: PropTypes.string.isRequired,
-  recipeType: PropTypes.string.isRequired,
 };
 
 export default IngredientSteps;

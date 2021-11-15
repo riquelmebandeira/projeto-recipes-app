@@ -82,3 +82,24 @@ export const updateRecipeInProgress = ({ recipeType, recipeId, steps }) => (
     dispatch(saveRecipesLsData(newData));
   }
 );
+
+export const toggleFavoriteRecipe = (recipe) => (
+  (dispatch, getState) => {
+    const { favoriteRecipes } = getState().recipes;
+    if (favoriteRecipes.some(({ id }) => id === recipe.id)) {
+      dispatch(saveRecipesLsData({
+        favoriteRecipes: [
+          ...favoriteRecipes.filter(({ id }) => (id !== recipe.id)),
+        ],
+      }));
+    } else {
+      const { id, area, category, alcoholicOrNot, name, image } = recipe;
+      dispatch(saveRecipesLsData({
+        favoriteRecipes: [
+          ...favoriteRecipes,
+          { id, area, category, alcoholicOrNot, name, image },
+        ],
+      }));
+    }
+  }
+);

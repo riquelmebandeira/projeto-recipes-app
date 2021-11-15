@@ -1,27 +1,67 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
+import copy from 'clipboard-copy';
+
+import { useDispatch, useSelector } from 'react-redux';
 import IconButton from './IconButton';
 import shareIcon from '../images/shareIcon.svg';
-import favoriteIcon from '../images/whiteHeartIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import { getRecipeURL } from '../utils/recipeInfo';
+import { toggleFavoriteRecipe } from '../redux/actions';
 
-export default function RecipeHeader({ thumb, title, category }) {
+export default function RecipeHeader({ recipe }) {
+  const { image, name, category, id: recipeId } = recipe;
+  const [urlCopied, setUrlCopied] = useState(false);
+  const dispatch = useDispatch();
+  const isFavorite = useSelector(
+    (state) => state.recipes.favoriteRecipes
+      .some(({ id }) => id === recipeId),
+  );
+
+  const shareRecipe = () => {
+    const THREE_SECONDS = 3000;
+    copy(getRecipeURL(recipeId));
+    setUrlCopied(true);
+    setTimeout(() => setUrlCopied(false), THREE_SECONDS);
+  };
+
+  const favoriteRecipe = () => {
+    dispatch(toggleFavoriteRecipe(recipe));
+  };
+
   return (
     <div>
       <img
-        src={ thumb }
+        src={ image }
         alt="Foto da receita em progresso"
         data-testid="recipe-photo"
       />
-      <h1 data-testid="recipe-title">{title }</h1>
+      <h1 data-testid="recipe-title">{name }</h1>
       <h2 data-testid="recipe-category">{ category }</h2>
-      <IconButton name="Compartilhar" src={ shareIcon } testid="share-btn" />
-      <IconButton name="Favoritar" src={ favoriteIcon } testid="favorite-btn" />
+      { urlCopied ? <div>Link copiado!</div> : (
+        <IconButton
+          name="Compartilhar"
+          src={ shareIcon }
+          onClick={ () => shareRecipe() }
+          testid="share-btn"
+        />
+      ) }
+      <IconButton
+        name="Favoritar"
+        src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
+        onClick={ () => favoriteRecipe() }
+        testid="favorite-btn"
+      />
     </div>
   );
 }
 
 RecipeHeader.propTypes = {
-  category: PropTypes.string.isRequired,
-  thumb: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  recipe: PropTypes.shape({
+    category: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
 };

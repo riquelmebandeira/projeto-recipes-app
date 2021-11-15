@@ -21,16 +21,10 @@ function Router() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
-      <Route
-        path="/comidas/:id/in-progress"
-        render={ (props) => <Progresso { ...props } recipeType="comidas" /> }
-      />
+      <Route path="/comidas/:id/in-progress" component={ Progresso } />
       <Route path="/comidas/:id" component={ ComidasDetalhes } />
       <Route path="/comidas" component={ Comidas } />
-      <Route
-        path="/bebidas/:id/in-progress"
-        render={ (props) => <Progresso { ...props } recipeType="bebidas" /> }
-      />
+      <Route path="/bebidas/:id/in-progress" component={ Progresso } />
       <Route path="/bebidas/:id" component={ BebidasDetalhes } />
       <Route path="/bebidas" component={ Bebidas } />
 
