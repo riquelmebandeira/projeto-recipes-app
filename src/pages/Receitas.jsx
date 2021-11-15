@@ -1,48 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import CategoryButton from '../components/CategoryButton';
+import CategoryButtons from '../components/CategoryButtons';
 import RecipesList from '../components/RecipesList';
 import Loading from '../components/Loading';
 import fetchApi from '../utils/FetchApi';
 
-export default function Comidas() {
+export default function Receitas() {
   const [loading, setLoading] = useState(true);
   const [recipes, setRecipes] = useState([]);
-  const FIVE_CATEGORIES = 5;
   const TWELVE_MEALSORDRINK = 12;
-  const categoryRecipes = recipes.slice(0, FIVE_CATEGORIES);
   const listRecipes = recipes.slice(0, TWELVE_MEALSORDRINK);
-  const recipeType = 'comidas';
+  const recipeType = window.location.href.split('/')[3];
 
-  const getRecipes = async (category) => {
+  const getRecipes = async (filterType = 'name', searchInput = '') => {
     setLoading(true);
+    console.log(recipeType, filterType, searchInput);
+
     const response = await fetchApi({
       recipeType,
-      filterType: 'list',
-      searchInput: category,
+      filterType,
+      searchInput,
     });
-    setRecipes(response.meals);
+    setRecipes(Object.values(response)[0]);
     setLoading(false);
   };
 
   useEffect(() => {
-    getRecipes('list');
+    getRecipes();
   }, []);
-
-  const handleClick = async ({ target }) => {
-    const valueBtn = target.value;
-    getRecipes(valueBtn);
-  };
 
   return (
     <section>
-      <Header title="Comidas" />
+      <Header title={ recipeType } />
+      <CategoryButtons getRecipes={ getRecipes } recipeType={ recipeType } />
       { loading ? (
         <Loading />
       ) : (
         <section>
-          <CategoryButton handleClick={ handleClick } recipes={ categoryRecipes } />
           <RecipesList recipeType={ recipeType } recipes={ listRecipes } />
         </section>
       ) }

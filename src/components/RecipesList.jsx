@@ -12,6 +12,8 @@ function RecipesList({ recipes, recipeType }) {
           recipeIndex={ recipeIndex }
           recipeImg={ recipe[`str${recipeKey}Thumb`] }
           recipeName={ recipe[`str${recipeKey}`] }
+          recipeType={ recipeType }
+          recipeId={ recipe[`id${recipeKey}`] }
         />
       ))}
     </div>

@@ -4,12 +4,14 @@ const URLS = {
     name: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=',
     first: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=',
     list: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=',
+    category: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=',
   },
   comidas: {
     ingredients: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
     name: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
     first: 'https://www.themealdb.com/api/json/v1/1/search.php?f=',
     list: 'https://www.themealdb.com/api/json/v1/1/list.php?c=',
+    category: 'https://www.themealdb.com/api/json/v1/1/filter.php?c=',
   },
 };
 
@@ -19,10 +21,8 @@ const fetchApi = async ({ filterType, searchInput, recipeType }) => {
   } else {
     const response = await fetch(`${URLS[recipeType][filterType]}${searchInput}`);
     const json = await response.json();
-    console.log(json);
     return json;
   }
-  console.log(filterType, searchInput, recipeType);
 };
 
 export default fetchApi;
