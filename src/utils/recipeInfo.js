@@ -2,6 +2,7 @@ import { getIngredientsOrMeasures } from './DetailsPage';
 
 export const API_KEYS = {
   bebida: {
+    base: 'Drink',
     id: 'idDrink',
     thumb: 'strDrinkThumb',
     title: 'strDrink',
@@ -11,6 +12,7 @@ export const API_KEYS = {
     inProgress: 'cocktails',
   },
   comida: {
+    base: 'Meal',
     id: 'idMeal',
     thumb: 'strMealThumb',
     title: 'strMeal',
