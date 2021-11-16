@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './helper/renderWithRouter';
+import renderWithRouterAndRedux from './helper/renderWithRouterAndRedux';
 
 import App from '../App';
 
@@ -12,8 +12,7 @@ const LOGIN_SUBMIT_BTN = 'login-submit-btn';
 const CORRECT_EMAIL = 'contato@gmail.com';
 
 describe('Tela de Loging - Avalia o que aparece na tela para o usuario', () => {
-  beforeEach(() => renderWithRouter(<App />));
-
+  beforeEach(() => renderWithRouterAndRedux(<App />));
   test('Verifica se existe o texto "Login"', () => {
     const textLogin = screen.getByRole('heading', {
       level: 1,
@@ -93,7 +92,7 @@ describe('Tela de Loging - Avalia o que aparece na tela para o usuario', () => {
 describe('Tela de Loging - Avalia o localStorage após a submição', () => {
   beforeEach(() => {
     localStorage.clear();
-    renderWithRouter(<App />);
+    renderWithRouterAndRedux(<App />);
   });
 
   test(`Avalia se 2 tokens estão sendo salvos no
@@ -118,23 +117,23 @@ describe('Tela de Loging - Avalia o localStorage após a submição', () => {
     expect(cocktailsToken).toBe('1');
   });
 
-  // test('Avalia se após a submissão achave user esta salva no localStorage', () => {
-  //   const inputEmail = screen.getByTestId(EMAIL_INPUT);
-  //   const inputSenha = screen.getByTestId(PASSWORD_INPUT);
-  //   const submitBtn = screen.getByTestId(LOGIN_SUBMIT_BTN);
+  test('Avalia se após a submissão achave user esta salva no localStorage', () => {
+    const inputEmail = screen.getByTestId(EMAIL_INPUT);
+    const inputSenha = screen.getByTestId(PASSWORD_INPUT);
+    const submitBtn = screen.getByTestId(LOGIN_SUBMIT_BTN);
 
-  //   expect(submitBtn).toBeDisabled();
+    expect(submitBtn).toBeDisabled();
 
-  //   let user = localStorage.getItem('user');
-  //   expect(user).toBe(null);
+    let user = localStorage.getItem('user');
+    expect(user).toBe(null);
 
-  //   userEvent.type(inputEmail, '{ email: contato@gmail.com }');
-  //   userEvent.type(inputSenha, '1234567');
-  //   userEvent.click(submitBtn);
+    userEvent.type(inputEmail, CORRECT_EMAIL);
+    userEvent.type(inputSenha, '1234567');
+    userEvent.click(submitBtn);
 
-  //   user = localStorage.getItem('user');
-  //   expect(user).toBe();
-  // });
+    user = JSON.parse(localStorage.getItem('user'));
+    expect(user.email).toBe(CORRECT_EMAIL);
+  });
 });
 
 describe(`Avalia se o usuario é redirecionada para
@@ -144,7 +143,7 @@ describe(`Avalia se o usuario é redirecionada para
   });
 
   test('A rota muda para a tela principal de receitas de comidas', () => {
-    const { history } = renderWithRouter(<App />);
+    const { history } = renderWithRouterAndRedux(<App />);
 
     const inputEmail = screen.getByTestId(EMAIL_INPUT);
     const inputSenha = screen.getByTestId(PASSWORD_INPUT);
