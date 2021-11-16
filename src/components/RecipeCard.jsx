@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function RecipeCard({ recipeIndex, recipeImg, recipeName }) {
+function RecipeCard({ recipeIndex, recipeImg, recipeName, recipeType, recipeId }) {
   return (
-    <div
+    <Link
+      to={ `${recipeType}/${recipeId}` }
       key={ recipeIndex }
       data-testid={ `${recipeIndex}-recipe-card` }
     >
@@ -19,14 +21,16 @@ function RecipeCard({ recipeIndex, recipeImg, recipeName }) {
       >
         {recipeName}
       </li>
-    </div>
+    </Link>
   );
 }
 
 RecipeCard.propTypes = {
+  recipeId: PropTypes.string.isRequired,
   recipeImg: PropTypes.string.isRequired,
   recipeIndex: PropTypes.string.isRequired,
   recipeName: PropTypes.string.isRequired,
+  recipeType: PropTypes.string.isRequired,
 };
 
 export default RecipeCard;
