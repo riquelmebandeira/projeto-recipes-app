@@ -1,12 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import RecommendationCard from './RecommendationCard';
-import { fetchRecipeById, fetchRecommendedRecipes,
+import { fetchRecipeById, fetchRecommendedRecipes, RECIPE_ID,
   treatVideoUrl, MAX_LENGTH, isMeal } from '../utils/DetailsPage';
 import '../styles/TelasDeDetalhes.css';
 
 export default function RecipeDetails() {
   const [recipeInfo, setRecipeInfo] = useState(false);
   const [recommendations, setRecommendations] = useState();
+
+  const checkDoneRecipe = () => {
+    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    const result = doneRecipes && doneRecipes.find((recipe) => recipe.id === RECIPE_ID);
+    return !!result;
+  };
+
+  const checkInProgressRecipe = () => {
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (inProgressRecipes && isMeal) {
+      return inProgressRecipes.hasOwnProperty.call(inProgressRecipes.meals, RECIPE_ID);
+    }
+    if (inProgressRecipes && !isMeal) {
+      return inProgressRecipes.hasOwnProperty.call(
+        inProgressRecipes.cocktails, RECIPE_ID,
+      );
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -60,15 +78,24 @@ export default function RecipeDetails() {
           {
             recommendations.map(
               (recipe, index) => (
-                index < MAX_LENGTH && <RecommendationCard { ...{ recipe, index } } />
+                index < MAX_LENGTH && (
+                  <RecommendationCard key={ index } { ...{ recipe, index } } />)
               ),
             )
           }
         </div>
       </section>
-      <section className="start-btn-container">
-        <button type="button" data-testid="start-recipe-btn">Iniciar receita</button>
-      </section>
+      {
+        !checkDoneRecipe() && (
+          <section className="start-btn-container">
+            <button type="button" data-testid="start-recipe-btn">
+              {
+                checkInProgressRecipe() ? 'Continuar Receita' : 'Iniciar receita'
+              }
+            </button>
+          </section>
+        )
+      }
     </div>
   );
 }

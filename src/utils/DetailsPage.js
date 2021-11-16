@@ -1,5 +1,5 @@
 export const MAX_LENGTH = 6;
-const RECIPE_ID = window.location.pathname.split('/').pop();
+export const RECIPE_ID = window.location.pathname.split('/').pop();
 const RECIPE_TYPE = window.location.pathname.includes('comidas') ? 'meals' : 'drinks';
 export const isMeal = RECIPE_TYPE === 'meals';
 const INVERSED_TYPE = RECIPE_TYPE === 'meals' ? 'drinks' : 'meals';
