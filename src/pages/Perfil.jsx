@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { getUserLsData } from '../redux/actions';
+import { getUserLsData, clearLsData } from '../redux/actions';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
@@ -8,10 +8,16 @@ export default function Perfil() {
   const user = getUserLsData();
   const history = useHistory();
 
-  const redirect = (e) => (
-    e.value === 'recipe-favorete'
-      ? history.push('/receitas-favoritas') : history.push('/receitas-feitas')
-  );
+  const redirect = (e) => {
+    if (e.value === 'recipe-favorete') {
+      history.push('/receitas-favoritas');
+    } else if (e.value === 'recipe-done') {
+      history.push('/receitas-feitas');
+    } else {
+      clearLsData();
+      history.push('/');
+    }
+  };
 
   return (
     <>
@@ -33,7 +39,14 @@ export default function Perfil() {
       >
         Receitas Favoritas
       </button>
-      <button type="button" data-testid="profile-logout-btn">Sair</button>
+      <button
+        type="button"
+        data-testid="profile-logout-btn"
+        value="exit"
+        onClick={ (e) => redirect(e.target) }
+      >
+        Sair
+      </button>
       <section>
         <Header title="Perfil" showSearchBtn={ false } />
         <Footer />
