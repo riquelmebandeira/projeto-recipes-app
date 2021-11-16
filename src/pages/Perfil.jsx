@@ -21,7 +21,10 @@ export default function Perfil() {
 
   return (
     <>
-      <main />
+      <section>
+        <Header title="Perfil" showSearchBtn={ false } />
+        <Footer />
+      </section>
       <h3 data-testid="profile-email">{ user.data.user.email }</h3>
       <button
         type="button"
@@ -47,10 +50,6 @@ export default function Perfil() {
       >
         Sair
       </button>
-      <section>
-        <Header title="Perfil" showSearchBtn={ false } />
-        <Footer />
-      </section>
     </>
   );
 }
