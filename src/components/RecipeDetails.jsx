@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import RecommendationCard from './RecommendationCard';
 import { fetchRecipeById, fetchRecommendedRecipes, RECIPE_ID,
   treatVideoUrl, MAX_LENGTH, isMeal } from '../utils/DetailsPage';
@@ -88,11 +89,13 @@ export default function RecipeDetails() {
       {
         !checkDoneRecipe() && (
           <section className="start-btn-container">
-            <button type="button" data-testid="start-recipe-btn">
-              {
-                checkInProgressRecipe() ? 'Continuar Receita' : 'Iniciar receita'
-              }
-            </button>
+            <Link to={ `${RECIPE_ID}/in-progress` }>
+              <button type="button" data-testid="start-recipe-btn">
+                {
+                  checkInProgressRecipe() ? 'Continuar Receita' : 'Iniciar receita'
+                }
+              </button>
+            </Link>
           </section>
         )
       }
