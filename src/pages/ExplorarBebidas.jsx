@@ -10,6 +10,18 @@ export default function ExplorarBebidas() {
     history.push('/explorar/bebidas/ingredientes');
   };
 
+  const fetchAPIRandomDrinks = async () => {
+    const drinkSurpriseAPI = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+    const response = await fetch(drinkSurpriseAPI);
+    const data = await response.json();
+    return data;
+  };
+
+  const clickSurprise = async () => {
+    const getAPI = await fetchAPIRandomDrinks();
+    history.push(`/bebidas/${getAPI}`);
+  };
+
   return (
     <section>
       <Header title="Explorar Bebidas" showSearchBtn={ false } />
@@ -23,6 +35,7 @@ export default function ExplorarBebidas() {
       <button
         type="button"
         data-testid="explore-surprise"
+        onClick={ clickSurprise }
       >
         Me Surpreenda!
       </button>

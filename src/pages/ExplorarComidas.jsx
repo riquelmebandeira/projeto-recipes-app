@@ -14,6 +14,18 @@ export default function ExplorarComidas() {
     history.push('/explorar/comidas/area');
   };
 
+  const fetchAPIRandomDrinks = async () => {
+    const foodSurpriseAPI = 'https://www.themealdb.com/api/json/v1/1/random.php';
+    const response = await fetch(foodSurpriseAPI);
+    const data = await response.json();
+    return data;
+  };
+
+  const clickSurprise = async () => {
+    const getAPI = await fetchAPIRandomDrinks();
+    history.push(`/comidas/${getAPI}`);
+  };
+
   return (
     <section>
       <Header title="Explorar Comidas" showSearchBtn={ false } />
@@ -34,6 +46,7 @@ export default function ExplorarComidas() {
       <button
         type="button"
         data-testid="explore-surprise"
+        onClick={ clickSurprise }
       >
         Me Surpreenda!
       </button>
