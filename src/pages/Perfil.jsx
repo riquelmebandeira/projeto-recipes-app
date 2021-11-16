@@ -11,7 +11,7 @@ export default function Perfil() {
       <h3 data-testid="profile-email">{ user.data.user.email }</h3>
       <button type="button" data-testid="profile-done-btn">Receitas Feitas</button>
       <button type="button" data-testid="profile-favorite-btn">Receitas Favoritas</button>
-      <button type="button" data-testid="profile-logout-btn">sair</button>
+      <button type="button" data-testid="profile-logout-btn">Sair</button>
       <section>
         <Header title="Perfil" showSearchBtn={ false } />
         <Footer />
