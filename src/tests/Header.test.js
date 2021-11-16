@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/dom';
-import renderWithRouter from './helper/renderWithRouter';
+import renderWithRouterAndRedux from './helper/renderWithRouterAndRedux';
 
 import App from '../App';
 
@@ -27,7 +27,7 @@ const PROFILE_TOP_BTN = 'profile-top-btn';
 // - O header tem os ícones corretos na tela de receitas favoritas
 describe('Componente Header - Integração no app', () => {
   test('Não tem header na tela de login', () => {
-    const { history } = renderWithRouter(<App />);
+    const { history } = renderWithRouterAndRedux(<App />);
     history.push('/');
     const header = screen.queryByTestId(PROFILE_TOP_BTN);
     expect(header).toBeNull();

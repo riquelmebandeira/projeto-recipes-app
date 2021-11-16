@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import { loginUser } from '../redux/actions';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disabled, setDisabled] = useState(true);
   const history = useHistory();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const MIN_CHARACTERES_PASSWORD = 7;
@@ -26,7 +30,8 @@ function Login() {
   const handleClick = () => {
     localStorage.setItem('mealsToken', '1');
     localStorage.setItem('cocktailsToken', '1');
-    localStorage.setItem('user', JSON.stringify(personEmail));
+    // localStorage.setItem('user', JSON.stringify(personEmail));
+    dispatch(loginUser(personEmail));
     history.push('/comidas');
   };
 
