@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import RecommendationCard from './RecommendationCard';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import shareIcon from '../images/shareIcon.svg';
 import { fetchRecipeById, fetchRecommendedRecipes, RECIPE_ID,
   treatVideoUrl, MAX_LENGTH, isMeal } from '../utils/DetailsPage';
 import '../styles/TelasDeDetalhes.css';
@@ -41,8 +43,8 @@ export default function RecipeDetails() {
       <img src={ thumbnail } alt="Foto da receita" data-testid="recipe-photo" />
       <h1 data-testid="recipe-title">{title}</h1>
       <p data-testid="recipe-category">{category}</p>
-      <input type="image" src="" alt="" data-testid="share-btn" />
-      <input type="image" src="" alt="" data-testid="favorite-btn" />
+      <input type="image" src={ shareIcon } alt="" data-testid="share-btn" />
+      <input type="image" src={ whiteHeartIcon } alt="" data-testid="favorite-btn" />
       <section className="ingredients">
         <h2>Ingredientes</h2>
         <ul>
