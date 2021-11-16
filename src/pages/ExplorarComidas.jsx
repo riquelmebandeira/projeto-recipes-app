@@ -14,7 +14,7 @@ export default function ExplorarComidas() {
     history.push('/explorar/comidas/area');
   };
 
-  const fetchAPIRandomDrinks = async () => {
+  const fetchAPIRandomFoods = async () => {
     const foodSurpriseAPI = 'https://www.themealdb.com/api/json/v1/1/random.php';
     const response = await fetch(foodSurpriseAPI);
     const data = await response.json();
@@ -22,7 +22,7 @@ export default function ExplorarComidas() {
   };
 
   const clickSurprise = async () => {
-    const getAPI = await fetchAPIRandomDrinks();
+    const getAPI = await fetchAPIRandomFoods();
     history.push(`/comidas/${getAPI}`);
   };
 
