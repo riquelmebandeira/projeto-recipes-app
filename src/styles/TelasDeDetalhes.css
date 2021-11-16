@@ -9,17 +9,17 @@ section {
 }
 
 .instructions p {
+  background-color: gainsboro;
   border-radius: 5px;
   padding: 10px;
-  background-color: gainsboro;
   width: 320px;
 }
 
 .ingredients ul {
-  border-radius: 5px;
-  padding: 10px;
   background-color: gainsboro;
+  border-radius: 5px;
   list-style-type: none;
+  padding: 10px;
   width: 320px;
 }
 
@@ -38,13 +38,13 @@ section {
 }
 
 .video-container iframe {
-  width: 338px;
   border-radius: 5px;
+  width: 338px;
 }
 
 .recommendation-card {
-  box-shadow: 2px 4px 6px gainsboro;
   border-radius: 5px;
+  box-shadow: 2px 4px 6px gainsboro;
 }
 
 .recommendation-card p, h3 {
@@ -53,8 +53,8 @@ section {
 
 [ data-testid = 'start-recipe-btn' ] {
   bottom: 0;
-  position: fixed;
   margin-left: 120px;
+  position: fixed;
 }
 
 .start-btn-container {
