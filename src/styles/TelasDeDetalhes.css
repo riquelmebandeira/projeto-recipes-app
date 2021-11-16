@@ -1,27 +1,60 @@
+section {
+  padding: 0 10px;
+}
+
 [ data-testid = 'recipe-photo' ] {
-  height: 200px;
+  height: 160px;
   object-fit: cover;
-  width: 450px;
+  width: 400px;
+}
+
+.instructions p {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: gainsboro;
+  width: 320px;
+}
+
+.ingredients ul {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: gainsboro;
+  list-style-type: none;
+  width: 320px;
 }
 
 .card-photo {
   border-radius: 5px;
-  height: 120px;
+  height: 110px;
   object-fit: cover;
-  width: 160px;
+  width: 164px;
 }
 
-.card-container {
+.cards-container {
   display: flex;
   gap: 10px;
-  margin: 0 10px;
   overflow-x: scroll;
+  padding-bottom: 10px;
+}
+
+.video-container iframe {
+  width: 338px;
+  border-radius: 5px;
+}
+
+.recommendation-card {
+  box-shadow: 2px 4px 6px gainsboro;
+  border-radius: 5px;
+}
+
+.recommendation-card p, h3 {
+  padding-left: 6px;
 }
 
 [ data-testid = 'start-recipe-btn' ] {
   bottom: 0;
-  margin-left: 126px;
   position: fixed;
+  margin-left: 120px;
 }
 
 .start-btn-container {
