@@ -57,3 +57,33 @@ main {
   position: fixed;
 }
 
+.input-container {
+  margin-left: 18px;
+  margin-top: 10px;
+  padding: 16px 0 0;
+  text-align: center;
+  width: 80px;
+}
+
+.input-container input {
+  margin-left: 6px;
+}
+
+.input-container p {
+  display: block;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-container h1 {
+  font-size: 30px;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  width: 350px;
+}

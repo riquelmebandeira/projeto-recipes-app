@@ -10,6 +10,7 @@ import '../styles/detailsPage.css';
 export default function RecipeDetails() {
   const [recipeInfo, setRecipeInfo] = useState(false);
   const [recommendations, setRecommendations] = useState();
+  const [shared, setShared] = useState();
 
   const checkDoneRecipe = () => {
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
@@ -29,6 +30,11 @@ export default function RecipeDetails() {
     }
   };
 
+  const shareRecipe = () => {
+    setShared(true);
+    return navigator.clipboard.writeText(window.location.href);
+  };
+
   useEffect(() => {
     (async () => {
       setRecommendations(await fetchRecommendedRecipes());
@@ -44,20 +50,28 @@ export default function RecipeDetails() {
         <img src={ thumbnail } alt="Foto da receita" data-testid="recipe-photo" />
       </header>
       <main>
-        <h1 data-testid="recipe-title">{title}</h1>
-        <p data-testid="recipe-category">{category}</p>
-        <input
-          type="image"
-          src={ shareIcon }
-          alt="Ícone de compartilhar"
-          data-testid="share-btn"
-        />
-        <input
-          type="image"
-          src={ whiteHeartIcon }
-          alt="Ícone de favoritar"
-          data-testid="favorite-btn"
-        />
+        <section className="container">
+          <div className="info-container">
+            <h1 data-testid="recipe-title">{title}</h1>
+            <p data-testid="recipe-category">{category}</p>
+          </div>
+          <div className="input-container">
+            <input
+              type="image"
+              src={ whiteHeartIcon }
+              alt="Ícone de favoritar"
+              data-testid="favorite-btn"
+            />
+            <input
+              type="image"
+              src={ shareIcon }
+              alt="Ícone de compartilhar"
+              data-testid="share-btn"
+              onClick={ shareRecipe }
+            />
+            { shared && <p>Link copiado!</p>}
+          </div>
+        </section>
         <article className="preparation-method">
           <section className="ingredients">
             <h2>Ingredientes</h2>
