@@ -1,7 +1,6 @@
 import React from 'react';
+import RecipeDetails from '../components/RecipeDetails';
 
 export default function BebidasDetalhes() {
-  return (
-    <h1>Bebidas Detalhes</h1>
-  );
+  return <RecipeDetails />;
 }
