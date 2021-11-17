@@ -13,6 +13,7 @@ export default function RecipeDetails() {
   const [recipeInfo, setRecipeInfo] = useState(false);
   const [recommendations, setRecommendations] = useState();
   const [shared, setShared] = useState();
+  const [favorite, setFavorite] = useState();
 
   const shareRecipe = () => {
     setShared(true);
@@ -21,6 +22,7 @@ export default function RecipeDetails() {
 
   useEffect(() => {
     (async () => {
+      setFavorite(isFavorite());
       setRecommendations(await fetchRecommendedRecipes());
       setRecipeInfo(await fetchRecipeById());
     })();
@@ -42,9 +44,10 @@ export default function RecipeDetails() {
           <div className="input-container">
             <input
               type="image"
-              src={ isFavorite() ? blackHeartIcon : whiteHeartIcon }
+              src={ favorite ? blackHeartIcon : whiteHeartIcon }
               alt="Ícone de favoritar"
               data-testid="favorite-btn"
+              onClick={ () => setFavorite(!favorite) }
             />
             <input
               type="image"
