@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import fetchApi from '../utils/FetchApi';
+import { API_KEYS, getRecipeType } from '../utils/recipeInfo';
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -9,19 +10,20 @@ function SearchBar() {
   const history = useHistory();
 
   const handleClick = async () => {
-    const recipeType = window.location.pathname.slice(1);
+    const recipeType = getRecipeType();
     const resultApi = await fetchApi({
       filterType,
       searchInput,
       recipeType,
     });
 
-    const recipes = recipeType === 'comidas' ? resultApi.meals : resultApi.drinks;
+    const recipes = Object.values(resultApi)[0];
+
     if (recipes === null) {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     } else if (recipes.length === 1) {
-      const idKey = recipeType === 'comidas' ? 'idMeal' : 'idDrink';
-      history.push(`/${recipeType}/${recipes[0][idKey]}`);
+      const idKey = API_KEYS[recipeType].id;
+      history.push(`/${recipeType}s/${recipes[0][idKey]}`);
     }
   };
 
