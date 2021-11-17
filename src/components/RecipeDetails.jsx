@@ -3,7 +3,7 @@ import StartRecipeBtn from './StartRecipeBtn';
 import RecommendationsList from './RecommendationsList';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import shareIcon from '../images/shareIcon.svg';
+import ShareBtn from './ShareBtn';
 import { fetchRecipeById, fetchRecommendedRecipes,
   treatVideoUrl, isMeal, isFavorite } from '../utils/DetailsPage';
 import '../styles/detailsPage.css';
@@ -12,13 +12,7 @@ import IngredientsList from './IngredientsList';
 export default function RecipeDetails() {
   const [recipeInfo, setRecipeInfo] = useState(false);
   const [recommendations, setRecommendations] = useState();
-  const [shared, setShared] = useState();
   const [favorite, setFavorite] = useState();
-
-  const shareRecipe = () => {
-    setShared(true);
-    return navigator.clipboard.writeText(window.location.href);
-  };
 
   useEffect(() => {
     (async () => {
@@ -50,14 +44,7 @@ export default function RecipeDetails() {
               data-testid="favorite-btn"
               onClick={ () => setFavorite(!favorite) }
             />
-            <input
-              type="image"
-              src={ shareIcon }
-              alt="Ícone de compartilhar"
-              data-testid="share-btn"
-              onClick={ shareRecipe }
-            />
-            { shared && <p>Link copiado!</p>}
+            <ShareBtn />
           </div>
         </section>
         <article className="preparation-method">
