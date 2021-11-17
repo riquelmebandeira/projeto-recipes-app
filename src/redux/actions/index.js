@@ -6,6 +6,7 @@ export const SAVE_RECIPES_LS_DATA = 'SAVE_RECIPES_LS_DATA';
 
 const userLsKeys = ['user', 'mealsToken', 'cocktailsToken'];
 const recipesLsKeys = ['doneRecipes', 'favoriteRecipes', 'inProgressRecipes'];
+const lsKeys = [...userLsKeys, ...recipesLsKeys];
 
 const getLsData = (keys) => keys.reduce((data, key) => ({
   ...data, [key]: JSON.parse(localStorage.getItem(key)),
@@ -33,6 +34,10 @@ const saveUserLsData = (data) => {
     type: SAVE_USER_LS_DATA,
     data,
   };
+};
+
+export const clearLsData = () => {
+  lsKeys.forEach((keys) => localStorage.clear(keys));
 };
 
 export const saveRecipesLsData = (data) => {

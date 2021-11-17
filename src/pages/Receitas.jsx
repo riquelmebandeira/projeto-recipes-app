@@ -27,7 +27,7 @@ export default function Receitas() {
   };
 
   useEffect(() => {
-    getRecipes();
+    getRecipes(); // eslint-disable-next-line
   }, []);
 
   return (

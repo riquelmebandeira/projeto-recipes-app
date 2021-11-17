@@ -1,0 +1,59 @@
+main {
+  padding: 0 10px;
+}
+
+[ data-testid = 'recipe-photo' ] {
+  height: 160px;
+  object-fit: cover;
+  width: 360px;
+}
+
+.instructions p {
+  background-color: gainsboro;
+  border-radius: 5px;
+  padding: 10px;
+  width: 320px;
+}
+
+.ingredients ul {
+  background-color: gainsboro;
+  border-radius: 5px;
+  list-style-type: none;
+  padding: 10px;
+  width: 320px;
+}
+
+.card-photo {
+  border-radius: 5px;
+  height: 110px;
+  object-fit: cover;
+  width: 164px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+  padding-bottom: 10px;
+}
+
+.video-container iframe {
+  border-radius: 5px;
+  width: 338px;
+}
+
+.recommendation-card {
+  border-radius: 5px;
+  box-shadow: 2px 4px 6px gainsboro;
+}
+
+.recommendation-card p, h3 {
+  padding-left: 6px;
+}
+
+[ data-testid = 'start-recipe-btn' ] {
+  bottom: 0;
+  margin-left: 106px;
+  position: fixed;
+}
+

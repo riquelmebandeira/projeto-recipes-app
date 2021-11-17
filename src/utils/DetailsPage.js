@@ -1,22 +1,20 @@
 export const MAX_LENGTH = 6;
+export const RECIPE_ID = window.location.pathname.split('/').pop();
+const RECIPE_TYPE = window.location.pathname.includes('comidas') ? 'meals' : 'drinks';
+export const isMeal = RECIPE_TYPE === 'meals';
+const INVERSED_TYPE = RECIPE_TYPE === 'meals' ? 'drinks' : 'meals';
 
-export const fetchRecipeById = async () => {
-  const RECIPE_TYPE = window.location.pathname.includes('comidas') ? 'meals' : 'drinks';
-  const RECIPE_ID = window.location.pathname.split('/').pop();
-  const url = RECIPE_TYPE === 'meals' ? `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${RECIPE_ID}`
-    : `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${RECIPE_ID}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data[RECIPE_TYPE][0];
+const URLS = {
+  mealById: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${RECIPE_ID}`,
+  drinkById: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${RECIPE_ID}`,
+  allMeals: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
+  allDrinks: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=',
 };
 
-export const fetchRecommendedRecipes = async () => {
-  const INVERSED_TYPE = window.location.pathname.includes('comidas') ? 'drinks' : 'meals';
-  const url = INVERSED_TYPE === 'meals' ? 'https://www.themealdb.com/api/json/v1/1/search.php?s='
-    : 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-  const response = await fetch(url);
-  const data = await response.json();
-  return data[INVERSED_TYPE];
+const KEYS = {
+  generic_keys: ['thumbnail', 'title', 'category', 'url', 'instructions'],
+  meal_keys: ['strMealThumb', 'strMeal', 'strCategory', 'strYoutube', 'strInstructions'],
+  drink_keys: ['strDrinkThumb', 'strDrink', 'strAlcoholic', '', 'strInstructions'],
 };
 
 export const getIngredientsOrMeasures = (request, recipe) => {
@@ -25,6 +23,38 @@ export const getIngredientsOrMeasures = (request, recipe) => {
     info[0].includes(request) && info[1]
   ));
   return requestedInfo.map((array) => array[1]);
+};
+
+const generifyRecipeInfo = (recipe, neededInfo) => {
+  const emptyObject = {};
+  KEYS.generic_keys.forEach(
+    (genericKey, index) => { emptyObject[genericKey] = recipe[neededInfo[index]]; },
+  );
+  return emptyObject;
+};
+
+export const fetchRecipeById = async () => {
+  const url = isMeal ? URLS.mealById : URLS.drinkById;
+  const response = await fetch(url);
+  const data = await response.json();
+  const recipeInfo = data[RECIPE_TYPE][0];
+  const neededInfo = isMeal ? KEYS.meal_keys : KEYS.drink_keys;
+  return (
+    { ...generifyRecipeInfo(recipeInfo, neededInfo),
+      ingredients: getIngredientsOrMeasures('Ingredient', recipeInfo),
+      measures: getIngredientsOrMeasures('Measure', recipeInfo),
+    }
+  );
+};
+
+export const fetchRecommendedRecipes = async () => {
+  const neededInfo = !isMeal ? KEYS.meal_keys : KEYS.drink_keys;
+  const url = !isMeal ? URLS.allMeals : URLS.allDrinks;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data[INVERSED_TYPE].map((recipe) => (
+    generifyRecipeInfo(recipe, neededInfo)
+  ));
 };
 
 export const treatVideoUrl = (url) => {

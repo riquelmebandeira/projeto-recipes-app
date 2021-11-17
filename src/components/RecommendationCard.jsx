@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../styles/TelasDeDetalhes.css';
+import '../styles/detailsPage.css';
 
-function RecommendationCard({ src, category, title, index }) {
+function RecommendationCard({ recipe, index }) {
+  const { thumbnail, category, title } = recipe;
   return (
-    <div>
+    <div className="recommendation-card">
       <img
-        src={ src }
+        src={ thumbnail }
         alt="Foto da receita"
         data-testid={ `${index}-recomendation-card` }
         className="card-photo"
@@ -18,10 +19,8 @@ function RecommendationCard({ src, category, title, index }) {
 }
 
 RecommendationCard.propTypes = {
-  src: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  index: PropTypes.string.isRequired,
+  recipe: PropTypes.objectOf(PropTypes.string).isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default RecommendationCard;
