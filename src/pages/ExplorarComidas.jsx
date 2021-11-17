@@ -18,12 +18,13 @@ export default function ExplorarComidas() {
     const foodSurpriseAPI = 'https://www.themealdb.com/api/json/v1/1/random.php';
     const response = await fetch(foodSurpriseAPI);
     const data = await response.json();
+    // console.log(data);
     return data;
   };
 
   const clickSurprise = async () => {
     const getAPI = await fetchAPIRandomFoods();
-    history.push(`/comidas/${getAPI}`);
+    history.push(`/comidas/${Object.values(getAPI)[0][0].idMeal}`);
   };
 
   return (

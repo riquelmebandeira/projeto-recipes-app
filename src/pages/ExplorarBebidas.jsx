@@ -19,7 +19,7 @@ export default function ExplorarBebidas() {
 
   const clickSurprise = async () => {
     const getAPI = await fetchAPIRandomDrinks();
-    history.push(`/bebidas/${getAPI}`);
+    history.push(`/bebidas/${Object.values(getAPI)[0][0].idDrink}`);
   };
 
   return (
