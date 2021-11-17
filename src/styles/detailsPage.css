@@ -35,7 +35,6 @@ main {
   gap: 10px;
   overflow-x: scroll;
   padding-bottom: 10px;
-  width: 348px;
 }
 
 .video-container iframe {

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import RecommendationCard from './RecommendationCard';
+import RecommendationsList from './RecommendationsList';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 import { fetchRecipeById, fetchRecommendedRecipes, RECIPE_ID,
-  treatVideoUrl, MAX_LENGTH, isMeal, isFavorite, isDone,
+  treatVideoUrl, isMeal, isFavorite, isDone,
   isInProgress } from '../utils/DetailsPage';
 import '../styles/detailsPage.css';
 
@@ -94,19 +94,7 @@ export default function RecipeDetails() {
             )
           }
         </article>
-        <section className="recommendations">
-          <h2>Recomendadas</h2>
-          <div className="cards-container">
-            {
-              recommendations.map(
-                (recipe, index) => (
-                  index < MAX_LENGTH && (
-                    <RecommendationCard key={ index } { ...{ recipe, index } } />)
-                ),
-              )
-            }
-          </div>
-        </section>
+        <RecommendationsList { ...{ recommendations } } />
         {
           !isDone() && (
             <Link to={ `${RECIPE_ID}/in-progress` }>
