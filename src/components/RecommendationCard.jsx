@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../styles/TelasDeDetalhes.css';
+import '../styles/detailsPage.css';
 
 function RecommendationCard({ recipe, index }) {
   const { thumbnail, category, title } = recipe;
