@@ -1,34 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import RecommendationCard from './RecommendationCard';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 import { fetchRecipeById, fetchRecommendedRecipes, RECIPE_ID,
-  treatVideoUrl, MAX_LENGTH, isMeal } from '../utils/DetailsPage';
+  treatVideoUrl, MAX_LENGTH, isMeal, isFavorite, isDone,
+  isInProgress } from '../utils/DetailsPage';
 import '../styles/detailsPage.css';
 
 export default function RecipeDetails() {
   const [recipeInfo, setRecipeInfo] = useState(false);
   const [recommendations, setRecommendations] = useState();
   const [shared, setShared] = useState();
-
-  const checkDoneRecipe = () => {
-    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-    const result = doneRecipes && doneRecipes.find((recipe) => recipe.id === RECIPE_ID);
-    return !!result;
-  };
-
-  const checkInProgressRecipe = () => {
-    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (inProgressRecipes && isMeal) {
-      return inProgressRecipes.hasOwnProperty.call(inProgressRecipes.meals, RECIPE_ID);
-    }
-    if (inProgressRecipes && !isMeal) {
-      return inProgressRecipes.hasOwnProperty.call(
-        inProgressRecipes.cocktails, RECIPE_ID,
-      );
-    }
-  };
 
   const shareRecipe = () => {
     setShared(true);
@@ -58,7 +42,7 @@ export default function RecipeDetails() {
           <div className="input-container">
             <input
               type="image"
-              src={ whiteHeartIcon }
+              src={ isFavorite() ? blackHeartIcon : whiteHeartIcon }
               alt="Ícone de favoritar"
               data-testid="favorite-btn"
             />
@@ -121,11 +105,11 @@ export default function RecipeDetails() {
           </div>
         </section>
         {
-          !checkDoneRecipe() && (
+          !isDone() && (
             <Link to={ `${RECIPE_ID}/in-progress` }>
               <button type="button" data-testid="start-recipe-btn">
                 {
-                  checkInProgressRecipe() ? 'Continuar Receita' : 'Iniciar receita'
+                  isInProgress() ? 'Continuar Receita' : 'Iniciar receita'
                 }
               </button>
             </Link>

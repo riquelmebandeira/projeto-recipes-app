@@ -61,3 +61,28 @@ export const treatVideoUrl = (url) => {
   const hash = url.split('=').pop();
   return `https://www.youtube.com/embed/${hash}`;
 };
+
+export const isFavorite = () => {
+  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  const result = favoriteRecipes
+      && favoriteRecipes.find((recipe) => recipe.id === RECIPE_ID);
+  return !!result;
+};
+
+export const isDone = () => {
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+  const result = doneRecipes && doneRecipes.find((recipe) => recipe.id === RECIPE_ID);
+  return !!result;
+};
+
+export const isInProgress = () => {
+  const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (inProgressRecipes && isMeal) {
+    return inProgressRecipes.hasOwnProperty.call(inProgressRecipes.meals, RECIPE_ID);
+  }
+  if (inProgressRecipes && !isMeal) {
+    return inProgressRecipes.hasOwnProperty.call(
+      inProgressRecipes.cocktails, RECIPE_ID,
+    );
+  }
+};
