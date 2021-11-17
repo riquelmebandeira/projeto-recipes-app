@@ -5,17 +5,17 @@ import CategoryButtons from '../components/CategoryButtons';
 import RecipesList from '../components/RecipesList';
 import Loading from '../components/Loading';
 import fetchApi from '../utils/FetchApi';
+import { getRecipeType } from '../utils/recipeInfo';
 
 export default function Receitas() {
   const [loading, setLoading] = useState(true);
   const [recipes, setRecipes] = useState([]);
   const TWELVE_MEALSORDRINK = 12;
   const listRecipes = recipes.slice(0, TWELVE_MEALSORDRINK);
-  const recipeType = window.location.href.split('/')[3];
+  const recipeType = getRecipeType();
 
   const getRecipes = async (filterType = 'name', searchInput = '') => {
     setLoading(true);
-    console.log(recipeType, filterType, searchInput);
 
     const response = await fetchApi({
       recipeType,
