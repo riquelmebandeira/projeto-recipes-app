@@ -62,13 +62,6 @@ export const treatVideoUrl = (url) => {
   return `https://www.youtube.com/embed/${hash}`;
 };
 
-export const isFavorite = () => {
-  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  const result = favoriteRecipes
-      && favoriteRecipes.find((recipe) => recipe.id === RECIPE_ID);
-  return !!result;
-};
-
 export const isDone = () => {
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   const result = doneRecipes && doneRecipes.find((recipe) => recipe.id === RECIPE_ID);

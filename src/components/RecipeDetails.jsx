@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import IngredientsList from './IngredientsList';
 import StartRecipeBtn from './StartRecipeBtn';
 import RecommendationsList from './RecommendationsList';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import FavoriteBtn from './FavoriteBtn';
 import ShareBtn from './ShareBtn';
 import { fetchRecipeById, fetchRecommendedRecipes,
-  treatVideoUrl, isMeal, isFavorite } from '../utils/DetailsPage';
+  treatVideoUrl, isMeal } from '../utils/DetailsPage';
 import '../styles/detailsPage.css';
-import IngredientsList from './IngredientsList';
 
 export default function RecipeDetails() {
   const [recipeInfo, setRecipeInfo] = useState(false);
   const [recommendations, setRecommendations] = useState();
-  const [favorite, setFavorite] = useState();
 
   useEffect(() => {
     (async () => {
-      setFavorite(isFavorite());
       setRecommendations(await fetchRecommendedRecipes());
       setRecipeInfo(await fetchRecipeById());
     })();
@@ -37,13 +34,7 @@ export default function RecipeDetails() {
             <p data-testid="recipe-category">{category}</p>
           </div>
           <div className="input-container">
-            <input
-              type="image"
-              src={ favorite ? blackHeartIcon : whiteHeartIcon }
-              alt="Ícone de favoritar"
-              data-testid="favorite-btn"
-              onClick={ () => setFavorite(!favorite) }
-            />
+            <FavoriteBtn />
             <ShareBtn />
           </div>
         </section>
