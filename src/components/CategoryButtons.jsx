@@ -9,18 +9,16 @@ function CategoryButtons({ getRecipes, recipeType }) {
   const FIVE_CATEGORIES = 5;
 
   const getCategories = async () => {
-    // setLoading(true);
     const responseJson = await fetchApi({
       recipeType,
       filterType: 'list', // nome da chave
       searchInput: 'list',
     });
     setCategories(Object.values(responseJson)[0]);
-    // setLoading(false);
   };
 
   useEffect(() => {
-    getCategories();
+    getCategories(); // eslint-disable-next-line
   }, []);
 
   return (

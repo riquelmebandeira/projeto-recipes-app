@@ -21,8 +21,8 @@ export default function Progresso({ match: { params: { id } } }) {
   const { [id]: inProgress } = useSelector(
     (state) => state.recipes.inProgressRecipes[API_KEYS[recipeType].inProgress],
   );
-  const isComplete = inProgress
-    ? Object.values(inProgress.steps).every((step) => step)
+  const isComplete = recipe && inProgress
+    ? inProgress.length === recipe.ingredients.length
     : false;
 
   useEffect(() => {

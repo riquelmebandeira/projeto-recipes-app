@@ -210,7 +210,6 @@ describe('51 - Desenvolva a lógica de favoritar e compartilhar, a lógica da te
         win.fetch = fetchMock;
       },
     });
-
     cy.get('[data-testid="favorite-btn"]')
       .should('have.attr', 'src')
       .should('include', 'blackHeartIcon');
