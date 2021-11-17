@@ -45,28 +45,25 @@ export const saveRecipesLsData = (data) => {
 
 export const initLsData = () => (dispatch, getState) => {
   userLsKeys.forEach((key) => {
-    if (localStorage.getItem(key) === null) {
-      saveLsData({ [key]: getState().user[key] });
-    } else {
-      dispatch({
-        type: SAVE_USER_LS_DATA,
-        data: getLsData([key]),
-      });
-    }
+    saveLsData({ [key]: getState().user[key] });
   });
   recipesLsKeys.forEach((key) => {
-    if (localStorage.getItem(key) === null) {
-      saveLsData({ [key]: getState().recipes[key] });
-    } else {
-      dispatch({
-        type: SAVE_RECIPES_LS_DATA,
-        data: getLsData([key]),
-      });
-    }
+    saveLsData({ [key]: getState().recipes[key] });
   });
 };
 
-export const loginUser = (user) => saveUserLsData({ user });
+export const loginUser = (user) => (dispatch) => {
+  dispatch(saveUserLsData({ user }));
+  dispatch(initLsData());
+};
+
+export const loadLsData = () => (dispatch) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user !== null) {
+    dispatch(getUserLsData());
+    dispatch(getRecipesLsData());
+  }
+};
 
 export const updateRecipeInProgress = ({ recipeType, recipeId, steps }) => (
   (dispatch, getState) => {
