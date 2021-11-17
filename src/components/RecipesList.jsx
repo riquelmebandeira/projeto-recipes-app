@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { API_KEYS } from '../utils/recipeInfo';
 import RecipeCard from './RecipeCard';
 
 function RecipesList({ recipes, recipeType }) {
-  const recipeKey = recipeType === 'comidas' ? 'Meal' : 'Drink';
+  const recipeKey = API_KEYS[recipeType].base;
   return (
     <div>
       { recipes.map((recipe, recipeIndex) => (
