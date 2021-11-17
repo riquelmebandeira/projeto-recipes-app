@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import StartRecipeBtn from './StartRecipeBtn';
 import RecommendationsList from './RecommendationsList';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
-import { fetchRecipeById, fetchRecommendedRecipes, RECIPE_ID,
-  treatVideoUrl, isMeal, isFavorite, isDone,
-  isInProgress } from '../utils/DetailsPage';
+import { fetchRecipeById, fetchRecommendedRecipes,
+  treatVideoUrl, isMeal, isFavorite } from '../utils/DetailsPage';
 import '../styles/detailsPage.css';
 
 export default function RecipeDetails() {
@@ -95,7 +94,8 @@ export default function RecipeDetails() {
           }
         </article>
         <RecommendationsList { ...{ recommendations } } />
-        {
+        <StartRecipeBtn />
+        {/* {
           !isDone() && (
             <Link to={ `${RECIPE_ID}/in-progress` }>
               <button type="button" data-testid="start-recipe-btn">
@@ -105,7 +105,7 @@ export default function RecipeDetails() {
               </button>
             </Link>
           )
-        }
+        } */}
       </main>
     </>
   );
