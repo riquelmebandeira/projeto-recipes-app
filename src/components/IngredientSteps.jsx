@@ -10,18 +10,13 @@ const IngredientSteps = ({ recipe }) => {
   const inProgress = useSelector(
     (state) => state.recipes.inProgressRecipes[inProgressKey],
   );
-  const [steps, setSteps] = useState(inProgress[recipeId]
-    ? inProgress[recipeId].steps
-    : ingredients.reduce((initialSteps, ingredient) => (
-      { ...initialSteps, [ingredient]: false }
-    ), {}));
+  const [steps, setSteps] = useState(inProgress[recipeId] || []);
 
   const dispatch = useDispatch();
   const updateStep = (ingredient) => {
-    const updatedSteps = {
-      ...steps,
-      [ingredient]: steps[ingredient] === undefined ? true : !steps[ingredient],
-    };
+    const updatedSteps = steps.includes(ingredient)
+      ? steps.filter((step) => step !== ingredient)
+      : [...steps, ingredient];
     setSteps(updatedSteps);
     dispatch(updateRecipeInProgress(
       { recipeType, recipeId, steps: updatedSteps },
@@ -41,7 +36,7 @@ const IngredientSteps = ({ recipe }) => {
               <input
                 type="checkbox"
                 id={ `${index}-ingredient-step` }
-                checked={ steps[ingredient] === true }
+                checked={ steps.includes(ingredient) }
                 name={ ingredient }
                 onChange={ () => updateStep(ingredient) }
               />

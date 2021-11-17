@@ -81,7 +81,7 @@ export const updateRecipeInProgress = ({ recipeType, recipeId, steps }) => (
         ...previousData,
         [updatingKey]: {
           ...previousData[updatingKey],
-          [recipeId]: { steps },
+          [recipeId]: steps,
         },
       },
     };
