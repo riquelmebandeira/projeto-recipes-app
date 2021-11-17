@@ -7,6 +7,7 @@ import shareIcon from '../images/shareIcon.svg';
 import { fetchRecipeById, fetchRecommendedRecipes,
   treatVideoUrl, isMeal, isFavorite } from '../utils/DetailsPage';
 import '../styles/detailsPage.css';
+import IngredientsList from './IngredientsList';
 
 export default function RecipeDetails() {
   const [recipeInfo, setRecipeInfo] = useState(false);
@@ -27,7 +28,8 @@ export default function RecipeDetails() {
     })();
   }, []);
 
-  const { thumbnail, title, category, instructions, url } = recipeInfo;
+  const { thumbnail, title, category, instructions,
+    url, ingredients, measures } = recipeInfo;
 
   return !recipeInfo ? <p>Carregando...</p> : (
     <>
@@ -59,21 +61,7 @@ export default function RecipeDetails() {
           </div>
         </section>
         <article className="preparation-method">
-          <section className="ingredients">
-            <h2>Ingredientes</h2>
-            <ul>
-              {
-                recipeInfo.ingredients.map((ingredient, index) => (
-                  <li
-                    key={ index }
-                    data-testid={ `${index}-ingredient-name-and-measure` }
-                  >
-                    {`${ingredient} - ${recipeInfo.measures[index]}`}
-                  </li>
-                ))
-              }
-            </ul>
-          </section>
+          <IngredientsList { ...{ ingredients, measures } } />
           <section className="instructions">
             <h2>Instruções</h2>
             <p data-testid="instructions">
@@ -95,17 +83,6 @@ export default function RecipeDetails() {
         </article>
         <RecommendationsList { ...{ recommendations } } />
         <StartRecipeBtn />
-        {/* {
-          !isDone() && (
-            <Link to={ `${RECIPE_ID}/in-progress` }>
-              <button type="button" data-testid="start-recipe-btn">
-                {
-                  isInProgress() ? 'Continuar Receita' : 'Iniciar receita'
-                }
-              </button>
-            </Link>
-          )
-        } */}
       </main>
     </>
   );
