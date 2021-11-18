@@ -10,6 +10,7 @@ export const API_KEYS = {
     area: 'strArea',
     alcoholic: 'strAlcoholic',
     inProgress: 'cocktails',
+    instructions: 'strInstructions',
   },
   comida: {
     base: 'Meal',
@@ -19,6 +20,7 @@ export const API_KEYS = {
     category: 'strCategory',
     area: 'strArea',
     inProgress: 'meals',
+    instructions: 'strInstructions',
   },
 };
 
@@ -41,4 +43,6 @@ export const convertRecipe = (apiRecipe, recipeType) => ({
   image: apiRecipe[API_KEYS[recipeType].thumb],
   ingredients: getIngredientsOrMeasures('Ingredient', apiRecipe),
   measures: getIngredientsOrMeasures('Measure', apiRecipe),
+  instructions: apiRecipe[API_KEYS[recipeType].instructions],
+  tags: recipeType === 'comida' ? apiRecipe.strTags.split(',') : [],
 });

@@ -37,6 +37,7 @@ export const fetchRecipeById = async () => {
   const url = isMeal ? URLS.mealById : URLS.drinkById;
   const response = await fetch(url);
   const data = await response.json();
+  console.log(data);
   const recipeInfo = data[RECIPE_TYPE][0];
   const neededInfo = isMeal ? KEYS.meal_keys : KEYS.drink_keys;
   return (
