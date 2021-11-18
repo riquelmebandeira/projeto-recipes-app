@@ -5,7 +5,7 @@ import fetchApi from '../utils/FetchApi';
 
 export default function ExplorarIngredientes() {
   const [data, setData] = useState([]);
-  const NUMBER = -12;
+  const NUMBER = 12;
   const recipeType = window.location.pathname === '/explorar/comidas/ingredientes'
     ? 'comidas' : 'bebidas';
 
@@ -16,10 +16,11 @@ export default function ExplorarIngredientes() {
       searchInput: ' ',
     });
     const recipes = recipeType === 'comidas'
-      ? resultApi.meals.slice(NUMBER) : resultApi.drinks.slice(NUMBER);
+      ? resultApi.meals.slice(0, NUMBER) : resultApi.drinks.slice(0, NUMBER);
     setData(recipes);
+    console.log('fetch', resultApi);
   };
-  console.log(data);
+  console.log('data', data);
 
   useEffect(() => { fetchIngredients(); }, []);
   return (
@@ -36,7 +37,7 @@ export default function ExplorarIngredientes() {
             </h1>
             <img
               data-testid={ `${index}-card-img` }
-              src={ `https://www.themealdb.com/images/ingredients/${ingre.strIngredient || ingre.strIngredient1}.png` }
+              src={ `https://www.themealdb.com/images/ingredients/${ingre.strIngredient || ingre.strIngredient1}-Small.png ` }
               alt={ ingre.strIngredient || ingre.strIngredient1 }
             />
           </section>
