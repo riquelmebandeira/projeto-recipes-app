@@ -13,7 +13,7 @@ export default function ExplorarIngredientes() {
     const resultApi = await fetchApi({
       recipeType,
       filterType: 'exIngredients',
-      searchInput: ' ',
+      searchInput: '',
     });
     const recipes = recipeType === 'comidas'
       ? resultApi.meals.slice(0, NUMBER) : resultApi.drinks.slice(0, NUMBER);
@@ -23,6 +23,11 @@ export default function ExplorarIngredientes() {
   console.log('data', data);
 
   useEffect(() => { fetchIngredients(); }, []);
+
+  const getImgSrc = (ingredient) => (recipeType === 'comidas'
+    ? `https://www.themealdb.com/images/ingredients/${ingredient}-Small.png`
+    : `https://www.thecocktaildb.com/images/ingredients/${ingredient}-Small.png`);
+
   return (
     <section>
       <Header title="Explorar Ingredientes" showSearchBtn={ false } />
@@ -37,7 +42,7 @@ export default function ExplorarIngredientes() {
             </h1>
             <img
               data-testid={ `${index}-card-img` }
-              src={ `https://www.themealdb.com/images/ingredients/${ingre.strIngredient || ingre.strIngredient1}-Small.png ` }
+              src={ getImgSrc(ingre.strIngredient || ingre.strIngredient1) }
               alt={ ingre.strIngredient || ingre.strIngredient1 }
             />
           </section>
