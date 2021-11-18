@@ -1,21 +1,29 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Button from './Button';
 
-export default function FilterButtons() {
+export default function FilterButtons({ onClick }) {
   return (
     <section>
       <Button
         testid="filter-by-all-btn"
         name="All"
+        onClick={ onClick }
       />
       <Button
         testid="filter-by-food-btn"
         name="Food"
+        onClick={ onClick }
       />
       <Button
         testid="filter-by-drink-btn"
         name="Drinks"
+        onClick={ onClick }
       />
     </section>
   );
 }
+
+FilterButtons.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

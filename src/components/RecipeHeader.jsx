@@ -1,35 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
+import FavoriteButton from './FavoriteButton';
 
-import { useDispatch, useSelector } from 'react-redux';
-import IconButton from './IconButton';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
-import { getRecipeURL } from '../utils/recipeInfo';
-import { toggleFavoriteRecipe } from '../redux/actions';
-
-const copy = require('clipboard-copy');
+import ShareButton from './ShareButton';
 
 export default function RecipeHeader({ recipe }) {
   const { image, name, category, id: recipeId } = recipe;
-  const [urlCopied, setUrlCopied] = useState(false);
-  const dispatch = useDispatch();
-  const isFavorite = useSelector(
-    (state) => state.recipes.favoriteRecipes
-      .some(({ id }) => id === recipeId),
-  );
-
-  const shareRecipe = () => {
-    const THREE_SECONDS = 3000;
-    copy(getRecipeURL(recipeId));
-    setUrlCopied(true);
-    setTimeout(() => setUrlCopied(false), THREE_SECONDS);
-  };
-
-  const favoriteRecipe = () => {
-    dispatch(toggleFavoriteRecipe(recipe));
-  };
 
   return (
     <div>
@@ -40,20 +16,8 @@ export default function RecipeHeader({ recipe }) {
       />
       <h1 data-testid="recipe-title">{name }</h1>
       <h2 data-testid="recipe-category">{ category }</h2>
-      { urlCopied ? <div>Link copiado!</div> : (
-        <IconButton
-          name="Compartilhar"
-          src={ shareIcon }
-          onClick={ () => shareRecipe() }
-          testid="share-btn"
-        />
-      ) }
-      <IconButton
-        name="Favoritar"
-        src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-        onClick={ () => favoriteRecipe() }
-        testid="favorite-btn"
-      />
+      <ShareButton recipeId={ recipeId } />
+      <FavoriteButton recipe={ recipe } />
     </div>
   );
 }
