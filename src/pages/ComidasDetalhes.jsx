@@ -16,7 +16,7 @@ export default function ComidasDetalhes() {
 
   return !recipeInfo ? <Loading /> : (<RecipeDetails
     id={ recipeInfo.idMeal }
-    type="comidas"
+    type="comida"
     area={ recipeInfo.strArea }
     category={ recipeInfo.strCategory }
     alcoholicOrNot=""

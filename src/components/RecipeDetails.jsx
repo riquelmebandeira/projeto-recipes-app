@@ -24,7 +24,7 @@ export default function RecipeDetails(props) {
             <p data-testid="recipe-category">{ isMeal ? category : alcoholicOrNot }</p>
           </div>
           <div className="input-container">
-            <FavoriteBtn />
+            <FavoriteBtn { ...props } />
             <ShareBtn />
           </div>
         </section>
