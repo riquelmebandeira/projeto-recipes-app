@@ -1,20 +1,29 @@
 // import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import fetchApi from '../utils/FetchApi';
+import { API_KEYS, getRecipeType } from '../utils/recipeInfo';
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const [filterType, setFilterType] = useState('name');
+  const history = useHistory();
 
-  const handleClick = () => {
-    const resultApi = fetchApi({
+  const handleClick = async () => {
+    const recipeType = getRecipeType();
+    const resultApi = await fetchApi({
       filterType,
       searchInput,
-      recipeType: window.location.pathname.slice(1),
+      recipeType,
     });
-    if (resultApi.length === 1) {
-      // logica de redirect
-      // history.push(`/comidas/${resultApi[0].idMeal}`);
+
+    const recipes = Object.values(resultApi)[0];
+
+    if (recipes === null) {
+      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    } else if (recipes.length === 1) {
+      const idKey = API_KEYS[recipeType].id;
+      history.push(`/${recipeType}s/${recipes[0][idKey]}`);
     }
   };
 
@@ -58,7 +67,7 @@ function SearchBar() {
       <button
         data-testid="exec-search-btn"
         type="button"
-        onClick={ handleClick }
+        onClick={ () => handleClick() }
       >
         buscar
       </button>

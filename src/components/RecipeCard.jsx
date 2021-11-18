@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function RecipeCard({ recipeIndex, recipeImg, recipeName, recipeType, recipeId }) {
   return (
     <Link
-      to={ `${recipeType}/${recipeId}` }
+      to={ `${recipeType}s/${recipeId}` }
       key={ recipeIndex }
       data-testid={ `${recipeIndex}-recipe-card` }
     >
@@ -28,7 +28,7 @@ function RecipeCard({ recipeIndex, recipeImg, recipeName, recipeType, recipeId }
 RecipeCard.propTypes = {
   recipeId: PropTypes.string.isRequired,
   recipeImg: PropTypes.string.isRequired,
-  recipeIndex: PropTypes.string.isRequired,
+  recipeIndex: PropTypes.number.isRequired,
   recipeName: PropTypes.string.isRequired,
   recipeType: PropTypes.string.isRequired,
 };
