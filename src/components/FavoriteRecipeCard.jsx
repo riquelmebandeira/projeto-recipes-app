@@ -21,14 +21,6 @@ function FavoriteRecipeCard({ index, recipe }) {
           alt={ `favorite recipe ${index}` }
           data-testid={ `${index}-horizontal-image` }
         />
-        <ShareButton
-          testid={ `${index}-horizontal-share-btn` }
-          recipeId={ id }
-        />
-        <FavoriteButton
-          testid={ `${index}-horizontal-favorite-btn` }
-          recipe={ recipe }
-        />
         <span
           data-testid={ `${index}-horizontal-top-text` }
         >
@@ -40,6 +32,15 @@ function FavoriteRecipeCard({ index, recipe }) {
           {name}
         </span>
       </Link>
+      <ShareButton
+        testid={ `${index}-horizontal-share-btn` }
+        recipeId={ id }
+        type={ type }
+      />
+      <FavoriteButton
+        testid={ `${index}-horizontal-favorite-btn` }
+        recipe={ recipe }
+      />
     </li>
   );
 }

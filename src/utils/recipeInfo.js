@@ -27,8 +27,8 @@ const LAST = -1;
 // pega 'comida' ou 'bebida' (no singular!) com base na URL
 export const getRecipeType = () => window.location.href.split('/')[3].slice(0, LAST);
 
-export const getRecipeURL = (id) => (
-  `${window.location.origin}/${getRecipeType()}s/${id}`
+export const getRecipeURL = (id, type) => ( // type recebe 'comida' ou 'bebida'
+  `${window.location.origin}/${type}s/${id}`
 );
 
 export const convertRecipe = (apiRecipe, recipeType) => ({
