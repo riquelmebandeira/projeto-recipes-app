@@ -1,6 +1,8 @@
 // import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { saveRecipesList } from '../redux/actions';
 import fetchApi from '../utils/FetchApi';
 import { API_KEYS, getRecipeType } from '../utils/recipeInfo';
 
@@ -8,6 +10,7 @@ function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const [filterType, setFilterType] = useState('name');
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleClick = async () => {
     const recipeType = getRecipeType();
@@ -24,6 +27,8 @@ function SearchBar() {
     } else if (recipes.length === 1) {
       const idKey = API_KEYS[recipeType].id;
       history.push(`/${recipeType}s/${recipes[0][idKey]}`);
+    } else if (recipes.length > 1) {
+      dispatch(saveRecipesList(recipes));
     }
   };
 
