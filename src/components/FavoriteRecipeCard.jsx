@@ -6,7 +6,7 @@ import ShareButton from './ShareButton';
 import FavoriteButton from './FavoriteButton';
 
 function FavoriteRecipeCard({ index, recipe }) {
-  const { category, image, type, id, name, area } = recipe;
+  const { category, image, type, id, name, area, alcoholicOrNot } = recipe;
   console.log(recipe);
   return (
     <li
@@ -32,7 +32,7 @@ function FavoriteRecipeCard({ index, recipe }) {
         <span
           data-testid={ `${index}-horizontal-top-text` }
         >
-          { type.includes('comida') ? `${area} - ${category}` : category }
+          { type.includes('comida') ? `${area} - ${category}` : alcoholicOrNot }
         </span>
         <span
           data-testid={ `${index}-horizontal-name` }
@@ -47,6 +47,7 @@ function FavoriteRecipeCard({ index, recipe }) {
 FavoriteRecipeCard.propTypes = {
   index: PropTypes.number.isRequired,
   recipe: PropTypes.shape({
+    alcoholicOrNot: PropTypes.string,
     area: PropTypes.string,
     category: PropTypes.string,
     id: PropTypes.string,
