@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { API_KEYS } from '../utils/recipeInfo';
+import { API_KEYS, getRecipeType } from '../utils/recipeInfo';
 import RecipeCard from './RecipeCard';
 
-function RecipesList({ recipes, recipeType }) {
+function RecipesList({ recipes }) {
+  const recipeType = getRecipeType();
+
   const recipeKey = API_KEYS[recipeType].base;
   return (
     <div>
@@ -22,7 +24,6 @@ function RecipesList({ recipes, recipeType }) {
 }
 
 RecipesList.propTypes = {
-  recipeType: PropTypes.string.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

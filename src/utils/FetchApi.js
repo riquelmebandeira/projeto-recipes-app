@@ -1,6 +1,7 @@
 const URLS = {
   bebida: {
     ingredients: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=',
+    exIngredients: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list',
     name: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=',
     first: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=',
     list: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=',
@@ -9,6 +10,7 @@ const URLS = {
   },
   comida: {
     ingredients: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
+    exIngredients: 'https://www.themealdb.com/api/json/v1/1/list.php?i=list',
     name: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
     first: 'https://www.themealdb.com/api/json/v1/1/search.php?f=',
     list: 'https://www.themealdb.com/api/json/v1/1/list.php?c=',

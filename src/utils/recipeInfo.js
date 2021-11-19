@@ -22,10 +22,10 @@ export const API_KEYS = {
   },
 };
 
-const LAST = -1;
-
 // pega 'comida' ou 'bebida' (no singular!) com base na URL
-export const getRecipeType = () => window.location.href.split('/')[3].slice(0, LAST);
+export function getRecipeType() {
+  return window.location.href.includes('comida') ? 'comida' : 'bebida';
+}
 
 export const getRecipeURL = (id) => (
   `${window.location.origin}/${getRecipeType()}s/${id}`

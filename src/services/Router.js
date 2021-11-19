@@ -5,10 +5,9 @@ import BebidasDetalhes from '../pages/BebidasDetalhes';
 import ComidasDetalhes from '../pages/ComidasDetalhes';
 import Explorar from '../pages/Explorar';
 import ExplorarBebidas from '../pages/ExplorarBebidas';
-import ExplorarBebidasIngredientes from '../pages/ExplorarBebidasIngredientes';
 import ExplorarComidas from '../pages/ExplorarComidas';
 import ExplorarComidasArea from '../pages/ExplorarComidasArea';
-import ExplorarComidasIngredientes from '../pages/ExplorarComidasIngredientes';
+import ExplorarIngredientes from '../pages/ExplorarIngredients';
 import Login from '../pages/Login';
 import Perfil from '../pages/Perfil';
 import Progresso from '../pages/Progresso';
@@ -30,11 +29,11 @@ function Router() {
 
       <Route
         path="/explorar/comidas/ingredientes"
-        component={ ExplorarComidasIngredientes }
+        component={ ExplorarIngredientes }
       />
       <Route
         path="/explorar/bebidas/ingredientes"
-        component={ ExplorarBebidasIngredientes }
+        component={ ExplorarIngredientes }
       />
       <Route path="/explorar/bebidas" component={ ExplorarBebidas } />
       <Route path="/explorar/comidas/area" component={ ExplorarComidasArea } />
