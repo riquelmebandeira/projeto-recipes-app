@@ -7,7 +7,6 @@ import FavoriteButton from './FavoriteButton';
 
 function FavoriteRecipeCard({ index, recipe }) {
   const { category, image, type, id, name, area, alcoholicOrNot } = recipe;
-  console.log(recipe);
   return (
     <li
       key={ index }
