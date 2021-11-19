@@ -40,7 +40,6 @@ export default function ExplorarIngredientes() {
     const recipe = recipeType === 'comida'
       ? resultApi.meals : resultApi.drinks;
     dispatch(saveRecipesList(recipe));
-    // return recipeList.length > 1 ? history.push('/comidas') : null;
     history.push(`/${recipeType}s`);
   };
   return (
