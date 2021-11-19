@@ -8,29 +8,38 @@ import FavoriteButton from './FavoriteButton';
 function FavoriteRecipeCard({ index, recipe }) {
   const { category, image, type, id, name } = recipe;
   return (
-    <Link
-      to={ `${type}s/${id}` }
+    <li
       key={ index }
-      data-testid={ `${index}-recipe-card` }
     >
-      <img
-        src={ image }
-        alt={ `favorite recipe ${index}` }
-        data-testid={ `${index}-horizontal-image` }
-      />
-      <ShareButton recipeId={ id } />
-      <FavoriteButton recipeId={ id } />
-      <span
-        data-testid={ `${index}-horizontal-top-text` }
+      <Link
+        to={ `${type}s/${id}` }
+        data-testid={ `${index}-recipe-card` }
       >
-        { category }
-      </span>
-      <li
-        data-testid={ `${index}-horizontal-name` }
-      >
-        {name}
-      </li>
-    </Link>
+        <img
+          src={ image }
+          alt={ `favorite recipe ${index}` }
+          data-testid={ `${index}-horizontal-image` }
+        />
+        <ShareButton
+          testid={ `${index}-horizontal-share-btn` }
+          recipeId={ id }
+        />
+        <FavoriteButton
+          testid={ `${index}-horizontal-favorite-btn` }
+          recipe={ recipe }
+        />
+        <span
+          data-testid={ `${index}-horizontal-top-text` }
+        >
+          { category }
+        </span>
+        <span
+          data-testid={ `${index}-horizontal-name` }
+        >
+          {name}
+        </span>
+      </Link>
+    </li>
   );
 }
 

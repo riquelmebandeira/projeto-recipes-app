@@ -15,9 +15,12 @@ export default function ReceitasFavoritas() {
       <Header title="Receitas Favoritas" showSearchBtn={ false } />
       <FilterButtons onClick={ changeFilter } />
       { favoriteRecipes.filter(({ type }) => type.includes(filterType))
-        .map((recipe, index) => (
-          <FavoriteRecipeCard key={ recipe.id } index={ index } recipe={ recipe } />
-        ))}
+        .map((recipe, index) => {
+          console.log('recipe', recipe);
+          return (
+            <FavoriteRecipeCard key={ recipe.id } index={ index } recipe={ recipe } />
+          );
+        })}
     </section>
   );
 }

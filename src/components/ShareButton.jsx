@@ -6,7 +6,7 @@ import IconButton from './IconButton';
 
 const copy = require('clipboard-copy');
 
-export default function ShareButton({ recipeId }) {
+export default function ShareButton({ recipeId, testid }) {
   const [urlCopied, setUrlCopied] = useState(false);
 
   const shareRecipe = () => {
@@ -21,11 +21,16 @@ export default function ShareButton({ recipeId }) {
       name="Compartilhar"
       src={ shareIcon }
       onClick={ () => shareRecipe() }
-      testid="share-btn"
+      testid={ testid }
     />
   );
 }
 
 ShareButton.propTypes = {
   recipeId: PropTypes.string.isRequired,
+  testid: PropTypes.string,
+};
+
+ShareButton.defaultProps = {
+  testid: 'share-btn',
 };

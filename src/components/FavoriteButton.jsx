@@ -6,7 +6,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import IconButton from './IconButton';
 
-export default function FavoriteButton({ recipe }) {
+export default function FavoriteButton({ recipe, testid }) {
   const { id: recipeId } = recipe;
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ export default function FavoriteButton({ recipe }) {
       name="Favoritar"
       src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
       onClick={ () => favoriteRecipe() }
-      testid="favorite-btn"
+      testid={ testid }
     />
   );
 }
@@ -33,4 +33,9 @@ FavoriteButton.propTypes = {
   recipe: PropTypes.shape({
     id: PropTypes.string,
   }).isRequired,
+  testid: PropTypes.string,
+};
+
+FavoriteButton.defaultProps = {
+  testid: 'favorite-btn',
 };
