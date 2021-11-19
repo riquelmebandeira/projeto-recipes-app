@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import './App.css';
 import Router from './services/Router';
 import RecipesProvider from './context/RecipesProvider';
 import { initLsData } from './redux/actions';
+import './App.css';
 
 function App() {
   // hydrate Redux store from localStorage

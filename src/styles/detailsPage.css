@@ -57,3 +57,32 @@ main {
   position: fixed;
 }
 
+.input-container {
+  height: 80px;
+  padding: 28px 6px;
+  text-align: center;
+  width: 80px;
+}
+
+.input-container input {
+  margin-left: 6px;
+}
+
+.input-container p {
+  display: block;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-container h1 {
+  font-size: 30px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}

@@ -8,9 +8,9 @@ const userLsKeys = ['user', 'mealsToken', 'cocktailsToken'];
 const recipesLsKeys = ['doneRecipes', 'favoriteRecipes', 'inProgressRecipes'];
 const lsKeys = [...userLsKeys, ...recipesLsKeys];
 
-const getLsData = (keys) => keys.reduce((data, key) => ({
-  ...data, [key]: JSON.parse(localStorage.getItem(key)),
-}), {});
+const getLsData = (keys) => keys.reduce((data, key) => (
+  { ...data, [key]: JSON.parse(localStorage.getItem(key)) }
+), {});
 
 export const getUserLsData = () => ({
   type: SAVE_USER_LS_DATA,
@@ -71,7 +71,18 @@ export const initLsData = () => (dispatch, getState) => {
   });
 };
 
-export const loginUser = (user) => saveUserLsData({ user });
+export const loginUser = (user) => (dispatch) => {
+  dispatch(saveUserLsData({ user }));
+  // dispatch(initLsData());
+};
+
+// export const loadLsData = () => (dispatch) => {
+//   const user = JSON.parse(localStorage.getItem('user'));
+//   if (user !== null) {
+//     dispatch(getUserLsData());
+//     dispatch(getRecipesLsData());
+//   }
+// };
 
 export const updateRecipeInProgress = ({ recipeType, recipeId, steps }) => (
   (dispatch, getState) => {
@@ -84,7 +95,7 @@ export const updateRecipeInProgress = ({ recipeType, recipeId, steps }) => (
         ...previousData,
         [updatingKey]: {
           ...previousData[updatingKey],
-          [recipeId]: { steps },
+          [recipeId]: steps,
         },
       },
     };
