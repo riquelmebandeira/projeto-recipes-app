@@ -8,7 +8,7 @@ export default function ReceitasFavoritas() {
   const [filterType, setFilterType] = useState('');
   const favoriteRecipes = useSelector((state) => state.recipes.favoriteRecipes);
 
-  const changeFilter = ({ name }) => setFilterType(name);
+  const changeFilter = ({ target }) => setFilterType(target.id);
 
   return (
     <section>
