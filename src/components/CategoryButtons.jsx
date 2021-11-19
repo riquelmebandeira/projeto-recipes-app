@@ -1,13 +1,16 @@
-import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getRecipes } from '../redux/actions';
 import '../styles/mealsAndDrink.css';
 import fetchApi from '../utils/FetchApi';
+import { getRecipeType } from '../utils/recipeInfo';
 
-function CategoryButtons({ getRecipes, recipeType }) {
+function CategoryButtons() {
+  const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
   const [filtered, setFiltered] = useState('');
   const FIVE_CATEGORIES = 5;
-
+  const recipeType = getRecipeType();
   const getCategories = async () => {
     const responseJson = await fetchApi({
       recipeType,
@@ -31,7 +34,7 @@ function CategoryButtons({ getRecipes, recipeType }) {
           value="list"
           onClick={ () => {
             setFiltered('');
-            getRecipes();
+            dispatch(getRecipes({ recipeType }));
           } }
         >
           All
@@ -44,10 +47,12 @@ function CategoryButtons({ getRecipes, recipeType }) {
             onClick={ () => {
               if (filtered === get.strCategory) {
                 setFiltered('');
-                getRecipes();
+                dispatch(getRecipes({ recipeType }));
               } else {
                 setFiltered(get.strCategory);
-                getRecipes('category', get.strCategory);
+                dispatch(getRecipes(
+                  { filterType: 'category', searchInput: get.strCategory, recipeType },
+                ));
               }
             } }
           >
@@ -58,11 +63,5 @@ function CategoryButtons({ getRecipes, recipeType }) {
     </section>
   );
 }
-
-CategoryButtons.propTypes = {
-  getRecipes: PropTypes.func.isRequired,
-  recipeType: PropTypes.string.isRequired,
-  // setLoading: PropTypes.func.isRequired,
-};
 
 export default CategoryButtons;

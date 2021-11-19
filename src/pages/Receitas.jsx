@@ -1,46 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import CategoryButtons from '../components/CategoryButtons';
 import RecipesList from '../components/RecipesList';
-import Loading from '../components/Loading';
-import fetchApi from '../utils/FetchApi';
 import { getRecipeType } from '../utils/recipeInfo';
+import { getRecipes } from '../redux/actions';
 
 export default function Receitas() {
-  const [loading, setLoading] = useState(true);
-  const [recipes, setRecipes] = useState([]);
+  const { recipeList } = useSelector((state) => state.recipes);
+  const dispatch = useDispatch();
   const TWELVE_MEALSORDRINK = 12;
-  const listRecipes = recipes.slice(0, TWELVE_MEALSORDRINK);
+  const listRecipes = recipeList.slice(0, TWELVE_MEALSORDRINK);
   const recipeType = getRecipeType();
-
-  const getRecipes = async (filterType = 'name', searchInput = '') => {
-    setLoading(true);
-
-    const response = await fetchApi({
-      recipeType,
-      filterType,
-      searchInput,
-    });
-    setRecipes(Object.values(response)[0]);
-    setLoading(false);
-  };
-
   useEffect(() => {
-    getRecipes(); // eslint-disable-next-line
+    if (recipeList.length === 0) {
+      dispatch(getRecipes({ recipeType }));
+    }
   }, []);
 
   return (
     <section>
       <Header title={ recipeType } />
-      <CategoryButtons getRecipes={ getRecipes } recipeType={ recipeType } />
-      { loading ? (
-        <Loading />
-      ) : (
-        <section>
-          <RecipesList recipeType={ recipeType } recipes={ listRecipes } />
-        </section>
-      ) }
+      <CategoryButtons />
+      <section>
+        <RecipesList recipeType={ recipeType } recipes={ listRecipes } />
+      </section>
       <Footer />
     </section>
   );

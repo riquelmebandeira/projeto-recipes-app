@@ -1,8 +1,9 @@
-import { SAVE_RECIPES_LS_DATA } from '../actions';
+import { SAVE_RECIPES_LS_DATA, SAVE_RECIPE_LIST } from '../actions';
 
 const INITIAL_STATE = {
   doneRecipes: [],
   favoriteRecipes: [],
+  recipeList: [],
   inProgressRecipes: {
     cocktails: {},
     meals: {},
@@ -15,6 +16,11 @@ const recipesReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       ...action.data,
+    };
+  case SAVE_RECIPE_LIST:
+    return {
+      ...state,
+      recipeList: action.data,
     };
   default: return state;
   }

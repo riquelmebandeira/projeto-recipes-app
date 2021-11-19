@@ -18,7 +18,6 @@ export default function ExplorarComidas() {
     const foodSurpriseAPI = 'https://www.themealdb.com/api/json/v1/1/random.php';
     const response = await fetch(foodSurpriseAPI);
     const data = await response.json();
-    // console.log(data);
     return data;
   };
 

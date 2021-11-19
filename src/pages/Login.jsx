@@ -8,7 +8,6 @@ function Login() {
   const [password, setPassword] = useState('');
   const [disabled, setDisabled] = useState(true);
   const history = useHistory();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
