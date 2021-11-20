@@ -16,14 +16,12 @@ export default function FilterButtons({ onClick }) {
         name="Food"
         value="comida"
         onClick={ onClick }
-
       />
       <Button
         testid="filter-by-drink-btn"
         name="Drinks"
         value="bebida"
         onClick={ onClick }
-
       />
     </section>
   );

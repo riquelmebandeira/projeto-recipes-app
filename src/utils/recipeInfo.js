@@ -29,8 +29,8 @@ export function getRecipeType() {
   return window.location.href.includes('comida') ? 'comida' : 'bebida';
 }
 
-export const getRecipeURL = (id) => (
-  `${window.location.origin}/${getRecipeType()}s/${id}`
+export const getRecipeURL = (id, type) => ( // type recebe 'comida' ou 'bebida'
+  `${window.location.origin}/${type}s/${id}`
 );
 
 export const convertRecipe = (apiRecipe, recipeType) => ({

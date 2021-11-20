@@ -177,18 +177,18 @@ describe('37 - Implemente os cards de recomendação, onde serão 6 cards, mas m
 
     cy.get('[data-testid*="recomendation-card"]').should('have.length', 6);
 
-    cy.get('[data-testid="0-recomendation-card"]').should('exist').and('visible');
+    cy.get('[data-testid="0-recomendation-card"]').should('exist').and('be.visible');
     cy.get('[data-testid="0-recomendation-title"]').contains('GG');
-    cy.get('[data-testid="1-recomendation-card"]').should('exist').and('visible');
+    cy.get('[data-testid="1-recomendation-card"]').should('exist').and('be.visible');
     cy.get('[data-testid="1-recomendation-title"]').contains('A1');
 
-    cy.get('[data-testid="2-recomendation-card"]').should('exist').and('not.visible');
+    cy.get('[data-testid="2-recomendation-card"]').should('exist').and('not.be.visible');
     cy.get('[data-testid="2-recomendation-title"]').contains('ABC');
-    cy.get('[data-testid="3-recomendation-card"]').should('exist').and('not.visible');
+    cy.get('[data-testid="3-recomendation-card"]').should('exist').and('not.be.visible');
     cy.get('[data-testid="3-recomendation-title"]').contains('Kir');
-    cy.get('[data-testid="4-recomendation-card"]').should('exist').and('not.visible');
+    cy.get('[data-testid="4-recomendation-card"]').should('exist').and('not.be.visible');
     cy.get('[data-testid="4-recomendation-title"]').contains('747');
-    cy.get('[data-testid="5-recomendation-card"]').should('exist').and('not.visible');
+    cy.get('[data-testid="5-recomendation-card"]').should('exist').and('not.be.visible');
     cy.get('[data-testid="5-recomendation-title"]').contains('252');
   });
 
@@ -201,18 +201,18 @@ describe('37 - Implemente os cards de recomendação, onde serão 6 cards, mas m
 
     cy.get('[data-testid*="recomendation-card"]').should('have.length', 6);
 
-    cy.get('[data-testid="0-recomendation-card"]').should('exist').and('visible');
+    cy.get('[data-testid="0-recomendation-card"]').should('exist').and('be.visible');
     cy.get('[data-testid="0-recomendation-title"]').contains('Corba');
-    cy.get('[data-testid="1-recomendation-card"]').should('exist').and('visible');
+    cy.get('[data-testid="1-recomendation-card"]').should('exist').and('be.visible');
     cy.get('[data-testid="1-recomendation-title"]').contains('Kumpir');
 
-    cy.get('[data-testid="2-recomendation-card"]').should('exist');
+    cy.get('[data-testid="2-recomendation-card"]').should('exist').and('not.be.visible');
     cy.get('[data-testid="2-recomendation-title"]').contains('Dal fry');
-    cy.get('[data-testid="3-recomendation-card"]').should('exist').and('not.visible');
+    cy.get('[data-testid="3-recomendation-card"]').should('exist').and('not.be.visible');
     cy.get('[data-testid="3-recomendation-title"]').contains('Poutine');
-    cy.get('[data-testid="4-recomendation-card"]').should('exist').and('not.visible');
+    cy.get('[data-testid="4-recomendation-card"]').should('exist').and('not.be.visible');
     cy.get('[data-testid="4-recomendation-title"]').contains('Lasagne');
-    cy.get('[data-testid="5-recomendation-card"]').should('exist').and('not.visible');
+    cy.get('[data-testid="5-recomendation-card"]').should('exist').and('not.be.visible');
     cy.get('[data-testid="5-recomendation-title"]').contains('Timbits');
   });
 });
