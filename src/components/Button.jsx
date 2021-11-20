@@ -5,7 +5,6 @@ export default function Button({ name, onClick, testid, disabled, value }) {
   return (
     <button
       type="button"
-      id={ id }
       onClick={ onClick }
       data-testid={ testid }
       disabled={ disabled }
@@ -20,7 +19,6 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   name: PropTypes.string,
   onClick: PropTypes.func,
-  disabled: PropTypes.bool,
   testid: PropTypes.string,
   value: PropTypes.string,
 };

@@ -8,7 +8,7 @@ export default function ReceitasFavoritas() {
   const [filterType, setFilterType] = useState('');
   const favoriteRecipes = useSelector((state) => state.recipes.favoriteRecipes);
 
-  const changeFilter = ({ target }) => setFilterType(target.id);
+  const changeFilter = ({ target }) => setFilterType(target.value);
 
   return (
     <section>
@@ -21,7 +21,6 @@ export default function ReceitasFavoritas() {
             <FavoriteRecipeCard key={ recipe.id } index={ index } recipe={ recipe } />
           );
         })}
-      <FilterButtons />
     </section>
   );
 }
