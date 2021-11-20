@@ -22,6 +22,7 @@ export default function ReceitasFavoritas() {
             <FavoriteRecipeCard key={ recipe.id } index={ index } recipe={ recipe } />
           );
         })}
+      <FilterButtons />
     </section>
   );
 }

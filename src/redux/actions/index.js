@@ -1,9 +1,11 @@
+import fetchApi from '../../utils/FetchApi';
 import { API_KEYS } from '../../utils/recipeInfo';
 
 // export const GET_USER_LS_DATA = 'GET_LS_DATA';
 export const SAVE_USER_LS_DATA = 'SAVE_USER_LS_DATA';
 export const SAVE_RECIPES_LS_DATA = 'SAVE_RECIPES_LS_DATA';
 
+export const SAVE_RECIPE_LIST = 'SAVE_RECIPE_LIST';
 const userLsKeys = ['user', 'mealsToken', 'cocktailsToken'];
 const recipesLsKeys = ['doneRecipes', 'favoriteRecipes', 'inProgressRecipes'];
 const lsKeys = [...userLsKeys, ...recipesLsKeys];
@@ -34,6 +36,24 @@ const saveUserLsData = (data) => {
     type: SAVE_USER_LS_DATA,
     data,
   };
+};
+
+export const saveRecipesList = (data) => ({
+  type: SAVE_RECIPE_LIST,
+  data,
+});
+
+export const getRecipes = (
+  { filterType = 'name', searchInput = '', recipeType = 'comida' } = {},
+) => async (dispatch) => {
+  // setLoading(true);
+  const response = await fetchApi({
+    recipeType,
+    filterType,
+    searchInput,
+  });
+  dispatch(saveRecipesList(Object.values(response)[0]));
+  // setLoading(false);
 };
 
 export const clearLsData = () => {
@@ -124,3 +144,23 @@ export const toggleFavoriteRecipe = (recipe) => (
     }
   }
 );
+
+const saveDate = () => {
+  const data = new Date();
+  const day = String(data.getDate()).padStart(2, '0');
+  const month = String(data.getMonth() + 1).padStart(2, '0');
+  const year = data.getFullYear();
+  const dataAtual = `${day}/${month}/${year}`;
+  return dataAtual;
+};
+
+export const addDoneRecipe = (
+  { name, image, tags, category, type, id, area, alcoholicOrNot },
+) => (dispatch, getState) => {
+  const { doneRecipes } = getState().recipes;
+  const recipe = {
+    name, image, tags, category, type, id, area, alcoholicOrNot, doneDate: saveDate(),
+  };
+
+  dispatch(saveRecipesLsData({ doneRecipes: [...doneRecipes, recipe] }));
+};
