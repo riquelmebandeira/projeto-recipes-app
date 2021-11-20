@@ -8,24 +8,29 @@ export default function FilterButtons({ onClick }) {
       <Button
         testid="filter-by-all-btn"
         name="All"
+        value=""
         onClick={ onClick }
       />
       <Button
         testid="filter-by-food-btn"
         name="Food"
+        value="comida"
         onClick={ onClick }
-        id="comida"
       />
       <Button
         testid="filter-by-drink-btn"
         name="Drinks"
+        value="bebida"
         onClick={ onClick }
-        id="bebida"
       />
     </section>
   );
 }
 
 FilterButtons.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+};
+
+FilterButtons.defaultProps = {
+  onClick: () => {},
 };

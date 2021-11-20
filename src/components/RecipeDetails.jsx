@@ -26,7 +26,7 @@ export default function RecipeDetails(props) {
           </div>
           <div className="input-container">
             <FavoriteBtn { ...props } />
-            <ShareBtn />
+            <ShareBtn recipeId={ id } recipeType={ type } />
           </div>
         </section>
         <article className="preparation-method">
