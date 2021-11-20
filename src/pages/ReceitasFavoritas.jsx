@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
 import FilterButtons from '../components/FilterButtons';
 import Header from '../components/Header';
-import '../styles/favoriteRecipes.css';
 
 export default function ReceitasFavoritas() {
   const [filterType, setFilterType] = useState('');
