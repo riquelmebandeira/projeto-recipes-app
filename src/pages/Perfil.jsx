@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 export default function Perfil() {
-  const email = useSelector((state) => state.user.email);
+  const email = useSelector((state) => state.user.user.email);
   const history = useHistory();
 
   const redirect = (e) => {
