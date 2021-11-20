@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 import ShareButton from './ShareButton';
 import FavoriteButton from './FavoriteButton';
+import '../styles/favoriteRecipes.css';
 
 function FavoriteRecipeCard({ index, recipe }) {
   const { category, image, type, id, name, area, alcoholicOrNot } = recipe;
   return (
     <li
       key={ index }
-      className="favorite-recipe-card"
     >
       <Link
         to={ `${type}s/${id}` }
@@ -20,6 +20,7 @@ function FavoriteRecipeCard({ index, recipe }) {
           src={ image }
           alt={ `favorite recipe ${index}` }
           data-testid={ `${index}-horizontal-image` }
+          className="favorite-recipe-photo"
         />
         <span
           data-testid={ `${index}-horizontal-top-text` }

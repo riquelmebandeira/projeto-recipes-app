@@ -5,7 +5,6 @@ export default function Button({ name, onClick, testid, disabled, value, id }) {
   return (
     <button
       type="button"
-      id={ id }
       onClick={ onClick }
       data-testid={ testid }
       disabled={ disabled }
