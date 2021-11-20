@@ -9,7 +9,6 @@ import RecipeMadeDrink from '../components/RecipesMadeDrink';
 export default function ReceitasFeitas() {
   const doneRecipes = useSelector((state) => state.recipes.doneRecipes);
   const [filterType, setFilterType] = useState('');
-  console.log('done', doneRecipes);
 
   const changeFilterType = ({ target }) => {
     setFilterType(target.value);
@@ -23,8 +22,8 @@ export default function ReceitasFeitas() {
         doneRecipes.filter(({ type }) => type.includes(filterType))
           .map((recipe, index) => (
             recipe.type === 'comida'
-              ? <RecipeMadeMeal recipe={ recipe } index={ index } />
-              : <RecipeMadeDrink recipe={ recipe } index={ index } />
+              ? <RecipeMadeMeal key={ recipe.id } recipe={ recipe } index={ index } />
+              : <RecipeMadeDrink key={ recipe.id } recipe={ recipe } index={ index } />
           ))
       }
     </>

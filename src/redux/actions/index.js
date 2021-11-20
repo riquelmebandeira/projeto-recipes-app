@@ -131,7 +131,6 @@ const saveDate = () => {
   const month = String(data.getMonth() + 1).padStart(2, '0');
   const year = data.getFullYear();
   const dataAtual = `${day}/${month}/${year}`;
-  // console.log(dataAtual);
   return dataAtual;
 };
 

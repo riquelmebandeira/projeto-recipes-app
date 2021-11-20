@@ -33,7 +33,6 @@ export default function Progresso({ match: { params: { id } } }) {
       .then((recipes) => setRecipe(convertRecipe(recipes[0], recipeType)));
   }, [id, recipeType]);
 
-  // console.log('recipe', recipe);
   return loading || !recipe ? <Loading /> : (
     <section>
       <RecipeHeader recipe={ recipe } />
