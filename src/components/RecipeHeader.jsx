@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { getRecipeType } from '../utils/recipeInfo';
 import FavoriteButton from './FavoriteButton';
 
 import ShareButton from './ShareButton';
@@ -16,7 +17,7 @@ export default function RecipeHeader({ recipe }) {
       />
       <h1 data-testid="recipe-title">{name }</h1>
       <h2 data-testid="recipe-category">{ category }</h2>
-      <ShareButton recipeId={ recipeId } />
+      <ShareButton recipeId={ recipeId } recipeType={ getRecipeType() } />
       <FavoriteButton recipe={ recipe } />
     </div>
   );
