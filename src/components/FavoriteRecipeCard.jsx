@@ -10,6 +10,7 @@ function FavoriteRecipeCard({ index, recipe }) {
   return (
     <li
       key={ index }
+      className="favorite-recipe-card"
     >
       <Link
         to={ `${type}s/${id}` }
