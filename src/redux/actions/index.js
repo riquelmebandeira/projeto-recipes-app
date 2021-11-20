@@ -144,3 +144,23 @@ export const toggleFavoriteRecipe = (recipe) => (
     }
   }
 );
+
+const saveDate = () => {
+  const data = new Date();
+  const day = String(data.getDate()).padStart(2, '0');
+  const month = String(data.getMonth() + 1).padStart(2, '0');
+  const year = data.getFullYear();
+  const dataAtual = `${day}/${month}/${year}`;
+  return dataAtual;
+};
+
+export const addDoneRecipe = (
+  { name, image, tags, category, type, id, area, alcoholicOrNot },
+) => (dispatch, getState) => {
+  const { doneRecipes } = getState().recipes;
+  const recipe = {
+    name, image, tags, category, type, id, area, alcoholicOrNot, doneDate: saveDate(),
+  };
+
+  dispatch(saveRecipesLsData({ doneRecipes: [...doneRecipes, recipe] }));
+};

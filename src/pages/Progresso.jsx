@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import fetchApi from '../utils/FetchApi';
 import { API_KEYS, convertRecipe, getRecipeType } from '../utils/recipeInfo';
@@ -10,11 +10,13 @@ import RecipeHeader from '../components/RecipeHeader';
 import RecipesContext from '../context/RecipesContext';
 import Loading from '../components/Loading';
 import IngredientSteps from '../components/IngredientSteps';
+import { addDoneRecipe } from '../redux/actions';
 
 export default function Progresso({ match: { params: { id } } }) {
   const recipeType = getRecipeType();
   const [recipe, setRecipe] = useState(null);
   const { loading } = useContext(RecipesContext);
+  const dispatch = useDispatch();
   const history = useHistory();
 
   // check if all ingredients (steps) are checked
@@ -35,11 +37,14 @@ export default function Progresso({ match: { params: { id } } }) {
     <section>
       <RecipeHeader recipe={ recipe } />
       <IngredientSteps recipe={ recipe } />
-      <p data-testid="instructions">{recipe.strInstructions}</p>
+      <p data-testid="instructions">{recipe.instructions}</p>
       <Button
         name="Finalizar Receita"
         testid="finish-recipe-btn"
-        onClick={ () => { history.push('/receitas-feitas'); } }
+        onClick={ () => {
+          dispatch(addDoneRecipe(recipe));
+          history.push('/receitas-feitas');
+        } }
         disabled={ !isComplete }
       />
     </section>

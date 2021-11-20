@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Button({ name, onClick, testid, disabled }) {
+export default function Button({ name, onClick, testid, disabled, value }) {
   return (
     <button
       type="button"
       onClick={ onClick }
       data-testid={ testid }
       disabled={ disabled }
+      value={ value }
     >
       { name }
     </button>
@@ -15,10 +16,11 @@ export default function Button({ name, onClick, testid, disabled }) {
 }
 
 Button.propTypes = {
-  name: PropTypes.string,
-  testid: PropTypes.string,
-  onClick: PropTypes.func,
   disabled: PropTypes.bool,
+  name: PropTypes.string,
+  onClick: PropTypes.func,
+  testid: PropTypes.string,
+  value: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -26,4 +28,5 @@ Button.defaultProps = {
   testid: '',
   onClick: () => {},
   disabled: false,
+  value: '',
 };
