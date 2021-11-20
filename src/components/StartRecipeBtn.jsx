@@ -1,17 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { RECIPE_ID, isDone, isInProgress } from '../utils/DetailsPage';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { API_KEYS } from '../utils/recipeInfo';
 
-function StartRecipeBtn() {
-  return !isDone() && (
-    <Link to={ `${RECIPE_ID}/in-progress` }>
+function StartRecipeBtn({ recipeId, recipeType }) {
+  const { isRecipeDone } = useSelector((state) => (state.recipes.doneRecipes
+    .some(({ id, type }) => id === recipeId && type === recipeType)
+  ));
+
+  const inProgressRecipes = useSelector((state) => (
+    state.recipes.inProgressRecipes[API_KEYS[recipeType].inProgress]
+  ));
+
+  return !isRecipeDone && (
+    <Link to={ `${recipeId}/in-progress` }>
       <button type="button" data-testid="start-recipe-btn">
-        {
-          isInProgress() ? 'Continuar Receita' : 'Iniciar receita'
-        }
+        { inProgressRecipes[recipeId] ? 'Continuar Receita' : 'Iniciar receita' }
       </button>
     </Link>
   );
 }
+
+StartRecipeBtn.propTypes = {
+  recipeId: PropTypes.string.isRequired,
+  recipeType: PropTypes.string.isRequired,
+};
 
 export default StartRecipeBtn;

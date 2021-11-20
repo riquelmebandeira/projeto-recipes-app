@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { RECIPE_ID } from '../utils/DetailsPage';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
@@ -10,7 +9,7 @@ function FavoriteBtn({ id, type, area, category, alcoholicOrNot, name, image }) 
   const isFavorite = () => {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const result = favoriteRecipes
-        && favoriteRecipes.find((recipe) => recipe.id === RECIPE_ID);
+        && favoriteRecipes.find((recipe) => recipe.id === id);
     return !!result;
   };
 

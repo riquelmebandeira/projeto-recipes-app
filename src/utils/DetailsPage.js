@@ -1,14 +1,4 @@
-export const MAX_LENGTH = 6;
-export const RECIPE_ID = window.location.pathname.split('/').pop();
-const RECIPE_TYPE = window.location.pathname.includes('comidas') ? 'meals' : 'drinks';
-export const isMeal = RECIPE_TYPE === 'meals';
-
-const URLS = {
-  mealById: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${RECIPE_ID}`,
-  drinkById: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${RECIPE_ID}`,
-  allMeals: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
-  allDrinks: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=',
-};
+import fetchApi from './FetchApi';
 
 export const getIngredientsOrMeasures = (request, recipe) => {
   const allInformation = Object.entries(recipe);
@@ -18,10 +8,12 @@ export const getIngredientsOrMeasures = (request, recipe) => {
   return requestedInfo.map((array) => array[1]);
 };
 
-export const fetchRecipeById = async () => {
-  const url = isMeal ? URLS.mealById : URLS.drinkById;
-  const response = await fetch(url);
-  const data = await response.json();
+export const fetchRecipeById = async (recipeId, recipeType) => {
+  const data = await fetchApi({
+    recipeType,
+    filterType: 'lookup',
+    searchInput: recipeId,
+  });
   const recipeInfo = Object.values(data)[0][0];
   return (
     { ...recipeInfo,
@@ -31,32 +23,12 @@ export const fetchRecipeById = async () => {
   );
 };
 
-export const fetchRecommendedRecipes = async () => {
-  const url = !isMeal ? URLS.allMeals : URLS.allDrinks;
-  const response = await fetch(url);
-  const data = await response.json();
+export const fetchRecommendedRecipes = async (recipeId, recipeType) => {
+  const data = await fetchApi({ recipeType });
   return Object.values(data)[0];
 };
 
 export const treatVideoUrl = (url) => {
   const hash = url.split('=').pop();
   return `https://www.youtube.com/embed/${hash}`;
-};
-
-export const isDone = () => {
-  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-  const result = doneRecipes && doneRecipes.find((recipe) => recipe.id === RECIPE_ID);
-  return !!result;
-};
-
-export const isInProgress = () => {
-  const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  if (inProgressRecipes && isMeal) {
-    return inProgressRecipes.hasOwnProperty.call(inProgressRecipes.meals, RECIPE_ID);
-  }
-  if (inProgressRecipes && !isMeal) {
-    return inProgressRecipes.hasOwnProperty.call(
-      inProgressRecipes.cocktails, RECIPE_ID,
-    );
-  }
 };

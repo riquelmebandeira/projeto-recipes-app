@@ -5,12 +5,13 @@ import StartRecipeBtn from './StartRecipeBtn';
 import RecommendationsList from './RecommendationsList';
 import FavoriteBtn from './FavoriteBtn';
 import ShareBtn from './ShareBtn';
-import { treatVideoUrl, isMeal } from '../utils/DetailsPage';
+import { treatVideoUrl } from '../utils/DetailsPage';
 import '../styles/detailsPage.css';
 
 export default function RecipeDetails(props) {
   const { category, alcoholicOrNot, name, image, ingredients,
-    measures, recommendations, instructions, url } = props;
+    measures, recommendations, instructions, url, id, type } = props;
+  const isMeal = type === 'comida';
 
   return (
     <>
@@ -50,7 +51,11 @@ export default function RecipeDetails(props) {
           }
         </article>
         <RecommendationsList { ...{ recommendations } } />
-        <StartRecipeBtn />
+        <StartRecipeBtn
+          recipeId={ id }
+          recipeType={ type }
+          ingredientsQty={ ingredients.length }
+        />
       </main>
     </>
   );

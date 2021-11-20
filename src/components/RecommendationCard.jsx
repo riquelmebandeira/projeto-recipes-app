@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isMeal } from '../utils/DetailsPage';
 import '../styles/detailsPage.css';
+import { getRecipeType } from '../utils/recipeInfo';
 
 function RecommendationCard({ recipe, index }) {
+  const isMeal = getRecipeType() === 'comida';
+
   return (
     <div className="recommendation-card">
       <img
