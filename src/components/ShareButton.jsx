@@ -6,12 +6,12 @@ import IconButton from './IconButton';
 
 const copy = require('clipboard-copy');
 
-export default function ShareButton({ recipeId, testid, type }) {
+export default function ShareButton({ recipeId, testid, recipeType }) {
   const [urlCopied, setUrlCopied] = useState(false);
 
   const shareRecipe = () => {
     const THREE_SECONDS = 3000;
-    copy(getRecipeURL(recipeId, type));
+    copy(getRecipeURL(recipeId, recipeType));
     setUrlCopied(true);
     setTimeout(() => setUrlCopied(false), THREE_SECONDS);
   };
@@ -28,8 +28,8 @@ export default function ShareButton({ recipeId, testid, type }) {
 
 ShareButton.propTypes = {
   recipeId: PropTypes.string.isRequired,
+  recipeType: PropTypes.string.isRequired,
   testid: PropTypes.string,
-  type: PropTypes.string.isRequired,
 };
 
 ShareButton.defaultProps = {

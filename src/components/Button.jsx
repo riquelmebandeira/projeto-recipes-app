@@ -25,8 +25,8 @@ Button.propTypes = {
 
 Button.defaultProps = {
   name: 'Botão',
-  testid: '',
-  onClick: () => {},
   disabled: false,
-  value: '',
+  onClick: undefined,
+  testid: undefined,
+  value: undefined,
 };

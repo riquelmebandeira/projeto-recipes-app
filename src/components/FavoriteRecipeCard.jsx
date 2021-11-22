@@ -36,7 +36,7 @@ function FavoriteRecipeCard({ index, recipe }) {
       <ShareButton
         testid={ `${index}-horizontal-share-btn` }
         recipeId={ id }
-        type={ type }
+        recipeType={ type }
       />
       <FavoriteButton
         testid={ `${index}-horizontal-favorite-btn` }
