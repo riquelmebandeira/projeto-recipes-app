@@ -2,3 +2,11 @@ footer nav {
   bottom: 0;
   position: fixed;
 }
+
+.footer-container {
+  align-items: center;
+  background-color: rgb(140, 145, 151);
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
