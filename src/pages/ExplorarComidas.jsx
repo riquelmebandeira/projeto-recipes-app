@@ -27,7 +27,7 @@ export default function ExplorarComidas() {
   };
 
   return (
-    <section>
+    <section className="content-container">
       <Header title="Explorar Comidas" showSearchBtn={ false } />
       <button
         type="button"

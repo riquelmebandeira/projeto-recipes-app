@@ -11,7 +11,7 @@ export default function ReceitasFavoritas() {
   const changeFilter = ({ target }) => setFilterType(target.value);
 
   return (
-    <section>
+    <section className="content-container">
       <Header title="Receitas Favoritas" showSearchBtn={ false } />
       <FilterButtons onClick={ changeFilter } />
       { favoriteRecipes.filter(({ type }) => type.includes(filterType))

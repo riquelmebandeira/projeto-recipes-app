@@ -34,7 +34,7 @@ export default function Progresso({ match: { params: { id } } }) {
   }, [id, recipeType]);
 
   return loading || !recipe ? <Loading /> : (
-    <section>
+    <section className="content-container">
       <RecipeHeader recipe={ recipe } />
       <IngredientSteps recipe={ recipe } />
       <p data-testid="instructions">{recipe.instructions}</p>

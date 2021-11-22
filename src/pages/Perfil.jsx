@@ -21,7 +21,7 @@ export default function Perfil() {
   };
 
   return (
-    <>
+    <section className="content-container">
       <section>
         <Header title="Perfil" showSearchBtn={ false } />
         <Footer />
@@ -51,6 +51,6 @@ export default function Perfil() {
       >
         Sair
       </button>
-    </>
+    </section>
   );
 }

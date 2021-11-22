@@ -35,9 +35,9 @@ function Login() {
   };
 
   return (
-    <main className="login-container">
+    <section className="login-container">
       <section>
-        <h1>Let's Cook!</h1>
+        <h1>Le&apos;s Cook!</h1>
       </section>
       <section>
         <form className="form-container">
@@ -73,7 +73,7 @@ function Login() {
           </button>
         </form>
       </section>
-    </main>
+    </section>
   );
 }
 

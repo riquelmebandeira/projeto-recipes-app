@@ -23,7 +23,7 @@ export default function ExplorarBebidas() {
   };
 
   return (
-    <section>
+    <section className="content-container">
       <Header title="Explorar Bebidas" showSearchBtn={ false } />
       <button
         type="button"

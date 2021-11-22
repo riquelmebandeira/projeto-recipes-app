@@ -15,7 +15,7 @@ export default function Explorar() {
   };
 
   return (
-    <section>
+    <section className="content-container">
       <Header title="Explorar" showSearchBtn={ false } />
       <button
         type="button"
