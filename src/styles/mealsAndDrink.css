@@ -2,6 +2,10 @@
   width: 30%;
 }
 
-.recipeName {
+.imgCard {
+  width: 30%;
+}
+
+.nameMeals {
   list-style: none;
 }

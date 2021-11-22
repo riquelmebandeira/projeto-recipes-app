@@ -127,12 +127,20 @@ describe('Tela de Loging - Avalia o localStorage após a submição', () => {
     let user = localStorage.getItem('user');
     expect(user).toBe(null);
 
+<<<<<<< Updated upstream
     userEvent.type(inputEmail, CORRECT_EMAIL);
+=======
+    userEvent.type(inputEmail, 'contato@gmail.com');
+>>>>>>> Stashed changes
     userEvent.type(inputSenha, '1234567');
     userEvent.click(submitBtn);
 
     user = JSON.parse(localStorage.getItem('user'));
+<<<<<<< Updated upstream
     expect(user.email).toBe(CORRECT_EMAIL);
+=======
+    expect(user.email).toBe('contato@gmail.com');
+>>>>>>> Stashed changes
   });
 });
 
