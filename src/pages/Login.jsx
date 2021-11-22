@@ -37,7 +37,7 @@ function Login() {
   return (
     <section className="login-container">
       <section>
-        <h1>Le&apos;s Cook!</h1>
+        <h1>Let&apos;s Cook!</h1>
       </section>
       <section>
         <form className="form-container">
