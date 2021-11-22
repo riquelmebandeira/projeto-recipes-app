@@ -89,6 +89,7 @@ jobs:
         with:
           pr_author_username: ${{ github.event.inputs.pr_author_username }}
           npm-start: true
+          browser: 'electron'
 
       - name: Run Store evaluation
         uses: ./.github/actions/store-evaluation
