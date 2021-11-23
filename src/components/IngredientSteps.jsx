@@ -24,7 +24,7 @@ const IngredientSteps = ({ recipe }) => {
   };
 
   return (
-    <>
+    <section className="ingredients">
       <h2>Ingredientes</h2>
       <ul>
         { ingredients.map((ingredient, index) => (
@@ -45,7 +45,7 @@ const IngredientSteps = ({ recipe }) => {
           </li>
         )) }
       </ul>
-    </>
+    </section>
   );
 };
 

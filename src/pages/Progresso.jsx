@@ -12,6 +12,8 @@ import Loading from '../components/Loading';
 import IngredientSteps from '../components/IngredientSteps';
 import { addDoneRecipe } from '../redux/actions';
 
+import '../styles/detailsPage.css';
+
 export default function Progresso({ match: { params: { id } } }) {
   const recipeType = getRecipeType();
   const [recipe, setRecipe] = useState(null);
@@ -37,7 +39,10 @@ export default function Progresso({ match: { params: { id } } }) {
     <section className="content-container">
       <RecipeHeader recipe={ recipe } />
       <IngredientSteps recipe={ recipe } />
-      <p data-testid="instructions">{recipe.instructions}</p>
+      <section className="instructions">
+        <h2>Instruções</h2>
+        <p data-testid="instructions">{recipe.instructions}</p>
+      </section>
       <Button
         name="Finalizar Receita"
         testid="finish-recipe-btn"
