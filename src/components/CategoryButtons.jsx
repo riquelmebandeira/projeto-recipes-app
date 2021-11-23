@@ -25,9 +25,10 @@ function CategoryButtons() {
   }, []);
 
   return (
-    <section>
+    <section className="category-buttons">
       <div>
         <button
+        className="buttons"
           type="button"
           key="all"
           data-testid="All-category-filter"
@@ -41,6 +42,7 @@ function CategoryButtons() {
         </button>
         {categories.slice(0, FIVE_CATEGORIES).map((get, index) => (
           <button
+          className="buttons"
             type="button"
             key={ index }
             data-testid={ `${get.strCategory}-category-filter` }
