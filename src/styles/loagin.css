@@ -6,7 +6,7 @@ h1 {
 }
 
 body {
-  background-image: linear-gradient(to bottom, transparent 0%, #fff 55%), url('../images/comida-fast-food-e-caseira.jpg');
+  background-image: linear-gradient(to bottom, transparent 0%, white 55%) , url('../images/comida-fast-food-e-caseira.jpg');
 }
 
 .login-container {
@@ -32,4 +32,9 @@ body {
   height: 45px;
   margin: 10px 0;
   width: 240px;
+}
+
+.six-btn {
+  margin: 3px;
+  padding: 5px;
 }

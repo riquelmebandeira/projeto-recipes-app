@@ -1,0 +1,85 @@
+.recipeName {
+  align-items: center;
+  background-color: rgb(231, 231, 231);
+  border: black 1px solid;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px black;
+  display: flex;
+  flex-direction: column;
+  margin: 25px 18%;
+  padding: 5px;
+  width: 60%;
+}
+
+.recipeImg {
+  border-radius: 10px;
+  width: 200px;
+}
+
+.recipeNamee {
+  align-items: center;
+  background-color: rgb(231, 231, 231);
+  border: black 1px solid;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 1px black;
+  display: flex;
+  flex-direction: column;
+  margin: 25px 18%;
+  padding: 5px;
+  width: 60%;
+}
+
+.recipeImgg {
+  border-radius: 10px;
+  width: 200px;
+}
+
+
+.division-btn-names {
+  display: flex;
+}
+
+.btn-copy {
+  border: chartreuse solid 2px;
+  border-radius: 5px;
+  height: 40px;
+  width: 40px;
+}
+
+.txt {
+  color: black;
+  font-family: Verdana , sans-serif;
+  font-size: 18px;
+  margin: 4px;
+}
+
+.header {
+  font-size: 10px;
+}
+
+
+.position-colum {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.espaco {
+  margin: 10px;
+}
+
+.icon-btn {
+  margin: 300px;
+}
+
+.btn-filter-container {
+  display: flex;
+  height: 35px;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.btn-filter {
+  padding: 10px;
+  width: 150px;
+}

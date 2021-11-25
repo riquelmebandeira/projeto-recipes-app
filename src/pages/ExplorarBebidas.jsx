@@ -25,20 +25,24 @@ export default function ExplorarBebidas() {
   return (
     <section className="content-container">
       <Header title="Explorar Bebidas" showSearchBtn={ false } />
-      <button
-        type="button"
-        data-testid="explore-by-ingredient"
-        onClick={ clickIngredients }
-      >
-        Por Ingredientes
-      </button>
-      <button
-        type="button"
-        data-testid="explore-surprise"
-        onClick={ clickSurprise }
-      >
-        Me Surpreenda!
-      </button>
+      <section className="box">
+        <button
+          type="button"
+          data-testid="explore-by-ingredient"
+          onClick={ clickIngredients }
+          className="button"
+        >
+          Por Ingredientes
+        </button>
+        <button
+          type="button"
+          data-testid="explore-surprise"
+          onClick={ clickSurprise }
+          className="button"
+        >
+          Me Surpreenda!
+        </button>
+      </section>
       <Footer />
     </section>
   );

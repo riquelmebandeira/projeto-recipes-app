@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Button({ name, onClick, testid, disabled, value }) {
+export default function Button({ classNameBTN, name, onClick, testid, disabled, value }) {
   return (
     <button
       type="button"
+      className={ classNameBTN }
       onClick={ onClick }
       data-testid={ testid }
       disabled={ disabled }
@@ -16,6 +17,7 @@ export default function Button({ name, onClick, testid, disabled, value }) {
 }
 
 Button.propTypes = {
+  classNameBTN: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   name: PropTypes.string,
   onClick: PropTypes.func,

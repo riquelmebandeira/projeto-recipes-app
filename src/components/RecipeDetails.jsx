@@ -16,13 +16,27 @@ export default function RecipeDetails(props) {
   return (
     <>
       <header>
-        <img src={ image } alt="Foto da receita" data-testid="recipe-photo" />
+        <img
+          src={ image }
+          alt="Foto da receita"
+          data-testid="recipe-photo"
+          className="img-detail"
+        />
       </header>
-      <main>
+      <main className="details-container">
         <section className="container">
           <div className="info-container">
-            <h1 data-testid="recipe-title">{name}</h1>
-            <p data-testid="recipe-category">{ isMeal ? category : alcoholicOrNot }</p>
+            <h1
+              data-testid="recipe-title"
+            >
+              {name}
+            </h1>
+            <p
+              data-testid="recipe-category"
+              className="recipe-category"
+            >
+              { isMeal ? category : alcoholicOrNot }
+            </p>
           </div>
           <div className="input-container">
             <FavoriteBtn { ...props } />
@@ -55,6 +69,7 @@ export default function RecipeDetails(props) {
           recipeId={ id }
           recipeType={ type }
           ingredientsQty={ ingredients.length }
+          className="btnStartRecipe"
         />
       </main>
     </>

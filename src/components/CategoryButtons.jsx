@@ -4,6 +4,7 @@ import { getRecipes } from '../redux/actions';
 import '../styles/mealsAndDrink.css';
 import fetchApi from '../utils/FetchApi';
 import { getRecipeType } from '../utils/recipeInfo';
+import '../styles/loagin.css';
 
 function CategoryButtons() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function CategoryButtons() {
     <section className="category-buttons">
       <div>
         <button
-        className="buttons"
+          className="buttons"
           type="button"
           key="all"
           data-testid="All-category-filter"
@@ -42,7 +43,7 @@ function CategoryButtons() {
         </button>
         {categories.slice(0, FIVE_CATEGORIES).map((get, index) => (
           <button
-          className="buttons"
+            className="buttons"
             type="button"
             key={ index }
             data-testid={ `${get.strCategory}-category-filter` }

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 // import img from '../images/shareIcon.svg';
 import ShareBtn from './ShareBtn';
 
+import '../styles/feceitasfeitasFavoritas.css';
+
 export default function RecipeMadeDrink({ recipe, index }) {
   const { image, name, alcoholicOrNot, doneDate, id, type } = recipe;
   return (
@@ -18,22 +20,25 @@ export default function RecipeMadeDrink({ recipe, index }) {
           data-testid={ `${index}-horizontal-image` }
         />
       </Link>
-      <p
-        data-testid={ `${index}-horizontal-top-text` }
-      >
-        {alcoholicOrNot}
-      </p>
-      <Link
-        to={ `${type}s/${id}` }
-        data-testid={ `${index}-horizontal-name` }
-      >
-        {name}
-      </Link>
-      <p
-        data-testid={ `${index}-horizontal-done-date` }
-      >
-        {doneDate}
-      </p>
+      <section>
+        <p
+          data-testid={ `${index}-horizontal-top-text` }
+        >
+          {alcoholicOrNot}
+        </p>
+        <Link
+          to={ `${type}s/${id}` }
+          data-testid={ `${index}-horizontal-name` }
+        >
+          {name}
+        </Link>
+        <p
+          data-testid={ `${index}-horizontal-done-date` }
+        >
+          {doneDate}
+        </p>
+      </section>
+
       <button
         type="button"
       >

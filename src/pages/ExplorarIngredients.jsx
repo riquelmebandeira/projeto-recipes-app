@@ -45,10 +45,9 @@ export default function ExplorarIngredientes() {
   return (
     <section>
       <Header title="Explorar Ingredientes" showSearchBtn={ false } />
-      <Footer />
       <main>
         { data.map((ingre, index) => (
-          <section key={ index }>
+          <section key={ index } className="recipeNamee">
             <h1
               data-testid={ `${index}-card-name` }
             >
@@ -68,6 +67,7 @@ export default function ExplorarIngredientes() {
           </section>
         )) }
       </main>
+      <Footer />
     </section>
   );
 }

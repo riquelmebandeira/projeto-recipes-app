@@ -25,11 +25,14 @@
   align-items: center;
   background-color: rgb(140, 145, 151);
   display: flex;
+  height: 50px;
   justify-content: space-around;
+  padding: 10px;
 }
 
 .title {
   align-self: center;
+  font-size: 35px;
 }
 
 .meals {
@@ -50,28 +53,17 @@
 }
 
 .category-buttons {
-  width: 100%;
+  background-color: rgb(138, 138, 51);
+  display: flex;
+  justify-content: center;
 }
 
-.category-buttons .buttons {
-  background-color: rgb(228, 85, 113);
-  border-radius: 8px;
-  color: indigo;
+.buttons {
+  font-size: 12px;
+  height: 30px;
+  padding: 5px;
+  width: 120px;
 }
-
-/*
-#iceLeft {
-  animation: clink .8s infinite ease;
-  opacity: 0.6;
-  transform-origin: 36px 66px;
-}
-
-#iceRight {
-  animation: clink .8s .2s infinite ease;
-  opacity: 0.6;
-  transform-origin: 60px 78px;
-}
-*/
 
 .meals > .logo {
   animation: shake 1.5s infinite ease;

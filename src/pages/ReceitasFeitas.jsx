@@ -6,6 +6,8 @@ import '../styles/mealsAndDrink.css';
 import RecipeMadeMeal from '../components/RecipeMadeMeal';
 import RecipeMadeDrink from '../components/RecipesMadeDrink';
 
+import '../styles/feceitasfeitasFavoritas.css';
+
 export default function ReceitasFeitas() {
   const doneRecipes = useSelector((state) => state.recipes.doneRecipes);
   const [filterType, setFilterType] = useState('');

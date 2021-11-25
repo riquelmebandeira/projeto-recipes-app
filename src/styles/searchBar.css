@@ -1,0 +1,21 @@
+.input-radios {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.search-input {
+  border: 2px solid rgb(29, 75, 6);
+  border-radius: 2px;
+  height: 20px;
+  width: 210px;
+}
+
+.exec-search-btn {
+  border: 2px solid rgb(106, 151, 84);
+  border-radius: 5px;
+  font-size: 20px;
+  width: 100px;
+
+}
