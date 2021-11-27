@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { API_KEYS } from '../utils/recipeInfo';
 
 function StartRecipeBtn({ recipeId, recipeType }) {
-  const { isRecipeDone } = useSelector((state) => (state.recipes.doneRecipes
+  const isRecipeDone = useSelector((state) => (state.recipes.doneRecipes
     .some(({ id, type }) => id === recipeId && type === recipeType)
   ));
 
