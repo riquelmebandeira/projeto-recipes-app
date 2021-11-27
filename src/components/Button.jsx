@@ -17,7 +17,7 @@ export default function Button({ classNameBTN, name, onClick, testid, disabled, 
 }
 
 Button.propTypes = {
-  classNameBTN: PropTypes.string.isRequired,
+  classNameBTN: PropTypes.string,
   disabled: PropTypes.bool,
   name: PropTypes.string,
   onClick: PropTypes.func,
@@ -31,4 +31,5 @@ Button.defaultProps = {
   onClick: undefined,
   testid: undefined,
   value: undefined,
+  classNameBTN: undefined,
 };
