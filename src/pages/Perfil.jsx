@@ -8,7 +8,8 @@ import Header from '../components/Header';
 import '../styles/perfil.css';
 
 export default function Perfil() {
-  const email = useSelector((state) => state.user.user.email);
+  const { user } = useSelector((state) => state.user);
+  const email = user === null ? '' : user.email;
   const history = useHistory();
 
   const redirect = (e) => {
