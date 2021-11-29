@@ -1,7 +1,11 @@
 .recipeImg {
-  width: 30%;
+  max-width: 100%;
 }
 
-.recipeName {
+.imgCard {
+  max-width: 30%;
+}
+
+.nameMeals {
   list-style: none;
 }

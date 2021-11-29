@@ -8,7 +8,7 @@ function RecipesList({ recipes }) {
 
   const recipeKey = API_KEYS[recipeType].base;
   return (
-    <div>
+    <div className="recipe-list">
       { recipes.map((recipe, recipeIndex) => (
         <RecipeCard
           key={ recipe[`id${recipeKey}`] }

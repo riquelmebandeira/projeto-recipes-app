@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import '../styles/favoriteRecipes.css';
+
 export default function IconButton({ src, onClick, testid }) {
   return (
     <input
@@ -14,9 +16,9 @@ export default function IconButton({ src, onClick, testid }) {
 }
 
 IconButton.propTypes = {
+  onClick: PropTypes.func,
   src: PropTypes.string,
   testid: PropTypes.string,
-  onClick: PropTypes.func,
 };
 
 IconButton.defaultProps = {

@@ -11,6 +11,7 @@ function FavoriteRecipeCard({ index, recipe }) {
   return (
     <li
       key={ index }
+      className="recipeNamee"
     >
       <Link
         to={ `${type}s/${id}` }
@@ -20,28 +21,35 @@ function FavoriteRecipeCard({ index, recipe }) {
           src={ image }
           alt={ `favorite recipe ${index}` }
           data-testid={ `${index}-horizontal-image` }
-          className="favorite-recipe-photo"
+          className="favorite-recipe-photo recipeImgg"
         />
-        <span
-          data-testid={ `${index}-horizontal-top-text` }
-        >
-          { type.includes('comida') ? `${area} - ${category}` : alcoholicOrNot }
-        </span>
-        <span
-          data-testid={ `${index}-horizontal-name` }
-        >
-          {name}
-        </span>
+        <section className="position-colum">
+
+          <span
+            data-testid={ `${index}-horizontal-top-text` }
+            className="txt"
+          >
+            { type.includes('comida') ? `${area} - ${category}` : alcoholicOrNot }
+          </span>
+          <span
+            className="txt"
+            data-testid={ `${index}-horizontal-name` }
+          >
+            {name}
+          </span>
+        </section>
       </Link>
-      <ShareButton
-        testid={ `${index}-horizontal-share-btn` }
-        recipeId={ id }
-        recipeType={ type }
-      />
-      <FavoriteButton
-        testid={ `${index}-horizontal-favorite-btn` }
-        recipe={ recipe }
-      />
+      <section className="division-btn-names espaco">
+        <ShareButton
+          testid={ `${index}-horizontal-share-btn` }
+          recipeId={ id }
+          recipeType={ type }
+        />
+        <FavoriteButton
+          testid={ `${index}-horizontal-favorite-btn` }
+          recipe={ recipe }
+        />
+      </section>
     </li>
   );
 }

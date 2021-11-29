@@ -8,7 +8,7 @@ import mealIcon from '../images/mealIcon.svg';
 export default function Footer() {
   return (
     <footer>
-      <nav data-testid="footer" aria-label="Footer">
+      <nav className="footer-container" data-testid="footer" aria-label="Footer">
         <Link to="/bebidas">
           <img
             data-testid="drinks-bottom-btn"

@@ -86,3 +86,15 @@ main {
   justify-content: space-between;
   width: 350px;
 }
+
+.img-detail {
+  height: 200px;
+}
+
+.details-container {
+  background-image: linear-gradient(to bottom, transparent -90%, white 55%) , url('../images/comida-fast-food-e-caseira.jpg');
+}
+
+.recipe-category {
+  font-size: 20px;
+}

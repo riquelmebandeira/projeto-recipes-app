@@ -20,7 +20,7 @@ export default function Receitas() {
   }, []);
 
   return (
-    <section>
+    <section className="content-container">
       <Header title={ recipeType === 'comida' ? 'Comidas' : 'Bebidas' } />
       <CategoryButtons />
       <section>

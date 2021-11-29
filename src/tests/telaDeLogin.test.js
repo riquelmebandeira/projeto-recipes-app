@@ -128,6 +128,7 @@ describe('Tela de Loging - Avalia o localStorage após a submição', () => {
     expect(user).toBe(null);
 
     userEvent.type(inputEmail, CORRECT_EMAIL);
+
     userEvent.type(inputSenha, '1234567');
     userEvent.click(submitBtn);
 

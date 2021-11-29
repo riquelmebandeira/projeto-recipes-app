@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { loginUser } from '../redux/actions';
+import '../styles/loagin.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -34,13 +35,14 @@ function Login() {
   };
 
   return (
-    <main>
+    <section className="login-container">
       <section>
-        <h1>Login</h1>
+        <h1>Let&apos;s Cook!</h1>
       </section>
       <section>
-        <form>
+        <form className="form-container">
           <input
+            className="box-text"
             type="email"
             name="email"
             placeholder="email"
@@ -51,6 +53,7 @@ function Login() {
           />
 
           <input
+            className="box-text"
             type="password"
             name="password"
             placeholder="Password"
@@ -60,6 +63,7 @@ function Login() {
             required
           />
           <button
+            className="btn-form"
             type="button"
             data-testid="login-submit-btn"
             disabled={ disabled }
@@ -69,7 +73,7 @@ function Login() {
           </button>
         </form>
       </section>
-    </main>
+    </section>
   );
 }
 

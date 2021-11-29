@@ -10,7 +10,7 @@ function Header(props) {
   const [searchBar, setSearchBarTo] = useState(false);
   return (
     <>
-      <header>
+      <header className="header-container">
         <Link to="/perfil">
           <input
             type="image"
@@ -19,8 +19,8 @@ function Header(props) {
             alt="Foto de perfil"
           />
         </Link>
-        <h1 data-testid="page-title">{title}</h1>
-        {!showSearchBtn ? null
+        <h1 className="title" data-testid="page-title">{title}</h1>
+        {!showSearchBtn ? <div> </div>
           : (
             <input
               type="image"

@@ -1,0 +1,17 @@
+.box {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  padding: 40%;
+}
+
+.button {
+  border: 2px solid rgb(29, 75, 6);
+  border-radius: 8px;
+  font-size: 18px;
+  height: 50px;
+  margin: 5px;
+  width: 250px;
+}
+
