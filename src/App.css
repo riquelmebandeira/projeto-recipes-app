@@ -1,34 +1,13 @@
-/* .content-container {
-  background-color: blue;
-} */
-
-/* .recipe-list {
-  background-color: white;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-} */
-
-/* .recipe-card {
-  margin: 0 auto;
-  width: 50%;
+.loading-message {
+  color: white;
+  font-family: sans-serif;
+  font-size: large;
+  font-weight: 600;
+  left: 50%;
+  margin: -30px 0 0 -70px;
+  position: absolute;
+  top: 50%;
 }
-
-.recipe-card a {
-  color: black;
-  text-align: center;
-  text-decoration: none;
-} */
-
-/* .header-container {
-  align-items: center;
-  background-color: rgb(140, 145, 151);
-  display: flex;
-  height: 50px;
-  justify-content: space-around;
-  padding: 10px;
-} */
 
 .title {
   align-self: center;
@@ -51,12 +30,6 @@
   animation: shake 1s infinite ease;
   max-height: 80vh;
 }
-
-/* .category-buttons {
-  background-color: rgb(138, 138, 51);
-  display: flex;
-  justify-content: center;
-} */
 
 .buttons {
   font-size: 12px;
