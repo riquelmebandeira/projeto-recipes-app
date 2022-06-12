@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { loginUser } from '../redux/actions';
-import '../styles/loagin.css';
+import '../styles/Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -35,17 +35,15 @@ function Login() {
   };
 
   return (
-    <section className="login-container">
-      <section>
-        <h1>Let&apos;s Cook!</h1>
-      </section>
+    <main className="login-container">
+      <h1>Let&apos;s Cook!</h1>
       <section>
         <form className="form-container">
           <input
             className="box-text"
             type="email"
             name="email"
-            placeholder="email"
+            placeholder="Email"
             value={ email }
             data-testid="email-input"
             onChange={ (e) => setEmail(e.target.value) }
@@ -73,7 +71,7 @@ function Login() {
           </button>
         </form>
       </section>
-    </section>
+    </main>
   );
 }
 

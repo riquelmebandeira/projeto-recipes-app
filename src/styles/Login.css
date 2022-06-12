@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Epilogue:wght@100;400&family=Merriweather+Sans:wght@500&display=swap') ;
+
+body {
+  background: linear-gradient(to top, rgb(195, 20, 50), rgb(196, 94, 68));
+  background-attachment: fixed;
+}
+
+.login-container {
+  margin: 170px 0;
+}
+
+.login-container h1 {
+  color: white;
+  font-family: Carter One , cursive;
+  font-size: 45px;
+  text-align: center;
+  text-shadow: 2px 1px 1px black;
+}
+
+.form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container > input {
+  border-radius: 8px;
+  font-size: medium;
+  height: 40px;
+  margin: 0;
+  padding: 10px;
+  text-indent: 10px;
+  width: 270px;
+}
+
+.form-container > input:first-child {
+  border: 1px solid gray;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form-container > input:nth-child( 2 ) {
+  border: 1px solid gray;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn-form {
+  background-color: #0261ba;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: large;
+  height: 70px;
+  margin: 10px 0;
+  text-shadow: 1px 1px 1px black;
+  width: 290px;
+}
+

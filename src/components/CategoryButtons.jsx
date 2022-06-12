@@ -4,7 +4,7 @@ import { getRecipes } from '../redux/actions';
 import '../styles/mealsAndDrink.css';
 import fetchApi from '../utils/FetchApi';
 import { getRecipeType } from '../utils/recipeInfo';
-import '../styles/loagin.css';
+import '../styles/Login.css';
 
 function CategoryButtons() {
   const dispatch = useDispatch();
