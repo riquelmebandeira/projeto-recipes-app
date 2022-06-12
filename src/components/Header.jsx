@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import searchIcon from '../images/searchIcon.svg';
 import profileIcon from '../images/profileIcon.svg';
 import SearchBar from './SearchBar';
+import '../styles/Header.css';
 
 function Header(props) {
   const { title, showSearchBtn } = props;
