@@ -14,8 +14,12 @@
   }
 
   .recipe-name {
+    overflow: hidden;
     padding: 20px 0 10px 10px;
     text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 160px;
   }
 
   .recipe-img {
