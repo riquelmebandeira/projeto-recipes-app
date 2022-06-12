@@ -1,16 +1,16 @@
-.content-container {
-  background-color: white;
-}
+/* .content-container {
+  background-color: blue;
+} */
 
-.recipe-list {
+/* .recipe-list {
   background-color: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-}
+} */
 
-.recipe-card {
+/* .recipe-card {
   margin: 0 auto;
   width: 50%;
 }
@@ -19,7 +19,7 @@
   color: black;
   text-align: center;
   text-decoration: none;
-}
+} */
 
 /* .header-container {
   align-items: center;
@@ -52,11 +52,11 @@
   max-height: 80vh;
 }
 
-.category-buttons {
+/* .category-buttons {
   background-color: rgb(138, 138, 51);
   display: flex;
   justify-content: center;
-}
+} */
 
 .buttons {
   font-size: 12px;

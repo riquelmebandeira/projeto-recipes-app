@@ -1,0 +1,11 @@
+@media screen and ( max-width : 360px ) and ( max-height : 640px ) {
+
+  .recipe-list {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-bottom: 80px;
+    row-gap: 16px;
+  }
+}

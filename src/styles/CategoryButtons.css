@@ -1,0 +1,19 @@
+@media screen and ( max-width : 360px ) and ( max-height : 640px ) {
+
+  .category-buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .category-buttons > button {
+    background-color: rgb(231, 231, 231);
+    border: none;
+    color: rgb(32, 32, 32);
+    font-family: sans-serif;
+    font-size: small;
+    margin: 10px;
+    width: 100px;
+  }
+}

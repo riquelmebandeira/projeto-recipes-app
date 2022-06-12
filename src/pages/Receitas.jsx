@@ -6,6 +6,7 @@ import CategoryButtons from '../components/CategoryButtons';
 import RecipesList from '../components/RecipesList';
 import { getRecipeType } from '../utils/recipeInfo';
 import { getRecipes } from '../redux/actions';
+import '../styles/Receitas.css';
 
 export default function Receitas() {
   const { recipeList } = useSelector((state) => state.recipes);

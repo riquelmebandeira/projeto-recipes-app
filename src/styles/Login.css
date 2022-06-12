@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Epilogue:wght@100;400&family=Merriweather+Sans:wght@500&display=swap') ;
 
 body {
-  background: linear-gradient(to top, rgb(195, 20, 50), rgb(196, 94, 68));
   background-attachment: fixed;
+  background-color: rgb(195, 20, 50);
 }
 
 .login-container {

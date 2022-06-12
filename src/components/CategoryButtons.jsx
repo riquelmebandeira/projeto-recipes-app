@@ -4,7 +4,7 @@ import { getRecipes } from '../redux/actions';
 import '../styles/mealsAndDrink.css';
 import fetchApi from '../utils/FetchApi';
 import { getRecipeType } from '../utils/recipeInfo';
-import '../styles/Login.css';
+import '../styles/CategoryButtons.css';
 
 function CategoryButtons() {
   const dispatch = useDispatch();
@@ -27,42 +27,40 @@ function CategoryButtons() {
 
   return (
     <section className="category-buttons">
-      <div>
+      <button
+        className="buttons"
+        type="button"
+        key="all"
+        data-testid="All-category-filter"
+        value="list"
+        onClick={ () => {
+          setFiltered('');
+          dispatch(getRecipes({ recipeType }));
+        } }
+      >
+        All
+      </button>
+      {categories.slice(0, FIVE_CATEGORIES).map((get, index) => (
         <button
           className="buttons"
           type="button"
-          key="all"
-          data-testid="All-category-filter"
-          value="list"
+          key={ index }
+          data-testid={ `${get.strCategory}-category-filter` }
           onClick={ () => {
-            setFiltered('');
-            dispatch(getRecipes({ recipeType }));
+            if (filtered === get.strCategory) {
+              setFiltered('');
+              dispatch(getRecipes({ recipeType }));
+            } else {
+              setFiltered(get.strCategory);
+              dispatch(getRecipes(
+                { filterType: 'category', searchInput: get.strCategory, recipeType },
+              ));
+            }
           } }
         >
-          All
+          { get.strCategory }
         </button>
-        {categories.slice(0, FIVE_CATEGORIES).map((get, index) => (
-          <button
-            className="buttons"
-            type="button"
-            key={ index }
-            data-testid={ `${get.strCategory}-category-filter` }
-            onClick={ () => {
-              if (filtered === get.strCategory) {
-                setFiltered('');
-                dispatch(getRecipes({ recipeType }));
-              } else {
-                setFiltered(get.strCategory);
-                dispatch(getRecipes(
-                  { filterType: 'category', searchInput: get.strCategory, recipeType },
-                ));
-              }
-            } }
-          >
-            { get.strCategory }
-          </button>
-        ))}
-      </div>
+      ))}
     </section>
   );
 }

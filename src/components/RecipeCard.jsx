@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/RecipeCard.css';
 
 function RecipeCard({ recipeIndex, recipeImg, recipeName, recipeType, recipeId }) {
   return (
@@ -13,11 +14,11 @@ function RecipeCard({ recipeIndex, recipeImg, recipeName, recipeType, recipeId }
         <img
           src={ recipeImg }
           alt="img"
-          className="recipeImg"
+          className="recipe-img"
           data-testid={ `${recipeIndex}-card-img` }
         />
         <li
-          className="recipeName"
+          className="recipe-name"
           data-testid={ `${recipeIndex}-card-name` }
         >
           {recipeName}
