@@ -33,16 +33,19 @@ export const getRecipeURL = (id, type) => ( // type recebe 'comida' ou 'bebida'
   `${window.location.origin}/${type}s/${id}`
 );
 
-export const convertRecipe = (apiRecipe, recipeType) => ({
-  id: apiRecipe[API_KEYS[recipeType].id],
-  type: recipeType,
-  area: apiRecipe[API_KEYS[recipeType].area] || '',
-  category: apiRecipe[API_KEYS[recipeType].category],
-  alcoholicOrNot: apiRecipe[API_KEYS[recipeType].alcoholic] || '',
-  name: apiRecipe[API_KEYS[recipeType].title],
-  image: apiRecipe[API_KEYS[recipeType].thumb],
-  ingredients: getIngredientsOrMeasures('Ingredient', apiRecipe),
-  measures: getIngredientsOrMeasures('Measure', apiRecipe),
-  instructions: apiRecipe[API_KEYS[recipeType].instructions],
-  tags: recipeType === 'comida' ? apiRecipe.strTags.split(',') : [],
-});
+export const convertRecipe = (apiRecipe, recipeType) => (
+  {
+    id: apiRecipe[API_KEYS[recipeType].id],
+    type: recipeType,
+    area: apiRecipe[API_KEYS[recipeType].area] || '',
+    category: apiRecipe[API_KEYS[recipeType].category],
+    alcoholicOrNot: apiRecipe[API_KEYS[recipeType].alcoholic] || '',
+    name: apiRecipe[API_KEYS[recipeType].title],
+    image: apiRecipe[API_KEYS[recipeType].thumb],
+    ingredients: getIngredientsOrMeasures('Ingredient', apiRecipe),
+    measures: getIngredientsOrMeasures('Measure', apiRecipe),
+    instructions: apiRecipe[API_KEYS[recipeType].instructions],
+    // eslint-disable-next-line max-len
+    tags: recipeType === 'comida' && apiRecipe.strTags ? apiRecipe.strTags.split(',') : [],
+  }
+);
