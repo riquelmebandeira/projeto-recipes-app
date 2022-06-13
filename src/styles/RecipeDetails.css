@@ -1,9 +1,12 @@
-main {
+.details-container {
+  background-color: white;
   padding: 0 10px;
+  padding-bottom: 120px;
 }
 
-[ data-testid = 'recipe-photo' ] {
-  height: 160px;
+.header-img {
+  height: 200px;
+  margin-bottom: -10px;
   object-fit: cover;
   width: 360px;
 }
@@ -51,12 +54,6 @@ main {
   padding-left: 6px;
 }
 
-[ data-testid = 'start-recipe-btn' ] {
-  bottom: 0;
-  margin-left: 106px;
-  position: fixed;
-}
-
 .input-container {
   height: 80px;
   padding: 28px 6px;
@@ -87,14 +84,22 @@ main {
   width: 350px;
 }
 
-.img-detail {
-  height: 200px;
-}
-
-.details-container {
-  background-image: linear-gradient(to bottom, transparent -90%, white 55%) , url('../images/comida-fast-food-e-caseira.jpg');
-}
-
 .recipe-category {
   font-size: 20px;
+}
+
+.bottom-btn {
+  background-color: #0261ba;
+  border: none;
+  bottom: 0;
+  color: white;
+  font-size: large;
+  height: 80px;
+  left: 50%;
+  margin: 10px 0;
+  margin-left: -170px;
+  margin-top: -100px;
+  padding: 20px;
+  position: fixed;
+  width: 340px;
 }

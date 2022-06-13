@@ -6,7 +6,7 @@ import RecommendationsList from './RecommendationsList';
 import FavoriteBtn from './FavoriteBtn';
 import ShareBtn from './ShareBtn';
 import { treatVideoUrl } from '../utils/DetailsPage';
-import '../styles/detailsPage.css';
+import '../styles/RecipeDetails.css';
 
 export default function RecipeDetails(props) {
   const { category, alcoholicOrNot, name, image, ingredients,
@@ -15,12 +15,12 @@ export default function RecipeDetails(props) {
 
   return (
     <>
-      <header>
+      <header className="recipe-details-header">
         <img
           src={ image }
           alt="Foto da receita"
           data-testid="recipe-photo"
-          className="img-detail"
+          className="header-img"
         />
       </header>
       <main className="details-container">
@@ -69,7 +69,7 @@ export default function RecipeDetails(props) {
           recipeId={ id }
           recipeType={ type }
           ingredientsQty={ ingredients.length }
-          className="btnStartRecipe"
+          className="bottom-btn"
         />
       </main>
     </>

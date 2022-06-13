@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../styles/detailsPage.css';
+import '../styles/RecipeDetails.css';
 import { getRecipeType } from '../utils/recipeInfo';
 
 function RecommendationCard({ recipe, index }) {

@@ -12,7 +12,7 @@ import Loading from '../components/Loading';
 import IngredientSteps from '../components/IngredientSteps';
 import { addDoneRecipe } from '../redux/actions';
 
-import '../styles/detailsPage.css';
+import '../styles/RecipeDetails.css';
 
 export default function Progresso({ match: { params: { id } } }) {
   const recipeType = getRecipeType();
