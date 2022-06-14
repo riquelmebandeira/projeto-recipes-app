@@ -6,7 +6,7 @@ import { saveRecipesList } from '../redux/actions';
 import fetchApi from '../utils/FetchApi';
 import { API_KEYS, getRecipeType } from '../utils/recipeInfo';
 
-import '../styles/searchBar.css';
+import '../styles/SearchBar.css';
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -35,54 +35,54 @@ function SearchBar() {
   };
 
   return (
-    <form className="input-radios">
-      <section>
+    <form className="search-form">
+      <input
+        data-testid="search-input"
+        type="text"
+        className="search-input"
+        value={ searchInput }
+        onChange={ (e) => setSearchInput(e.target.value) }
+      />
+      <label htmlFor="ingredient-search-radio">
         <input
-          data-testid="search-input"
-          type="text"
-          className="search-input"
-          value={ searchInput }
-          onChange={ (e) => setSearchInput(e.target.value) }
+          data-testid="ingredient-search-radio"
+          id="ingredient-search-radio"
+          type="radio"
+          value="ingredients"
+          checked={ filterType === 'ingredients' }
+          onChange={ () => setFilterType('ingredients') }
         />
-      </section>
-      <section>
-        <label htmlFor="inputs-radio">
-          <input
-            data-testid="ingredient-search-radio"
-            name="inputs-radio"
-            type="radio"
-            value="ingredients"
-            checked={ filterType === 'ingredients' }
-            onChange={ () => setFilterType('ingredients') }
-          />
-          ingrediente
-          <input
-            data-testid="name-search-radio"
-            name="inputs-radio"
-            type="radio"
-            value="name"
-            checked={ filterType === 'name' }
-            onChange={ () => setFilterType('name') }
-          />
-          nome
-          <input
-            data-testid="first-letter-search-radio"
-            name="inputs-radio"
-            type="radio"
-            value="first"
-            checked={ filterType === 'first' }
-            onChange={ () => setFilterType('first') }
-          />
-        </label>
-        primeira letra
-      </section>
+        Ingrediente
+      </label>
+      <label htmlFor="name-search-radio">
+        <input
+          data-testid="name-search-radio"
+          id="name-search-radio"
+          type="radio"
+          value="name"
+          checked={ filterType === 'name' }
+          onChange={ () => setFilterType('name') }
+        />
+        Nome
+      </label>
+      <label htmlFor="first-letter-search-radio">
+        <input
+          data-testid="first-letter-search-radio"
+          id="first-letter-search-radio"
+          type="radio"
+          value="first"
+          checked={ filterType === 'first' }
+          onChange={ () => setFilterType('first') }
+        />
+        Letra inicial
+      </label>
       <button
         data-testid="exec-search-btn"
         className="exec-search-btn"
         type="button"
         onClick={ () => handleClick() }
       >
-        buscar
+        Buscar
       </button>
     </form>
   );
