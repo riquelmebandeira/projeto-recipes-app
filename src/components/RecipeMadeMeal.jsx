@@ -1,71 +1,64 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ShareBtn from './ShareBtn';
+import ShareButton from './ShareButton';
 
 export default function RecipeMadeMeal({ recipe, index }) {
   const { image, name, category, area, doneDate, tags, id, type } = recipe;
   return (
 
-    <li className="recipeNamee" key={ id }>
+    <li className="made-recipe-card" key={ id }>
       <Link
         to={ `${type}s/${id}` }
       >
         <img
           src={ image }
           alt="img"
-          className="recipeImgg"
+          className="made-recipe-img"
           data-testid={ `${index}-horizontal-image` }
         />
       </Link>
-      <section className="division-btn-names">
-        <section>
-          <p
-            data-testid={ `${index}-horizontal-top-text` }
-            className="txt"
-          >
-            {`${area} - ${category}`}
-          </p>
-
-          <Link
-            to={ `${type}s/${id}` }
-            data-testid={ `${index}-horizontal-name` }
-            className="txt"
-          >
-            {name}
-          </Link>
-          <p
-            data-testid={ `${index}-horizontal-done-date` }
-            className="txt"
-          >
-            {doneDate}
-          </p>
-          <p
-            className="txt"
-          >
-            {
-              tags.slice(0, 2).map((tag) => (
-                <span
-                  key={ tag }
-                  data-testid={ `${index}-${tag}-horizontal-tag` }
-                >
-                  {tag}
-                </span>
-              ))
-            }
-          </p>
-        </section>
-        <button
-          type="button"
-          className="btn-copy"
+      <section className="made-recipe-info">
+        <p
+          data-testid={ `${index}-horizontal-top-text` }
+          className="category-text"
         >
-          <ShareBtn
-            testid={ `${index}-horizontal-share-btn` }
-            recipeId={ id }
-            recipeType={ type }
-          />
-        </button>
+          {`${area} - ${category}`}
+        </p>
+
+        <Link
+          to={ `${type}s/${id}` }
+          data-testid={ `${index}-horizontal-name` }
+          className="recipe-name"
+        >
+          {name}
+        </Link>
+        <p
+          data-testid={ `${index}-horizontal-done-date` }
+          className="done-date"
+        >
+          {doneDate}
+        </p>
+        <p
+          className="recipe-tags"
+        >
+          {
+            tags.slice(0, 2).map((tag) => (
+              <span
+                key={ tag }
+                data-testid={ `${index}-${tag}-horizontal-tag` }
+              >
+                {tag}
+              </span>
+            ))
+          }
+        </p>
       </section>
+      <ShareButton
+        testid={ `${index}-horizontal-share-btn` }
+        recipeId={ id }
+        recipeType={ type }
+      />
     </li>
   );
 }

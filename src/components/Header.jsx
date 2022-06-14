@@ -7,11 +7,11 @@ import SearchBar from './SearchBar';
 import '../styles/Header.css';
 
 function Header(props) {
-  const { title, showSearchBtn } = props;
+  const { title, showSearchBtn, className } = props;
   const [searchBar, setSearchBarTo] = useState(false);
   return (
     <>
-      <header className="header-container">
+      <header className={ className }>
         <div>
           <Link to="/perfil">
             <input
@@ -42,10 +42,12 @@ function Header(props) {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   showSearchBtn: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 Header.defaultProps = {
   showSearchBtn: true,
+  className: '',
 };
 
 export default Header;

@@ -1,53 +1,48 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import img from '../images/shareIcon.svg';
-import ShareBtn from './ShareBtn';
-
-import '../styles/feceitasfeitasFavoritas.css';
+import ShareButton from './ShareButton';
 
 export default function RecipeMadeDrink({ recipe, index }) {
   const { image, name, alcoholicOrNot, doneDate, id, type } = recipe;
   return (
-    <li className="recipeName" key={ id }>
+    <li className="made-recipe-card" key={ id }>
       <Link
         to={ `${type}s/${id}` }
       >
         <img
           src={ image }
           alt="img"
-          className="recipeImg"
+          className="made-recipe-img"
           data-testid={ `${index}-horizontal-image` }
         />
       </Link>
-      <section>
+      <section className="made-recipe-info">
         <p
           data-testid={ `${index}-horizontal-top-text` }
+          className="category-text"
         >
           {alcoholicOrNot}
         </p>
         <Link
           to={ `${type}s/${id}` }
           data-testid={ `${index}-horizontal-name` }
+          className="recipe-name"
         >
           {name}
         </Link>
         <p
           data-testid={ `${index}-horizontal-done-date` }
+          className="done-date"
         >
           {doneDate}
         </p>
       </section>
-
-      <button
-        type="button"
-      >
-        <ShareBtn
-          testid={ `${index}-horizontal-share-btn` }
-          recipeId={ id }
-          recipeType={ type }
-        />
-      </button>
+      <ShareButton
+        testid={ `${index}-horizontal-share-btn` }
+        recipeId={ id }
+        recipeType={ type }
+      />
     </li>
   );
 }

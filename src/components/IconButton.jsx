@@ -7,6 +7,7 @@ export default function IconButton({ src, onClick, testid }) {
   return (
     <input
       type="image"
+      className="share-icon"
       src={ src }
       alt={ testid }
       data-testid={ testid }

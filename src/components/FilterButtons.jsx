@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Button from './Button';
 
-import '../styles/feceitasfeitasFavoritas.css';
+import '../styles/ReceitasFeitas.css';
 
 export default function FilterButtons({ onClick }) {
   return (

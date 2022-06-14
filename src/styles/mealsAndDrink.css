@@ -1,11 +1,80 @@
-.recipeImg {
-  max-width: 100%;
+.made-recipe-card {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 2px 4px rgb(161, 161, 161);
+  display: flex;
+  height: 100%;
 }
 
-.imgCard {
-  max-width: 30%;
+.made-recipe-card img {
+  border-top-left-radius: 10px;
+  height: 100%;
+  object-fit: cover;
+  width: 160px;
 }
 
-.nameMeals {
-  list-style: none;
+.made-recipe-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px;
+  row-gap: 10px;
+}
+
+.made-recipe-info > * {
+  margin: 0;
+}
+
+.made-recipe-card a {
+  padding: 0;
+}
+
+.made-recipe-card input {
+  align-self: flex-start;
+  width: 30px;
+}
+
+.category-text, .done-date {
+  font-size: small;
+}
+
+.recipe-name {
+  color: black;
+  font-size: medium;
+  font-weight: 800;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 130px;
+}
+
+.recipe-tags {
+  background-color: rgb(247, 229, 234);
+  border-radius: 50px;
+  padding: 2px 6px;
+  text-align: center;
+  width: fit-content;
+}
+
+.share-icon {
+  padding: 10px 10px 0 0;
+}
+
+@media ( max-width : 320px ) {
+
+  .made-recipe-card {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 2px 4px rgb(161, 161, 161);
+    width: 90%;
+  }
+
+  .recipe-name {
+    width: 100px;
+  }
+
+  .share-icon {
+    overflow: hidden;
+  }
 }

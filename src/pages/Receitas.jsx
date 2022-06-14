@@ -26,7 +26,10 @@ export default function Receitas() {
 
   return (
     <section className="content-container">
-      <Header title={ recipeType === 'comida' ? 'Comidas' : 'Bebidas' } />
+      <Header
+        title={ recipeType === 'comida' ? 'Comidas' : 'Bebidas' }
+        className="header-container"
+      />
       <CategoryButtons />
       <section>
         <RecipesList recipeType={ recipeType } recipes={ listRecipes } />

@@ -1,0 +1,27 @@
+/* botões de filtragem */
+.btn-filter-container {
+  display: flex;
+  margin: auto;
+  max-width: 1000px;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.btn-filter-container > button {
+  align-items: center;
+  background-color: rgb(231, 231, 231);
+  border: none;
+  color: rgb(32, 32, 32);
+  display: flex;
+  font-family: sans-serif;
+  font-size: small;
+  justify-content: center;
+  margin: 10px;
+  padding: 12px;
+  width: 100%;
+}
+
+/* conteúdo principal */
+.content-container {
+  padding-bottom: 140px;
+}
