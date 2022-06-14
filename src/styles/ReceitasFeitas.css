@@ -23,5 +23,6 @@
 
 /* conteúdo principal */
 .content-container {
+  background-color: white;
   padding-bottom: 140px;
 }

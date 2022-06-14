@@ -5,7 +5,7 @@ import { clearLsData } from '../redux/actions';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-import '../styles/perfil.css';
+import '../styles/Perfil.css';
 
 export default function Perfil() {
   const { user } = useSelector((state) => state.user);
@@ -24,11 +24,9 @@ export default function Perfil() {
   };
 
   return (
-    <section className="content-container">
-      <section>
-        <Header title="Perfil" showSearchBtn={ false } />
-        <Footer />
-      </section>
+    <>
+      <Header title="Perfil" showSearchBtn={ false } className="alternative-header" />
+      <Footer />
       <main className="container-main">
         <section className="box">
 
@@ -68,6 +66,6 @@ export default function Perfil() {
           </button>
         </section>
       </main>
-    </section>
+    </>
   );
 }
