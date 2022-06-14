@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getRecipes } from '../redux/actions';
-import '../styles/mealsAndDrink.css';
 import fetchApi from '../utils/FetchApi';
 import { getRecipeType } from '../utils/recipeInfo';
 import '../styles/CategoryButtons.css';

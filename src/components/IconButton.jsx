@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import '../styles/favoriteRecipes.css';
+import '../styles/ReceitasFavoritas.css';
 
 export default function IconButton({ src, onClick, testid }) {
   return (

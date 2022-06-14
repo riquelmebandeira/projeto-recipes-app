@@ -9,6 +9,14 @@
   top: 50%;
 }
 
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 .title {
   align-self: center;
   font-size: 35px;

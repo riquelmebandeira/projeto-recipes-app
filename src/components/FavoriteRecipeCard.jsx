@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 import ShareButton from './ShareButton';
 import FavoriteButton from './FavoriteButton';
-import '../styles/favoriteRecipes.css';
+import '../styles/ReceitasFavoritas.css';
 
 function FavoriteRecipeCard({ index, recipe }) {
   const { category, image, type, id, name, area, alcoholicOrNot } = recipe;
   return (
     <li
       key={ index }
-      className="recipeNamee"
+      className="favorite-recipe-card"
     >
       <Link
         to={ `${type}s/${id}` }
@@ -23,33 +23,39 @@ function FavoriteRecipeCard({ index, recipe }) {
           data-testid={ `${index}-horizontal-image` }
           className="favorite-recipe-photo recipeImgg"
         />
-        <section className="position-colum">
-
+      </Link>
+      <div>
+        <section className="favorite-recipe-info">
           <span
             data-testid={ `${index}-horizontal-top-text` }
-            className="txt"
+            className="category-text"
           >
             { type.includes('comida') ? `${area} - ${category}` : alcoholicOrNot }
           </span>
-          <span
-            className="txt"
-            data-testid={ `${index}-horizontal-name` }
+          <Link
+            to={ `${type}s/${id}` }
+            className="recipe-name"
           >
-            {name}
-          </span>
+            <span
+              className="txt"
+              data-testid={ `${index}-horizontal-name` }
+            >
+              {name}
+            </span>
+          </Link>
         </section>
-      </Link>
-      <section className="division-btn-names espaco">
-        <ShareButton
-          testid={ `${index}-horizontal-share-btn` }
-          recipeId={ id }
-          recipeType={ type }
-        />
-        <FavoriteButton
-          testid={ `${index}-horizontal-favorite-btn` }
-          recipe={ recipe }
-        />
-      </section>
+        <section className="media-btn-container">
+          <ShareButton
+            testid={ `${index}-horizontal-share-btn` }
+            recipeId={ id }
+            recipeType={ type }
+          />
+          <FavoriteButton
+            testid={ `${index}-horizontal-favorite-btn` }
+            recipe={ recipe }
+          />
+        </section>
+      </div>
     </li>
   );
 }

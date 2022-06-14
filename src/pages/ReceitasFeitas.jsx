@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import Header from '../components/Header';
 import FilterButtons from '../components/FilterButtons';
 import '../styles/Receitas.css';
-import '../styles/mealsAndDrink.css';
 import RecipeMadeMeal from '../components/RecipeMadeMeal';
 import RecipeMadeDrink from '../components/RecipesMadeDrink';
 
