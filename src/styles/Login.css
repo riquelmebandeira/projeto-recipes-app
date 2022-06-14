@@ -2,6 +2,7 @@
 
 body {
   background-attachment: fixed;
+  background-color: rgb(195, 20, 50);
 }
 
 .login-container {
