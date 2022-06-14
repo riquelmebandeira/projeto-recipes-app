@@ -1,19 +1,32 @@
-@media screen and ( max-width : 360px ) and ( max-height : 640px ) {
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.category-buttons > button {
+  background-color: rgb(231, 231, 231);
+  border: none;
+  color: rgb(32, 32, 32);
+  font-family: sans-serif;
+  font-size: small;
+  margin: 10px;
+  width: 100%;
+}
+
+@media ( max-width : 470px ) {
 
   .category-buttons {
-    display: flex;
     flex-flow: row wrap;
-    justify-content: center;
-    margin: auto;
   }
 
   .category-buttons > button {
-    background-color: rgb(231, 231, 231);
-    border: none;
-    color: rgb(32, 32, 32);
-    font-family: sans-serif;
-    font-size: small;
-    margin: 10px;
-    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 25vw;
   }
 }

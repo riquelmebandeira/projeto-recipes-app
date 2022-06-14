@@ -1,12 +1,15 @@
-footer nav {
+footer {
+  background-color: rgb(195, 20, 50);
   bottom: 0;
   position: fixed;
+  width: 100%;
 }
 
 .footer-container {
   align-items: center;
-  background-color: rgb(195, 20, 50);
   display: flex;
   justify-content: space-around;
-  width: 100%;
+  margin: auto;
+  max-width: 1400px;
 }
+

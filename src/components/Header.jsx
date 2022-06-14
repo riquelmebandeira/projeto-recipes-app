@@ -12,17 +12,17 @@ function Header(props) {
   return (
     <>
       <header className="header-container">
-        <Link to="/perfil">
-          <input
-            type="image"
-            src={ profileIcon }
-            data-testid="profile-top-btn"
-            alt="Foto de perfil"
-          />
-        </Link>
-        <h1 className="title" data-testid="page-title">{title}</h1>
-        {!showSearchBtn ? <div> </div>
-          : (
+        <div>
+          <Link to="/perfil">
+            <input
+              type="image"
+              src={ profileIcon }
+              data-testid="profile-top-btn"
+              alt="Foto de perfil"
+            />
+          </Link>
+          <h1 className="title" data-testid="page-title">{title}</h1>
+          {showSearchBtn && (
             <input
               type="image"
               src={ searchIcon }
@@ -30,6 +30,7 @@ function Header(props) {
               data-testid="search-top-btn"
               onClick={ () => setSearchBarTo(!searchBar) }
             />)}
+        </div>
       </header>
       {
         searchBar && <SearchBar />
