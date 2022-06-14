@@ -1,0 +1,23 @@
+.explore-page-container {
+  background-color: white;
+  padding-bottom: 580px;
+}
+
+.explore-options {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  left: 50vw;
+  margin: -80px 0 -10px -125px;
+  position: fixed;
+  top: 50vh;
+}
+
+.explore-options > button {
+  background-color: white;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 2px rgb(184, 184, 184);
+  font-size: 18px;
+  font-weight: 100;
+}

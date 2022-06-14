@@ -27,35 +27,41 @@ export default function ExplorarComidas() {
   };
 
   return (
-    <section className="content-container">
-      <Header title="Explorar Comidas" showSearchBtn={ false } />
-      <section className="box">
-        <button
-          type="button"
-          data-testid="explore-by-ingredient"
-          onClick={ clickIngredients }
-          className="button"
-        >
-          Por Ingredientes
-        </button>
-        <button
-          type="button"
-          data-testid="explore-by-area"
-          onClick={ clickArea }
-          className="button"
-        >
-          Por Local de Origem
-        </button>
-        <button
-          type="button"
-          data-testid="explore-surprise"
-          onClick={ clickSurprise }
-          className="button"
-        >
-          Me Surpreenda!
-        </button>
-      </section>
+    <>
+      <Header
+        title="Explorar Comidas"
+        showSearchBtn={ false }
+        className="alternative-header"
+      />
+      <main className="explore-page-container">
+        <section className="explore-options">
+          <button
+            type="button"
+            data-testid="explore-by-ingredient"
+            onClick={ clickIngredients }
+            className="button"
+          >
+            Por Ingredientes
+          </button>
+          <button
+            type="button"
+            data-testid="explore-by-area"
+            onClick={ clickArea }
+            className="button"
+          >
+            Por Local de Origem
+          </button>
+          <button
+            type="button"
+            data-testid="explore-surprise"
+            onClick={ clickSurprise }
+            className="button"
+          >
+            Me Surpreenda!
+          </button>
+        </section>
+      </main>
       <Footer />
-    </section>
+    </>
   );
 }

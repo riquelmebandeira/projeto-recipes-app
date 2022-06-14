@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-import '../styles/esplorar.css';
+import '../styles/Explorar.css';
 
 export default function Explorar() {
   const history = useHistory();
@@ -17,29 +17,31 @@ export default function Explorar() {
   };
 
   return (
-    <section className="content-container">
-      <Header title="Explorar" showSearchBtn={ false } />
-      <section className="box">
-        <button
-          type="button"
-          name="comidas"
-          onClick={ clickFoods }
-          data-testid="explore-food"
-          className="button"
-        >
-          Explorar Comidas
-        </button>
-        <button
-          type="button"
-          name="bebidas"
-          onClick={ clickDrinks }
-          data-testid="explore-drinks"
-          className="button"
-        >
-          Explorar Bebidas
-        </button>
-      </section>
-      <Footer />
-    </section>
+    <>
+      <Header title="Explorar" showSearchBtn={ false } className="alternative-header" />
+      <main className="explore-page-container">
+        <section className="explore-options">
+          <button
+            type="button"
+            name="comidas"
+            onClick={ clickFoods }
+            data-testid="explore-food"
+            className="button"
+          >
+            Explorar Comidas
+          </button>
+          <button
+            type="button"
+            name="bebidas"
+            onClick={ clickDrinks }
+            data-testid="explore-drinks"
+            className="button"
+          >
+            Explorar Bebidas
+          </button>
+        </section>
+        <Footer />
+      </main>
+    </>
   );
 }

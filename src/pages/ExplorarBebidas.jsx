@@ -23,27 +23,33 @@ export default function ExplorarBebidas() {
   };
 
   return (
-    <section className="content-container">
-      <Header title="Explorar Bebidas" showSearchBtn={ false } />
-      <section className="box">
-        <button
-          type="button"
-          data-testid="explore-by-ingredient"
-          onClick={ clickIngredients }
-          className="button"
-        >
-          Por Ingredientes
-        </button>
-        <button
-          type="button"
-          data-testid="explore-surprise"
-          onClick={ clickSurprise }
-          className="button"
-        >
-          Me Surpreenda!
-        </button>
-      </section>
+    <>
+      <Header
+        title="Explorar Bebidas"
+        showSearchBtn={ false }
+        className="alternative-header"
+      />
+      <main className="explore-page-container">
+        <section className="explore-options">
+          <button
+            type="button"
+            data-testid="explore-by-ingredient"
+            onClick={ clickIngredients }
+            className="button"
+          >
+            Por Ingredientes
+          </button>
+          <button
+            type="button"
+            data-testid="explore-surprise"
+            onClick={ clickSurprise }
+            className="button"
+          >
+            Me Surpreenda!
+          </button>
+        </section>
+      </main>
       <Footer />
-    </section>
+    </>
   );
 }
