@@ -23,7 +23,7 @@ export default function RecipeDetails(props) {
           className="header-img"
         />
       </header>
-      <main className="details-container">
+      <main className="recipe-details-container">
         <section className="container">
           <div className="info-container">
             <h1

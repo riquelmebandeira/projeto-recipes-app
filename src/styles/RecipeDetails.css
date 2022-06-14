@@ -1,57 +1,32 @@
-.details-container {
+.header-img {
+  height: 200px;
+  margin-bottom: -10px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.recipe-details-container {
   background-color: white;
   padding: 0 10px;
   padding-bottom: 120px;
 }
 
-.header-img {
-  height: 200px;
-  margin-bottom: -10px;
-  object-fit: cover;
-  width: 360px;
-}
-
-.instructions p {
-  background-color: gainsboro;
-  border-radius: 5px;
-  padding: 10px;
-  width: 320px;
-}
-
-.ingredients ul {
-  background-color: gainsboro;
-  border-radius: 5px;
-  list-style-type: none;
-  padding: 10px;
-  width: 320px;
-}
-
-.card-photo {
-  border-radius: 5px;
-  height: 110px;
-  object-fit: cover;
-  width: 164px;
-}
-
-.cards-container {
+/* informações da receita */
+.container {
   display: flex;
-  gap: 10px;
-  overflow-x: scroll;
-  padding-bottom: 10px;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 1000px;
+  width: 100%;
 }
 
-.video-container iframe {
-  border-radius: 5px;
-  width: 338px;
+.info-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.recommendation-card {
-  border-radius: 5px;
-  box-shadow: 2px 4px 6px gainsboro;
-}
-
-.recommendation-card p, h3 {
-  padding-left: 6px;
+.info-container h1 {
+  font-size: 30px;
 }
 
 .input-container {
@@ -69,25 +44,83 @@
   display: block;
 }
 
-.info-container {
+/* ingredientes */
+.ingredients {
+  margin: auto;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.ingredients ul {
+  background-color: gainsboro;
+  border-radius: 5px;
+  list-style-type: none;
+  margin: auto;
+  padding: 10px;
+}
+
+/* instruções da receita */
+.instructions {
+  margin: auto;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.instructions p {
+  background-color: gainsboro;
+  border-radius: 5px;
+  margin: auto;
+  padding: 10px;
+}
+
+/* video */
+.video-container {
   display: flex;
   flex-direction: column;
+  margin: auto;
+  max-width: 1000px;
+  width: 100%;
 }
 
-.info-container h1 {
-  font-size: 30px;
+.video-container iframe {
+  align-self: center;
+  border-radius: 5px;
+  width: 100%;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  width: 350px;
+/* cards de recomendação */
+.recommendations {
+  margin: auto;
+  max-width: 1000px;
+  width: 100%;
 }
 
-.recipe-category {
-  font-size: 20px;
+.cards-container {
+  overflow-x: scroll;
+  padding-bottom: 10px;
+  white-space: nowrap;
 }
 
+.card-photo {
+  border-radius: 5px;
+  height: 110px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.recommendation-card {
+  border-radius: 5px;
+  box-shadow: 2px 4px 6px gainsboro;
+  display: inline-block;
+  margin-right: 10px;
+  width: 160px;
+}
+
+.recommendation-card p, h3 {
+  padding-left: 6px;
+}
+
+/* botão de iniciar receita */
 .bottom-btn {
   background-color: #0261ba;
   border: none;
@@ -102,4 +135,18 @@
   padding: 20px;
   position: fixed;
   width: 340px;
+}
+
+@media ( max-width : 376px ) {
+
+  .recommendation-card {
+    width: 170px;
+  }
+}
+
+@media ( max-width : 320px ) {
+
+  .recommendation-card {
+    width: 100%;
+  }
 }
