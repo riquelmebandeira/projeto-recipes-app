@@ -36,16 +36,17 @@ export default function Progresso({ match: { params: { id } } }) {
   }, [id, recipeType]);
 
   return loading || !recipe ? <Loading /> : (
-    <section className="content-container">
+    <section className="recipe-details-container">
       <RecipeHeader recipe={ recipe } />
       <IngredientSteps recipe={ recipe } />
-      <section className="instructions">
+      <section className="in-progress-instructions">
         <h2>Instruções</h2>
         <p data-testid="instructions">{recipe.instructions}</p>
       </section>
       <Button
         name="Finalizar Receita"
         testid="finish-recipe-btn"
+        className="bottom-btn"
         onClick={ () => {
           dispatch(addDoneRecipe(recipe));
           history.push('/receitas-feitas');

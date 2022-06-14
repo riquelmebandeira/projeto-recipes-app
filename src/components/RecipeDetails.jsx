@@ -3,46 +3,18 @@ import PropTypes from 'prop-types';
 import IngredientsList from './IngredientsList';
 import StartRecipeBtn from './StartRecipeBtn';
 import RecommendationsList from './RecommendationsList';
-import FavoriteBtn from './FavoriteBtn';
-import ShareBtn from './ShareBtn';
+import RecipeHeader from './RecipeHeader';
 import { treatVideoUrl } from '../utils/DetailsPage';
 import '../styles/RecipeDetails.css';
 
 export default function RecipeDetails(props) {
-  const { category, alcoholicOrNot, name, image, ingredients,
-    measures, recommendations, instructions, url, id, type } = props;
+  const { ingredients, measures, recommendations, instructions, url, id, type } = props;
   const isMeal = type === 'comida';
 
   return (
     <>
-      <header className="recipe-details-header">
-        <img
-          src={ image }
-          alt="Foto da receita"
-          data-testid="recipe-photo"
-          className="header-img"
-        />
-      </header>
+      <RecipeHeader recipe={ props } />
       <main className="recipe-details-container">
-        <section className="container">
-          <div className="info-container">
-            <h1
-              data-testid="recipe-title"
-            >
-              {name}
-            </h1>
-            <p
-              data-testid="recipe-category"
-              className="recipe-category"
-            >
-              { isMeal ? category : alcoholicOrNot }
-            </p>
-          </div>
-          <div className="input-container">
-            <FavoriteBtn { ...props } />
-            <ShareBtn recipeId={ id } recipeType={ type } />
-          </div>
-        </section>
         <article className="preparation-method">
           <IngredientsList { ...{ ingredients, measures } } />
           <section className="instructions">
