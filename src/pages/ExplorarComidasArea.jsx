@@ -5,7 +5,7 @@ import Header from '../components/Header';
 export default function ExplorarComidasArea() {
   return (
     <section className="content-container">
-      <Header title="Explorar Origem" />
+      <Header title="Explorar Origem" className="alternative-header" />
       <Footer />
     </section>
   );

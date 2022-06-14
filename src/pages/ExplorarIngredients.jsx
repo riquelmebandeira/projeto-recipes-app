@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import { saveRecipesList } from '../redux/actions';
 import fetchApi from '../utils/FetchApi';
 import { getRecipeType } from '../utils/recipeInfo';
+import '../styles/ExplorarIngredientes.css';
 
 export default function ExplorarIngredientes() {
   const history = useHistory();
@@ -43,16 +44,15 @@ export default function ExplorarIngredientes() {
     history.push(`/${recipeType}s`);
   };
   return (
-    <section>
-      <Header title="Explorar Ingredientes" showSearchBtn={ false } />
-      <main>
+    <>
+      <Header
+        title="Explorar Ingredientes"
+        showSearchBtn={ false }
+        className="alternative-header"
+      />
+      <main className="ingredients-container">
         { data.map((ingre, index) => (
-          <section key={ index } className="recipeNamee">
-            <h1
-              data-testid={ `${index}-card-name` }
-            >
-              { ingre.strIngredient || ingre.strIngredient1 }
-            </h1>
+          <section key={ index } className="ingredient-card">
             <button
               data-testid={ `${index}-ingredient-card` }
               type="button"
@@ -64,10 +64,15 @@ export default function ExplorarIngredientes() {
                 alt={ ingre.strIngredient || ingre.strIngredient1 }
               />
             </button>
+            <p
+              data-testid={ `${index}-card-name` }
+            >
+              { ingre.strIngredient || ingre.strIngredient1 }
+            </p>
           </section>
         )) }
       </main>
       <Footer />
-    </section>
+    </>
   );
 }

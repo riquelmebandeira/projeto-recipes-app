@@ -1,0 +1,36 @@
+.ingredients-container {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: auto;
+  max-width: 1000px;
+  padding-bottom: 80px;
+  padding-top: 30px;
+  width: 100%;
+}
+
+.ingredient-card {
+  background-color: white;
+  box-shadow: 0 2px 4px rgb(172, 172, 172);
+  padding: 20px;
+  width: fit-content;
+}
+
+.ingredient-card img {
+  height: 130px;
+}
+
+.ingredient-card button {
+  background-color: transparent;
+  border: none;
+}
+
+.ingredient-card p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 120px;
+}
