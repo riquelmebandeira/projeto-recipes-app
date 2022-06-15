@@ -1,9 +1,10 @@
 .category-buttons {
+  background-color: white;
   display: flex;
   justify-content: center;
   margin: auto;
-  margin-top: 10px;
   max-width: 1000px;
+  padding: 10px 0;
   width: 100%;
 }
 

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getRecipes } from '../redux/actions';
 import fetchApi from '../utils/FetchApi';
-import { getRecipeType } from '../utils/recipeInfo';
 import '../styles/CategoryButtons.css';
 
-function CategoryButtons() {
+function CategoryButtons({ recipeType }) {
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
   const [filtered, setFiltered] = useState('');
   const FIVE_CATEGORIES = 5;
-  const recipeType = getRecipeType();
   const getCategories = async () => {
     const responseJson = await fetchApi({
       recipeType,
@@ -22,7 +21,7 @@ function CategoryButtons() {
 
   useEffect(() => {
     getCategories(); // eslint-disable-next-line
-  }, []);
+  }, [recipeType]);
 
   return (
     <section className="category-buttons">
@@ -63,5 +62,9 @@ function CategoryButtons() {
     </section>
   );
 }
+
+CategoryButtons.propTypes = {
+  recipeType: PropTypes.string.isRequired,
+};
 
 export default CategoryButtons;
