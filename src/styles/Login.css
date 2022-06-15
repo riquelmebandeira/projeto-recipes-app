@@ -14,7 +14,6 @@ body {
   font-family: Carter One , cursive;
   font-size: 45px;
   text-align: center;
-  text-shadow: 2px 1px 1px black;
 }
 
 .form-container {
@@ -53,7 +52,6 @@ body {
   font-size: large;
   height: 70px;
   margin: 10px 0;
-  text-shadow: 1px 1px 1px black;
   width: 290px;
 }
 

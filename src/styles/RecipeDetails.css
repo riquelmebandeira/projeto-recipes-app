@@ -104,11 +104,6 @@
   width: 340px;
 }
 
-.bottom-btn:disabled {
-  background-color: #b9babb;
-  color: rgb(39, 39, 39);
-}
-
 @media ( max-width : 376px ) {
 
   .recommendation-card {

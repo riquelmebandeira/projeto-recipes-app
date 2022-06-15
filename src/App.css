@@ -9,6 +9,11 @@
   top: 50%;
 }
 
+button:disabled {
+  background-color: #a1a2a3;
+  color: rgb(39, 39, 39);
+}
+
 li {
   list-style-type: none;
 }
