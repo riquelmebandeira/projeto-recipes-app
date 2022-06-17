@@ -1,11 +1,12 @@
 # Projeto App de Receitas
 
 # Contexto
-<img align="right" alt="Preview da aplicação" src="preview.gif" />
 
 Este projeto é uma aplicação focada em dispositivos móveis, onde pode-se explorar receitas de comidas e bebidas, favoritá-las e acompanhar sua preparação.
 
 A interface é alimentada por duas API's, TheMealDB e TheCockTailDB, que fornecem receitas de comidas e bebidas.
+
+<img alt="Preview da aplicação" src="preview.gif" height="400px" />
 
 ## Tecnologias usadas
 
