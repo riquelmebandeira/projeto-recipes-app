@@ -1,11 +1,11 @@
 # Projeto App de Receitas
 
 # Contexto
-Esse projeto buscou desenvolver uma aplicação, focada em dispositivos móveis, onde pode-se explorar receitas de comidas e bebidas, favoritá-las e acompanhar sua preparação.
+<img align="right" alt="Preview da aplicação" src="preview.gif" />
 
-A aplicação é alimentada por duas API's, TheMealDB e TheCockTailDB, que são, respectivamente, de comidas e de bebidas.
+Este projeto é uma aplicação focada em dispositivos móveis, onde pode-se explorar receitas de comidas e bebidas, favoritá-las e acompanhar sua preparação.
 
-Fui responsável pela implementação da página de detalhamento de uma receita, e, juntamente com o Jonathan Ferreira, pela página de Receitas Favoritas. Além de outras pequenas coisas.
+A interface é alimentada por duas API's, TheMealDB e TheCockTailDB, que fornecem receitas de comidas e bebidas.
 
 ## Tecnologias usadas
 
@@ -14,13 +14,27 @@ Fui responsável pela implementação da página de detalhamento de uma receita,
 * Context API
 * React Hooks
 
-## Instalando Dependências
+## Instalando o projeto
+
+1. Clone o repositório:
+
+```
+git clone git@github.com:riquelmebandeira/projeto-recipes-app.git
+```
+
+2. Entre na pasta do repositório clonado:
+
+```
+cd projeto-recipes-app
+```
+
+3. Instale as dependências com o comando:
 
 ```
 npm install
-``` 
+```
 
-## Executando aplicação
+## Executando a aplicação
 
   ```
   npm start
