@@ -6,7 +6,9 @@ Este projeto é uma aplicação focada em dispositivos móveis, onde pode-se exp
 
 A interface é alimentada por duas API's, TheMealDB e TheCockTailDB, que fornecem receitas de comidas e bebidas.
 
+<br>
 <img alt="Preview da aplicação" src="preview.gif" height="400px" />
+<br>
 
 ## Tecnologias usadas
 
@@ -14,6 +16,8 @@ A interface é alimentada por duas API's, TheMealDB e TheCockTailDB, que fornece
 * Redux
 * Context API
 * React Hooks
+
+<br>
 
 ## Instalando o projeto
 
